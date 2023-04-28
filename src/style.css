@@ -1,0 +1,273 @@
+*{
+    box-sizing: border-box;
+}
+/* 공통 */
+.displaybox{
+    width: 1440px;
+}
+.displaybox .main{
+    padding: 20px 0;
+}
+
+/* 푸터 */
+.footer{
+    height: 160px;
+    padding: 20px 10px;
+    margin-bottom: -160px;
+}
+.footer_bg{
+    
+    height: 160px;
+    padding: 20px 10px;
+    background-color: #d9d9d9;
+}
+
+/* 헤더 */
+.header_box .logo img{
+    width: 120px;
+}
+.logo{
+    display: block;
+    cursor: pointer;
+}
+.displaybox{
+    margin: auto;
+    width: 1440px;
+}
+.header_box{
+    padding: 20px 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.search_bar{
+    display: flex;
+    width: calc(100% - 390px);
+}
+.function_head{
+    width: 160px;
+    display: flex;
+    justify-content: space-between;
+}
+.function_head_box{
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.function_head_box svg{
+    font-size: 26px;
+}
+/* .menuwrap{
+    display: flex;
+    align-items: center;
+}
+.menuwrap .dropmenu{
+    cursor: pointer;
+    margin-right: 40px;
+} */
+.navigation{
+    width: 100%;
+    justify-content: center;
+}
+
+.header_top_bg{
+    height: 30px;
+    width: 100%;
+    background-color: #d9d9d9;
+}
+.header_top_box{
+    padding: 0px 10px;
+    margin-top: -30px;
+    height: 30px;
+    display: flex;
+    justify-content: right;
+    align-items: center;
+}
+.header_top_box>li{
+    font-size: 14px;
+    color: fff;
+    cursor: pointer
+}
+.header_top_box>li>a{
+    color: #000
+}
+.breacrumb{
+    padding: 10px 0;
+}
+
+/* shop페이지 */
+.product_wrap, .productwrap1 {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.product_wrap .product_list{
+    width: calc(20% - 10px);
+    padding: 10px;
+}
+.productwrap1 .product_list{
+    width: calc(50% - 10px);
+    padding: 10px;
+}
+.productwrap2 .product_list a{
+   display: flex;
+}
+.productwrap2 .product_list a .product_pic{
+    width: 300px;
+    margin-right: 10px;
+ }
+ .productwrap2 .product_list{
+    margin-bottom: 20px;
+ }
+.product_list p{
+    color: #000;
+}
+.none{
+    display: none;
+}
+.product_pic{
+    width: 100%;
+    height: 200px;
+    background-color: aliceblue;
+}
+.shop_div{
+    display: flex;
+    justify-content: space-between;
+}
+.shop_sort{
+    width: 200px;
+    background-color: #a1a1a1;
+}
+.shop_content{
+    width: calc(100% - 240px);
+    position: relative;
+}
+
+.product_box{
+    width: calc(25% - 10px);
+    padding: 10px;
+}
+.sort_navi{
+    padding: 10px;
+}
+.sort_navi>li{
+    cursor: pointer;
+}
+.sort_navi>li>a{
+    color: #d9d9d9;
+    font-weight: 900;
+    font-size: 18px;
+}
+.sort_navi>li:hover a{
+    color: #000;
+}
+.sort_navi>li.active a{
+    color: #000 ;
+}
+.shop .check_group{
+    flex-direction: column;
+}
+.shop .check_group>label{
+    margin-inline-start: 0px;
+}
+.sort_box{
+    display: flex;
+    margin-top: 20px;
+    margin-bottom: 20px ;
+    width: 100%;
+    height: 200px;
+    transition: all 1s;
+}
+.sort_box_hide{
+    overflow: hidden;
+    height: 0px;
+    transition: all 1s;
+}
+.sortbtn{
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+.sort_box>li{
+    width: calc(20% - 10px);
+    margin: 0px 5px;
+}
+.sort_box>li>p{
+font-weight: 900;
+font-size: 18px;
+margin-bottom: 10px;
+}
+.search_com{
+    height: 170px;
+    overflow-y: scroll;
+}
+.sort_tag_box{
+    margin-bottom: 20px;
+}
+.sort_searched_box{
+    padding: 10px;    
+}
+.sort_searched_box>li{
+    
+    cursor: pointer;
+}
+.sort_searched_box>li.selected{
+    background-color: #a1a1a1;
+}
+.sorting_list, .sorting_list_grid, .sorting_list_btn{
+    display: flex;
+}
+.sorting_list_btn{
+   width: calc(100% - 150px);
+}
+.sorting_list_grid{
+    width: 150px;
+}
+.sorting_list_grid>li{
+    width: 40px;
+    font-size: 20px;
+    text-align: center;
+    cursor: pointer;
+    padding: 5px;
+}
+.sorting_list_btn button.clicked{
+    background-color: #a1a1a1;
+}
+
+/* 회원가입 */
+.allbox{
+    width: 800px;
+    margin: auto;
+}
+.signup_wrap {
+    display: flex;
+    flex-direction: column;
+    padding: 20px 10px;
+}
+.sign_logo{
+    padding-top: 20px;
+    width: 300px;
+    margin:   auto;
+    padding-bottom: 50px;
+}
+.sign_btn, .login_btn, .login_sign_btn{
+    width: 100%;
+}
+
+/* 검색 */
+.search_box{
+    padding: 10px;
+    border: 1px solid #000;
+    margin-bottom: 10px;
+}
+/* 로그인 페이지 */
+.login_sign_btn{
+margin-top: 20px;
+}
+@media screen and (max-width: 1460px) {
+    .displaybox{
+      width: 100%;
+      padding: 0px 20px;
+    }
+  }
