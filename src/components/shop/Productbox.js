@@ -1,18 +1,15 @@
-import FunctionBtn from "./FunctionBtn"
+import FunctionBtn from "../components_btn/FunctionBtn";
 import ProductList from "./ProductList"
 import { useState } from "react"
 
 const Productbox = (props)=>{
     
-  const [daydesc, setDayDesc] = useState(false)
-  const [pricedesc, setPriceDesc] = useState(false)
-  const [priceaec, setPriceAec] = useState(false)
+  const [sortOption, setSortOption] = useState("default");
   const [gridstyle, setGridStyle] = useState(0)
-  
     return(
         <>
-        <FunctionBtn setGridStyle={setGridStyle} daydesc={daydesc} pricedesc={pricedesc} priceaec={priceaec} setDayDesc={setDayDesc} setPriceDesc={setPriceDesc}  setPriceAec={setPriceAec}/>
-        <ProductList gridstyle={gridstyle} daydesc={daydesc} pricedesc={pricedesc} priceaec={priceaec} plist={props.plist} pathnum1={props.pathnum1} pathnum2={props.pathnum2} searchArray={props.searchArray} />
+        <FunctionBtn gridstyle={gridstyle} setGridStyle={setGridStyle} sortOption={sortOption} setSortOption ={setSortOption}/>
+        <ProductList lastCheck={props.lastCheck} setLastCheck={props.setLastCheck} userId={props.userId} gridstyle={gridstyle} sortOption={sortOption} plist={props.plist} pathnum1={props.pathnum1} pathnum2={props.pathnum2} searchArray={props.searchArray} />
         </>
     )
 }

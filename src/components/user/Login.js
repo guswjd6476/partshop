@@ -2,13 +2,10 @@ import {   Button,  Form, Input,   } from 'antd';
 import { UserOutlined , LockOutlined  } from '@ant-design/icons';
 import React, { useState,useEffect } from "react";
 import { useNavigate } from 'react-router-dom';
-// import { signInWithPopup, GoogleAuthProvider , } from "firebase/auth";
-// import { authService } from "../../firebase_config";
 import axios from 'axios';
 import logo from '../../Image/logo.png'
-// import { useCookies } from "react-cookie";
 
-const Login = ({setShow,setUserInfo,setAdmin}) => {
+const Login = ({setShow,setUserInfo,setAdmin,setToken}) => {
     const [email, setEmail] = useState();
 
     const navigate = useNavigate();
@@ -34,9 +31,10 @@ const Login = ({setShow,setUserInfo,setAdmin}) => {
                         //authService.signInWithEmailAndPassword(values.userId, values.uPassword);
                       console.log(response.data)
                         localStorage.setItem("token", response.data[0].token);
+                        setToken(response.data[0].token);
                         localStorage.setItem("userInfo", [response.data[0].userId,response.data[0].uGrade]);
+                        setAdmin("userInfo", [response.data[0].userId,response.data[0].uGrade]);
                         setUserInfo(response.data[0])
-                        setAdmin(response.data[0].uGrade ==1 ? true : false)
                     alert("로그인 되었습니다", "확인 버튼을 눌러 주세요", "success");
                     setShow(true)
                     navigate('/')
@@ -112,17 +110,7 @@ return (
             ]}>
             <Input.Password autoComplete='on'  style={{height:'40px'}}  prefix={<LockOutlined />} placeholder="비밀번호를 입력해주세요."/>
         </Form.Item>
-        {/* <div style={{display:'flex', justifyContent:'space-between',alignItems:'center', marginBottom:'20px'}}>
-            <Checkbox 
-                    type="checkbox"
-                    id="saveId"
-                    checked={isRemember}
-                    style={{color: '#fff', padding : "5px"}}
-                >
-                    아이디저장
-            </Checkbox> 
-            <a href="/find">아이디 · 비밀번호 찾기</a>
-        </div> */}
+       
             <Button className='loginbtn' type="primary"  htmlType="submit" >
                 로그인
             </Button>

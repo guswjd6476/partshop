@@ -11,17 +11,19 @@ import Signup from './components/user/Signup';
 import Login from './components/user/Login';
 import Mypage from './components/user/Mypage';
 import Cart from './components/user/Cart';
-import AllSearchResult from './components/AllSearchResult';
-import Writeproduct from'../src/components/shop/write/Writeproduct'
+import AllSearchResult from './components/Allsearch/AllSearchResult'
+import Admin from './components/admin/Admin';
+import Myinfochage from './components/user/Myinfochage';
+
 import { useState } from 'react';
 
 
 
-const Approuter = ({isLoggedIn,setUserInfo,admin,setAdmin,cate})=> {
+const Approuter = ({setToken, isLoggedIn,setUserInfo,admin,setAdmin,cate,userId})=> {
+
   const [filter, setFilter] = useState('');
   const [sb, setSb] = useState(false)
   const [show, setShow] =useState(true)
-console.log(sb)
   if(isLoggedIn){
     return (
       <div className="contain">
@@ -33,15 +35,17 @@ console.log(sb)
             <Routes>
               
               <Route path="/" element={<Main/>} />
-              <Route path="/Writeproduct" element={<Writeproduct/> }/>
-              <Route path="/SearchResult" element={   <AllSearchResult filter={filter}  sb={sb} />}/>
-              <Route path="/Mypage" element={<Mypage/>} />
-              <Route path="/Cart" element={<Cart/>} />
+              <Route path="/Admin" element={<Admin cate={cate}/>} />
+              {/* <Route path="/Writeproduct" element={<Writeproduct/> }/> */}
+              <Route path="/SearchResult" element={   <AllSearchResult userId={userId} filter={filter}  sb={sb} />}/>
+              <Route path="/Mypage" element={<Mypage userId={userId}/>} />
+              <Route path="/Myinfo" element={<Myinfochage userId={userId}/>} />
+              <Route path="/Cart" element={<Cart userId={userId} />} />
               <Route path="/Signup" element={<Signup show={show} setShow={setShow}/>} />
-              <Route path="/Login" element={<Login setUserInfo={setUserInfo} setShow={setShow} setAdmin={setAdmin}/>} />
-                <Route path="/:cate" element={<Shop cate={cate} />} />
-                <Route path="/:cate/:subcate" element={<Shopsub cate={cate} />} />
-                <Route path="/:cate/:subcate/:id" element={<Productdetail cate={cate} />} />
+              <Route path="/Login" element={<Login setToken={setToken} setUserInfo={setUserInfo} setShow={setShow} setAdmin={setAdmin}/>} />
+                <Route path="/:cate" element={<Shop cate={cate} userId={userId} />} />
+                <Route path="/:cate/:subcate" element={<Shopsub cate={cate} userId={userId} />} />
+                <Route path="/:cate/:subcate/:id" element={<Productdetail cate={cate} userId={userId} />} />
                 <Route path="/Iot" element={<Iot/>} />
                 <Route path="/Third" element={<Third/>} />
            </Routes>
@@ -64,7 +68,7 @@ console.log(sb)
               
               <Route path="/" element={<Main/>} />
               <Route path="/Signup" element={<Signup show={show} setShow={setShow}/>} />
-              <Route path="/Login" element={<Login setUserInfo={setUserInfo}  setShow={setShow}  setAdmin={setAdmin}/>} />
+              <Route path="/Login" element={<Login setToken={setToken} setUserInfo={setUserInfo}  setShow={setShow}  setAdmin={setAdmin}/>} />
               
            </Routes>
            {show ?<Footer/> : ''}

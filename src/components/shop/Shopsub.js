@@ -3,35 +3,28 @@ import { useLocation } from "react-router-dom";
 import { Button,Breadcrumb } from 'antd';
 import { useEffect } from 'react';
 // import Searchcomponent from './Searchcomponent';
-import axios from 'axios';
 import { useState } from 'react';
 import Sortnavi from './Sortnavi';
-import SortingWrap from './SortingWrap';
+import SortingWrap from './shop_sort/SortingWrap'
 import Productbox from './Productbox';
-
-function Shopsub({cate}) {
+import { subproduct } from '../../service/product';
+import Fixedbox from '../components_btn/Fixedbox';
+function Shopsub({cate,userId}) {
   const location = useLocation();
   const pathnum1 = location.pathname.split('/')[1]
   const pathnum2 = location.pathname.split('/')[2]
-
+  const [check, setCheck] = useState([])
 const [searchArray, setSearchArray] = useState([])
   const [plist, setPlist] =useState([])
+  const [lastCheck, setLastCheck] =useState([])
 
 useEffect(()=>{
-
-axios
-.get('/api/subproduct',{
-  params:{
-    subcate : pathnum2
-  }
-})
+subproduct(pathnum2)
 .then(function (response) {
-
   setPlist(response.data)
-})
-.catch(function (error) {
-    console.log(error)
-})   
+}).catch(function (error) {
+  console.log(error)
+}) 
 setSearchArray([])
 },[pathnum2])
 
@@ -68,12 +61,10 @@ setSearchArray([])
         </div>
         <div className='shop_content'>
           <SortingWrap pathnum2={pathnum2} searchArray={searchArray} setSearchArray={setSearchArray}/>
-          
-          <Button href='/Writeproduct' ></Button>
-
-          <Productbox plist={plist} pathnum1={pathnum1} pathnum2={pathnum2} searchArray={searchArray} />
+          <Productbox lastCheck={lastCheck} setLastCheck={setLastCheck}  userId={userId}  plist={plist} pathnum1={pathnum1} pathnum2={pathnum2} searchArray={searchArray} />
           
         </div>
+        <Fixedbox  userId={userId} lastCheck={lastCheck}/>
       </div>
         
     </div>

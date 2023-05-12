@@ -3,8 +3,7 @@ import { AppstoreOutlined,  ShoppingCartOutlined,UserAddOutlined,ExclamationCirc
 import { Menu,Modal  } from 'antd';
 import {  Link,useLocation,} from 'react-router-dom';
 import logo from './Image/logo.png'
-import AllSearchComponent from './components/AllSearchComponent';
-
+import AllSearchComponent from './components/Allsearch/AllSearchComponent'
 const { confirm } = Modal;
 
 
@@ -28,11 +27,9 @@ const Header = ({isLoggedIn,admin,cate,setFilter,sb,setSb}) => {
       icon: <AppstoreOutlined />,
 
     };
-    return item;
   });
   // const navigate = useNavigate();
   const location = useLocation()
-
   const pathKeys = location.pathname.split('/').filter(Boolean)
 
   const showConfirm = () => {
@@ -51,8 +48,12 @@ const Header = ({isLoggedIn,admin,cate,setFilter,sb,setSb}) => {
   return (
 <div className='header'>
   <ul className='header_top_box'>
-    {admin ? 
-    <li>관리자 입니다</li> 
+    {admin&&admin.split(',')[1] == 1 ? 
+    <li>
+      <a href='/Admin'>
+      관리자 입니다
+      </a>
+    </li> 
     :'' 
   }
     {!isLoggedIn ? 
@@ -94,7 +95,7 @@ const Header = ({isLoggedIn,admin,cate,setFilter,sb,setSb}) => {
     <div className='search_bar'>
       {/* <Input/>
       <Button icon={<SearchOutlined />}/> */}
-      <AllSearchComponent setSb={setSb} sb={sb} setFilter={setFilter}/>
+      <AllSearchComponent userId={admin&&admin.split(',')[0]} setSb={setSb} sb={sb} setFilter={setFilter}/>
     </div>
     <ul className='function_head'>
         <Link  to={!isLoggedIn ? '/Login':'/Mypage'} className='function_head_box login'>
@@ -108,17 +109,7 @@ const Header = ({isLoggedIn,admin,cate,setFilter,sb,setSb}) => {
     </ul>
  </div>
  <div className='menuwrap'>
- {/* <Dropdown
- className='dropmenu'
-    menu={{
-      items
-    }}
-  >
-      <Space>
-        <MenuOutlined />
-        PARTPRODUCT
-      </Space>
-   </Dropdown> */}
+
   <Menu className='navigation' 
 selectedKeys={[...pathKeys, `/${pathKeys[0]}`]} mode="horizontal" items={newItems} />
 

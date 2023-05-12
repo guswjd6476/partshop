@@ -2,13 +2,14 @@
 import Searchcomponent from "./Searchcomponent";
 import {Button} from 'antd'
 import { useState } from "react";
+import { UpSquareOutlined,DownSquareOutlined } from '@ant-design/icons';
 function SortingWrap(props) {
     
   const sortT = ['inch','brand','material','color']
   const [onhide, setOnHide] = useState(false)
   return (
     <>
-    <ul className={onhide ?'sort_box_hide':'sort_box'}>
+    <ul className={onhide ?'sort_box hide':'sort_box'}>
     {sortT.map((sortType, index) => (
       <li key={index}>
         <p>{sortType}</p>
@@ -22,7 +23,7 @@ function SortingWrap(props) {
       </li>
     ))}
   </ul>
-  <Button className="sortbtn" onClick={e=>setOnHide(!onhide)}>버튼</Button>
+  <Button className="sortbtn" onClick={e=>setOnHide(!onhide)}>{!onhide ? <UpSquareOutlined /> :<DownSquareOutlined /> }</Button>
   </>
   );
 }

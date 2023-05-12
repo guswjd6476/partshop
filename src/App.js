@@ -9,31 +9,26 @@ import axios from 'axios';
 function App() {
   const [init, setInit] = useState(false)
 const [userInfo, setUserInfo] = useState(null)
-const [userId, setUserId] = useState(null)
-const [token, setToken] = useState(null)
-const [admin, setAdmin] = useState(false)
-const [cate, setCate] = useState(null)
-  const logintoken = () => {
-    
-    setToken(localStorage.getItem('token'))
-    setAdmin(localStorage.getItem('userInfo'))
-    setUserId(localStorage.getItem('userInfo'))
-    setInit(true)
-  }
+const [userId, setUserId] = useState(localStorage.getItem('userInfo'));
+  const [token, setToken] = useState(localStorage.getItem('token'));
+  const [admin, setAdmin] = useState(localStorage.getItem('userInfo'));
+const [cate, setCate] = useState([])
 
   useEffect(()=>{
-    logintoken()
+    // logintoken()
     axios
       .get('/api/category')
       .then(function (response) {
         setCate(response.data)
-        // setCate([...new Set(response.data.map((obj) => obj.category))])
+       
+    setInit(true)
       })
+      
   },[])
   return (
     <>
     {init ? 
-    <Approuter cate={cate} admin={admin} setAdmin={setAdmin} setUserInfo={setUserInfo} isLoggedIn={Boolean(token)}  />
+    <Approuter userId={userId&&userId.split(',')[0]} setToken={setToken} cate={cate} admin={admin} setAdmin={setAdmin} setUserInfo={setUserInfo} isLoggedIn={Boolean(token)}  />
     :''
     }
     </>
