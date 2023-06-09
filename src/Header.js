@@ -7,10 +7,10 @@ import AllSearchComponent from './components/Allsearch/AllSearchComponent'
 const { confirm } = Modal;
 
 
-const Header = ({isLoggedIn,admin,cate,setFilter,sb,setSb}) => {
+const Header = ({isLoggedIn,admin,userInfo,setFilter,sb,setSb,cates,filter}) => {
   
   const addedKeys = [];
-  const newItems = cate&&cate.map((item) => {
+  const newItems = cates&&cates.map((item) => {
     const key = `/${item.category}`;
     const keys = item.category
     if (addedKeys.includes(key)) {
@@ -38,6 +38,8 @@ const Header = ({isLoggedIn,admin,cate,setFilter,sb,setSb}) => {
       icon: <ExclamationCircleFilled />,
       onOk() {
           localStorage.removeItem("token")
+          localStorage.removeItem("userInfo")
+          localStorage.removeItem("recent")
           window.location.href = '/'
       },
       onCancel() {
@@ -46,56 +48,57 @@ const Header = ({isLoggedIn,admin,cate,setFilter,sb,setSb}) => {
     });
   };
   return (
-<div className='header'>
-  <ul className='header_top_box'>
-    {admin&&admin.split(',')[1] == 1 ? 
-    <li>
-      <a href='/Admin'>
-      관리자 입니다
-      </a>
-    </li> 
-    :'' 
-  }
-    {!isLoggedIn ? 
-  <li>
-  <a href='/Login'>
-  로그인
-  </a>
-</li>
-:''  
-  }
+<div className='header '>
+  <div className='header_top_bg'>
+    <ul className='header_top_box displaybox'>
+      {userInfo&&userInfo[1]== 1 ? 
+      <li>
+        <a href='/Admin'>
+        관리자 입니다
+        </a>
+      </li> 
+      :'' 
+    }
       {!isLoggedIn ? 
-    <li style={{marginLeft:'20px'}}>
-      <a href='/Signup'>
-      회원가입
-      </a>
-    </li>
-    :
-    ''
+    <li>
+    <a href='/Login'>
+    로그인
+    </a>
+  </li>
+  :''  
     }
-     {isLoggedIn ? 
-    <li onClick={showConfirm} style={{marginLeft:'20px'}}>
-      <a>
-      로그아웃
-      </a>
-    </li>
-    :
-    ''
-    }
-    <li style={{marginLeft:'20px'}}>
-      <a>
-      고객센터
-      </a>
-    </li>
-  </ul>
- <div className='header_box'>
+        {!isLoggedIn ? 
+      <li style={{marginLeft:'20px'}}>
+        <a href='/Signup'>
+        회원가입
+        </a>
+      </li>
+      :
+      ''
+      }
+      {isLoggedIn ? 
+      <li onClick={showConfirm} style={{marginLeft:'20px'}}>
+        <a>
+        로그아웃
+        </a>
+      </li>
+      :
+      ''
+      }
+      <li style={{marginLeft:'20px'}}>
+        <a href='/center'>
+        고객센터
+        </a>
+      </li>
+    </ul>
+  </div>
+  
+ <div className='header_box displaybox'>
     <a href='/' className='logo'>
         <img src={logo} alt='logo'/>
     </a>
     <div className='search_bar'>
-      {/* <Input/>
-      <Button icon={<SearchOutlined />}/> */}
-      <AllSearchComponent userId={admin&&admin.split(',')[0]} setSb={setSb} sb={sb} setFilter={setFilter}/>
+      <AllSearchComponent filter={filter} userId={admin&&admin.split(',')[0]} setSb={setSb} sb={sb} setFilter={setFilter}/>
     </div>
     <ul className='function_head'>
         <Link  to={!isLoggedIn ? '/Login':'/Mypage'} className='function_head_box login'>
@@ -108,9 +111,9 @@ const Header = ({isLoggedIn,admin,cate,setFilter,sb,setSb}) => {
         </Link>
     </ul>
  </div>
- <div className='menuwrap'>
+ <div className='header_bottom_bg'>
 
-  <Menu className='navigation' 
+  <Menu className='navigation displaybox' 
 selectedKeys={[...pathKeys, `/${pathKeys[0]}`]} mode="horizontal" items={newItems} />
 
   </div>

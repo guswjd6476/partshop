@@ -157,7 +157,7 @@ const prefixSelector = (
 );
 
 return (
-    <div className="join_contain">
+    <div className="join_contain allbox">
         <a className='join_logo' href='/'>
             <img src={logo}/>
         </a>
@@ -173,6 +173,7 @@ return (
                  autoComplete="off">
                  <Form.Item
                         label="아이디"
+                        className="joininput_wrap"
                         name="userId"
                        
                         required="required"
@@ -184,6 +185,7 @@ return (
                             }
                         ]}>
                          <Input
+                            className="joininput"
                             prefix={<UserOutlined />}
                             value={userIdChange}
                             onChange={(e)=>{
@@ -200,82 +202,6 @@ return (
                             중복확인
                         </Button>
                 </Form>
-
-                {/* <Form
-                    style={{display:'flex'}}
-                    name="basic"
-                    initialValues={{
-                        remember: true
-                    }}                        
-                    onFinish={certification}
-                    onFinishFailed={certificationFaild}
-                    autoComplete="off">
-                    <Form.Item
-                        label="E-Mail"
-                        name="userId"
-                       
-                        required="required"
-                        tooltip="이메일을 입력해주세요"
-                        rules={[
-                            {
-                                type: 'email',
-                                message: '이메일 형식에 맞게 작성해주세요.'
-                            }, {
-                                required: true,
-                                message: '이메일을 입력해주세요.'
-                            }
-                        ]}>
-                        <Input
-                            prefix={<MailOutlined />}
-                            value={emailChange}
-                            onChange={(e)=>{
-                                setEmailChange(e.target.value);
-                            }}
-                         
-                            placeholder="이메일 인증을 해주세요."/>
-                         
-                    </Form.Item>
-                    <Button
-                            type="primary"
-                            htmlType="submit"
-                           >
-                            인증 번호 전송
-                        </Button>
-                </Form>
-
-                <Form
-                    name="join2"
-                    style={{display:'flex'}}
-                    initialValues={{
-                        remember: true
-                    }}
-                    onFinish={EMailConfirm}
-                    onFinishFailed={EMailConfirmFaild}
-                    autoComplete="off">
-                    <Form.Item
-                        label="인증번호"
-                        name="EMailConfirm"
-                        required="required"
-                        tooltip="인증번호를 입력해주세요."
-                        rules={[{
-                                required: true,
-                                message: '인증번호를 입력해주세요.'
-                            }
-                        ]}>
-                        <Input
-                            prefix={<MailOutlined />}
-                       
-                            placeholder="인증번호를 입력해주세요."/>
-                        
-                    </Form.Item>
-                    <Button
-                            type="primary"
-                            htmlType="submit"
-                           >
-                            인증 번호 확인
-                        </Button>
-                </Form> */}
-
                 <Form
                     name="join3"
                     initialValues={{
@@ -287,6 +213,7 @@ return (
                     autoComplete="off">
                     <Form.Item
                         name="uPassword"
+                        className="joininput_wrap"
                         label="비밀번호"
                         tooltip="대문자 , 소문자 , 특수문자를 1개 씩 포함해주세요!"
                         rules={[{
@@ -302,6 +229,7 @@ return (
                         
                         hasFeedback="hasFeedback">
                         <Input.Password
+                         className="joininput"
                         autoComplete='off'
                         
                             type="password"
@@ -310,6 +238,7 @@ return (
                     </Form.Item>
                     <Form.Item
                         name="confirm"
+                        className="joininput_wrap"
                         label="비밀번호 확인"
                         tooltip="비밀번호를 다시 한번 입력해주세요."
                         dependencies={['uPassword']}
@@ -331,13 +260,14 @@ return (
                             })
                         ]}>
                         <Input.Password
-                       
+                       className="joininput"
                             type="password"
                             prefix={<LockOutlined />}
                             placeholder="비밀번호를 확인해주세요."/>
                     </Form.Item>
                     <Form.Item
                         label="이름"
+                        className="joininput_wrap"
                         name="uName"
                         required="required"
                         tooltip="성과 이름을 입력해주세요."
@@ -348,11 +278,12 @@ return (
                         ]}>
                         <Input
                             prefix={<ContactsOutlined />}
-                        
+                            className="joininput"
                             placeholder="이름을 입력해주세요!"/>
                     </Form.Item>
                     <Form.Item
                         name="uPhone"
+                        className="joininput_wrap"
                         label="전화번호"
                         required="required"
                         tooltip="-를 제외해서 전화번호를 입력해주세요."
@@ -372,6 +303,7 @@ return (
                             }
                         ]}>
                         <Input
+                        className="joininput"
                             prefix={<PhoneOutlined/>}
                             addonBefore={prefixSelector}
                             placeholder="전화번호를 입력해주세요."
@@ -382,11 +314,12 @@ return (
                     </Form.Item> */}
 
                     <Form.Item
+                        className="check"
                         name="agreement"
                         valuePropName="checked"
                         wrapperCol={{
                             offset: 10,
-                            span: 14
+                            span: 16
                         }}
                         rules={[{
                                 validator: (_, value) => value
@@ -394,7 +327,7 @@ return (
                                     : Promise.reject(new Error('Should accept agreement'))
                             }
                         ]}>
-                        <Checkbox style={{color:"#fff"}}>
+                        <Checkbox  style={{color:"#fff"}}>
                             개인 정보 수집에 동의
                             {/* <a style={{color:"#fff"}} href="">개인정보</a> */}
                         </Checkbox>

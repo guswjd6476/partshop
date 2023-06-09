@@ -20,19 +20,30 @@ const Cartdelete = (props) => {
         deleteCart(props.productid)
         .then(function (response) {
           alert('삭제되었습니다');
+          const newCartData = props.cartdata.filter(
+            (item) => item.productnum !== props.productid
+          )
+          props.setCartData(newCartData);
         })
     }
+   
   return (
     <Button className='cartdelet' onClick={onClick}><DeleteOutlined /></Button>
   );
 };
 
 
-const AllCartdelete = ({productid}) => {
+const AllCartdelete = (props) => {
+  console.log(props.productid,'??')
     const onClick=()=>{
-        deleteCart(productid)
+        deleteCart(props.productid)
         .then(function (response) {
           alert('삭제되었습니다');
+          const newCartData = props.cartdata.filter(
+            (item) => !props.productid.includes(item.productnum)
+          );
+          console.log(newCartData,'?')
+          props.setCartData(newCartData);
         })
     }
   return (

@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import logo from '../../Image/logo.png'
 
-const Login = ({setShow,setUserInfo,setAdmin,setToken}) => {
+const Login = ({setShow,setToken,setUserInfo}) => {
     const [email, setEmail] = useState();
 
     const navigate = useNavigate();
@@ -28,20 +28,16 @@ const Login = ({setShow,setUserInfo,setAdmin,setToken}) => {
                 })
                 .then(function (response) {
                     if(response.data){
-                        //authService.signInWithEmailAndPassword(values.userId, values.uPassword);
-                      console.log(response.data)
                         localStorage.setItem("token", response.data[0].token);
                         setToken(response.data[0].token);
-                        localStorage.setItem("userInfo", [response.data[0].userId,response.data[0].uGrade]);
-                        setAdmin("userInfo", [response.data[0].userId,response.data[0].uGrade]);
-                        setUserInfo(response.data[0])
+                        let item = [response.data[0].userId,response.data[0].uGrade]
+                        localStorage.setItem("userInfo", JSON.stringify(item));
+                        setUserInfo(JSON.parse(localStorage.getItem('userInfo')))
                     alert("로그인 되었습니다", "확인 버튼을 눌러 주세요", "success");
                     setShow(true)
                     navigate('/')
                     }else{
                         alert("아이디/비밀번호를 확인해주세요", "확인 버튼을 눌러 주세요", "success");
-
-                     
                     }
 
                 })
@@ -53,18 +49,16 @@ const Login = ({setShow,setUserInfo,setAdmin,setToken}) => {
    
 const onFinishFailed = (errorInfo) => {
     console.log('Failed:', errorInfo);
-};
-
- 
+}
 
 return (
 
-    <div className='login_contain'>  
-    <div className='login_logo'>
+    <div className='login_contain allbox'>  
+        <div className='login_logo'>
         <a href='/'>
-        <img src={logo}/>
+            <img src={logo}/>
         </a>
-    </div>
+        </div>
         <Form
             style={{marginTop : "40px"}}
             name="login"
@@ -114,8 +108,10 @@ return (
             <Button className='loginbtn' type="primary"  htmlType="submit" >
                 로그인
             </Button>
-            <Button className='loginbtn' href='/Signup' type="primary"  htmlType="submit" style={{marginBottom:'0px'}}>
+            <Button className='loginbtn' type="primary"  htmlType="submit" style={{marginBottom:'0px'}}>
+                <a  href='/Signup'>
                 회원가입
+                </a>
             </Button>
         <Form.Item wrapperCol={{
                 offset: 6,

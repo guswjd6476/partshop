@@ -1,18 +1,18 @@
 import {  Link} from 'react-router-dom';
-import { AddCartbtn } from '../components_btn/Cartbtn';
-import { sortList, numbcom } from '../../service/function';
+import { AddCartbtn } from '../../components_btn/Cartbtn';
+import { sortList,pricechange } from '../../../service/function';
 import { useEffect, useState } from 'react';
-import { Checkbox ,Tag } from 'antd';
+import { Checkbox,Tag} from 'antd';
 
-import Countbtn from '../components_btn/Countbtn';
-import Needsbtn from '../components_btn/Needsbtn';
+import Countbtn from '../../components_btn/Countbtn';
+import Needsbtn from '../../components_btn/Needsbtn';
 
 const ProductList  = (props)=>{
   const [counts, setCounts] = useState([]);
   const [check, setCheck] = useState([])
-  const matchCountArray = props.plist?.map((item) => {
+  let   matchCountArray = props.plist&&props.plist?.map((item) => {
     let matchCount = 0;
-    for (const filter of props.searchArray) {
+    for (const filter of props.search) {
       const [filterKey, filterValue] = Object.entries(filter)[0];
       if (item[filterKey] === filterValue) {
         matchCount++;
@@ -20,6 +20,8 @@ const ProductList  = (props)=>{
     }
     return matchCount;
   });
+   
+  
   const handleCountChange = (index, count, ids) => {
     setCounts(prevCounts => {
       const existingCount = prevCounts.find(obj => obj.id === ids);
@@ -34,7 +36,7 @@ const ProductList  = (props)=>{
   };
 
   let results = [];
-  props.searchArray.forEach((obj) => {
+  props.search&&props.search.forEach((obj) => {
     const [key] = Object.keys(obj);
     const existingObj = results.find((o) => o[key] !== undefined);
     if (existingObj) {
@@ -43,13 +45,12 @@ const ProductList  = (props)=>{
       results.push({ [key]: [obj[key]] });
     }
   });
-
-  let filteredArray = props.plist.filter((item, index) => matchCountArray[index] === results.length);
-  sortList(filteredArray, props.sortOption);
-const onChange = (checkedValues) => {
-  const checkedList = checkedValues.map((id) => ({ id: id }));
-  setCheck(checkedList);
-};
+    let filteredArray = (props.plist&&props.plist.filter((item, index) => matchCountArray&&matchCountArray[index] === results.length))||props.plist;
+    sortList(filteredArray, props.sortOption);
+  const onChange = (checkedValues) => {
+    const checkedList = checkedValues.map((id) => ({ id: id }));
+    setCheck(checkedList);
+  };
 useEffect(()=>{
   const commonIds = check&&check.map((obj) => obj.id).filter((id) => counts.some((countObj) => countObj.id === id));
   const newCheckedList = check.map((obj) => {
@@ -70,41 +71,53 @@ useEffect(()=>{
     
     onChange={onChange}
   >
-        {filteredArray.map((value, index ) => {
+        {filteredArray&&filteredArray.map((value, index ) => {
            const pathValue = props.pathnum2 ? `/${props.pathnum1}/${props.pathnum2}/${value.id}` : `/${props.pathnum1}/${value.subcategory}/${value.id}`;
            return(
-            <div className='productbox' span={props.gridstyle == 0 ? 6 :props.gridstyle == 2 ? 100 : 50} key={value.id}>
-            <Checkbox value={value.id}></Checkbox>
+            <div className='productbox' key={value.id}>
+        
+             
+            {props.gridstyle !== 2 ? <Checkbox value={value.id}></Checkbox> : ''}
             <div className="product_list" key={`${value.id}-${index}`}>
             <div className={props.gridstyle == 0 ?'gridcolum' : 'gridflex'}>
               <Link className='product_pic'  to={pathValue}>
                 <img src={value.img1}/>
               </Link>
               <div className={props.gridstyle == 1 ? 'gridcolum' : 'gridflex'}>
-              <Link to={pathValue}>
+              <Link  to={pathValue}>
+              <div className='productwrap2_wrap_div'>
               <div className='productwrap2_wrap'>
-              <div className='product_title'>
-                <p className='f12 brandt'>[{value.brand}]</p>
-                <p className={value.pName !==' '?'product_d f18':'none'}>{value.pName}</p>
+                <div className='product_title'>
+                  <p className='f12 brandt'>[{value.brand}] {props.gridstyle == 0 ? <span className='valueid f12'>[상품코드 : {value.id}]</span> : ''}</p>
+                  <p className={value.pName !==' '?'product_d f14':'none'}>{value.pName}{props.gridstyle !== 0 ? <span className='valueid f12'>[상품코드 : {value.id}]</span> : ''}</p>
+                </div>
+                <div className='product_flex'>
+                  <p className={value.inch !==''?'product_d f12':'none'}>{value.inch}인치</p>
+                
+                  <p className={value.material !==''?'product_d f12':'none'} >{value.material}</p>
+                  <p className={value.color !==''?'product_d f12':'none'} > {value.color}</p>
+                </div>
               </div>
-              <div className='product_flex'>
-                <p className={value.inch !==''?'product_d f12':'none'}>{value.inch}인치</p>
-              
-                <p className={value.material !==''?'product_d f12':'none'} >{value.material}</p>
-                <p className={value.color !==''?'product_d f12':'none'} > {value.color}</p>
+              <div className={value.pDetail !=='' ?'f12 product_d detail':'none'} >{value.pDetail}</div>
               </div>
+              <div className='pricebox'>
+                <p className={value.pCost !=='' ?'tx f14':'none'} >{pricechange(value.pCost)}<span className='tx f14'>원</span></p>
+                <span className='dcvalue'>{value.dcrate}%</span>
+                <p className={value.pPrice !==''?'product_d f22':'none'} >{pricechange(value.pPrice)}<span className='f18'>원</span></p>
               </div>
-              <p className={value.pPrice !==''?'product_d f22':'none'} >{numbcom(value.pPrice)}<span className='f18'>원</span></p>
               </Link>
               
               {props.gridstyle !== 0 ?
               <>
             <div className='other_wrap'>
-            <p className='othertag'><Tag className='navi'>m.o.q</Tag>{value.moq}</p>
-             <p><Tag className='grey'>준비</Tag>약{value.prepare}일</p>
+            <p className='othertag f12'><Tag className='navi'>m.o.q</Tag>{value.moq}</p>
+            <p className='f12'><Tag className='grey'>준비</Tag>약{value.prepare}일</p>
             </div>
             <div className='counterbtrn_wrap'>
-              <Countbtn />
+              <div className='testbox'>
+                {props.gridstyle == 2 ? <Checkbox value={value.id}></Checkbox> : ''}
+                <Countbtn ids={value.id} key={index} index={index} onCountChange={handleCountChange} />
+              </div>
               <div className='functionbtn_wrap'>
               <Needsbtn />
               <AddCartbtn counts={counts} productid={value.id} userId={props.userId}/>
@@ -118,11 +131,14 @@ useEffect(()=>{
             {props.gridstyle == 0 ?
             <>
             <div className='other_wrap'>
-             <p className='othertag'><Tag className='navi'>m.o.q</Tag>{value.moq}</p>
-             <p><Tag className='grey'>준비</Tag>약{value.prepare}일</p>
+             <p className='othertag f12'><Tag className='navi'>m.o.q</Tag>{value.moq}</p>
+             <p className='f12'><Tag className='grey'>준비</Tag>약{value.prepare}일</p>
            </div>
             <div className='counterbtrn_wrap'>
-              <Countbtn ids={value.id} key={index} index={index} onCountChange={handleCountChange} />
+              <div className='testbox'>
+                {props.gridstyle == 2 ? <Checkbox value={value.id}></Checkbox> : ''}
+                <Countbtn ids={value.id} key={index} index={index} onCountChange={handleCountChange} />
+              </div>
               <Needsbtn counter={counts} productid={value.id} userId={props.userId}/>
               <AddCartbtn counter={counts} productid={value.id} userId={props.userId}/>
             </div>

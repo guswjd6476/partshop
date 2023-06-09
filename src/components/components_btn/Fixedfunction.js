@@ -120,6 +120,7 @@ const Comparebtn = ({lastCheck,userId}) => {
   
 function Recentbox() {
   const [recentlist, setrecentlist] = useState()
+
   useEffect(()=>{
     const storedRecent = localStorage.getItem('recent');
     const recentArray = storedRecent ? JSON.parse(storedRecent) : [];
@@ -135,6 +136,7 @@ function Recentbox() {
 return(
   <div className="recentwrap">
   <div className="f12 rececntT">최근본상품</div>
+  <div className="recentul">
   {recentlist&&recentlist.map((value)=>
   <Link className="recentbox" 
   to={`/${value.category}/${value.subcategory}/${value.id}`}
@@ -145,6 +147,7 @@ return(
   </Link>
   )
  }
+ </div>
   </div>
   )
 };

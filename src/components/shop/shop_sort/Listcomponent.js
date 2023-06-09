@@ -1,12 +1,16 @@
 
 import React, { useEffect, useState } from "react";
-function ListComponent({lists,sortT,setSearchArray,pathnum1,pathnum2}) {
-  const [selectedItem, setSelectedItem] = useState([]);
 
+function ListComponent({lists,sortT,setSearchArray,pathnum1,pathnum2,setSearchResult}) {
+
+  const [selectedItem, setSelectedItem] = useState([]);
   useEffect(()=>{
     setSelectedItem([])
-  },[pathnum2])
-
+  },[pathnum1,pathnum2])
+  // const newlist = lists&&lists.map(value=> value[sortT]).filter((value, index, self) => {
+  //   return  value !== ''&& self.indexOf(value) === index;
+  // });
+    
   
   const onClick = (value,index) =>{
     const selectedItemIndex = selectedItem.indexOf(index);
@@ -23,12 +27,16 @@ function ListComponent({lists,sortT,setSearchArray,pathnum1,pathnum2}) {
 
   return (
     <ul className="sort_searched_box">
-        {lists&&lists.map((value,index)=>(
-            <li  className={selectedItem.includes(index) ? "selected" : ""} onClick={e=>onClick(value,index)} key={`${value[sortT]}-${index}`}>
-                <p>{value[sortT]}</p>
-            </li>
-        ))}        
-    </ul>
+    {[...new Set(lists&&lists.map((value) => value[sortT]))].map((value, index) => (
+    <li
+      className={selectedItem.includes(index) ? "selected" : ""}
+      onClick={(e) => onClick(lists[index], index)}
+      key={`${value}-${index}`}
+    >
+      <p>{value}</p>
+    </li>
+  ))}
+  </ul>
   );
 }
 

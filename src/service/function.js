@@ -43,8 +43,52 @@ const sortList = (filteredArray, sortType) => {
     });
   }
 
-  function numbcom(number) {
-    return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+
+// 모든 카테고리 가져오기
+
+const getCate = ()=>{
+  return axios.get('/api/category')
+}
+const getMainCate = ()=>{
+  return axios.get('/api/Maincategory')
+}
+// 메인 카테고리 추가하기
+const addMainCate = (cates) => {
+  console.log(cates,'cates')
+  return axios.get('/api/addMainCate', {
+    params: {
+      cates
+    }
+  });
+}
+const addCates = (cate,cates) => {
+  console.log(cate,'cates')
+  return axios.get('/api/addCates', {
+    params: {
+      cate,cates
+    }
+  });
+}
+// 메인 카테고리 삭제하기
+const dMainCate = (num) => {
+  return axios.get('/api/dMainCate', {
+    params: {
+      num
+    }
+  });
+}
+// 서브 카테고리 삭제하기
+const dSubCate = (num) => {
+  return axios.get('/api/dSubCate', {
+    params: {
+      num
+    }
+  });
 }
 
-  export {sortList,addNeeds,addNeedss,getcompare,numbcom}
+function pricechange(number) {
+  const parts = Number(number).toString().split('.');
+  parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+  return parts.join('.');
+}
+  export {sortList,addNeeds,addNeedss,getcompare,getCate,addMainCate,getMainCate,dMainCate,addCates,dSubCate,pricechange}

@@ -169,6 +169,20 @@ const columns = [
     title: 'num',
     dataIndex: 'id',
     width: '5%',
+    fixed: 'left',
+  },
+  {
+    title: '제품명',
+    dataIndex: 'pName',
+    fixed: 'left',
+    width: '10%',
+    editable: true,
+    sorter: (a, b) => a.pName.length - b.pName.length,
+    filters:   [...new Set(data.map(record => record.pName))].map(pName => ({
+        text: pName,
+        value: pName,
+      })),
+    onFilter: (value, record) => record.pName.indexOf(value) === 0,
   },
   {
     title: '카테고리',
@@ -196,22 +210,11 @@ const columns = [
     sorter: (a, b) => a.subcategory.length - b.subcategory.length,
 
   },
-  {
-    title: '제품명',
-    dataIndex: 'pName',
-    width: '15%',
-    editable: true,
-    sorter: (a, b) => a.pName.length - b.pName.length,
-    filters:   [...new Set(data.map(record => record.pName))].map(pName => ({
-        text: pName,
-        value: pName,
-      })),
-    onFilter: (value, record) => record.pName.indexOf(value) === 0,
-  },
+ 
   {
     title: '재고',
     dataIndex: 'pquantity',
-    width: '5%',
+    width: '7%',
     editable: true,
     sorter: (a, b) => a.pquantity - b.pquantity,
   },
@@ -256,7 +259,30 @@ const columns = [
     sorter: (a, b) => a.color.length - b.color.length
   },
   {
+    title: 'm.o.q',
+    dataIndex: 'moq',
+    width: '7%',
+    editable: true,
+    sorter: (a, b) => a.moq.length - b.moq.length
+  },
+  {
+    title: '준비기간',
+    dataIndex: 'prepare',
+    width: '8%',
+    editable: true,
+    sorter: (a, b) => a.prepare.length - b.prepare.length
+  },
+  {
+    title: '할인율',
+    dataIndex: 'dcrate',
+    width: '7%',
+    editable: true,
+    sorter: (a, b) => a.dcrate.length - b.color.length
+  },
+  {
     title: 'operation',
+    fixed: 'right',
+    width:'7%',
     dataIndex: 'operation',
     render: (_, record) => {
       const editable = isEditing(record);
@@ -318,6 +344,9 @@ return (
       rowClassName="editable-row"
       pagination={{
         onChange: cancel,
+      }}
+      scroll={{
+        x: 1440,
       }}
     />
   </Form>

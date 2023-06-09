@@ -1,7 +1,7 @@
 import {Link } from 'react-router-dom'
 import {  Button, Input } from 'antd';
 import {SearchOutlined } from '@ant-design/icons';
-const AllSearchComponent = ({userId,setFilter,setSb,sb}) => {
+const AllSearchComponent = ({userId,setFilter,setSb,sb,filter}) => {
 
   const handleInputChange = (event) => {
     setFilter(event.target.value);
@@ -14,10 +14,8 @@ const AllSearchComponent = ({userId,setFilter,setSb,sb}) => {
           onChange={handleInputChange}
           placeholder="Search..."
         />
-        <Button onClick={e=>{setSb(!sb)}}>
-        <Link to={'/SearchResult'}><SearchOutlined /></Link>
-        {/* AllSearchResult페이지로 이동 */}
-        </Button >
+        <Link className='allbtn' to={`/SearchResult?&productid=${filter}`}><SearchOutlined /></Link>
+       
       </>
   );
 };

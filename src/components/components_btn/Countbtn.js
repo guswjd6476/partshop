@@ -8,6 +8,7 @@ function Countbtn(props) {
         setCount(count + 1);
         props.onCountChange&&props.onCountChange(props.index, count + 1,props.ids);
         props.CountChange&& props.CountChange(count+1, props.ids)
+        props.setBuycount&&props.setBuycount(count+1)
     };
     const dec = () => {
         if (count <= 1) {
@@ -17,6 +18,8 @@ function Countbtn(props) {
             setCount(count - 1);
              props.onCountChange&&props.onCountChange(props.index, count - 1,props.ids);
              props.CountChange&& props.CountChange(count-1,props.ids)
+             props.setBuycount&&props.setBuycount(count-1)
+             
     };
 }
     return(

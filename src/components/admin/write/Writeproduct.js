@@ -6,14 +6,16 @@ import axios from "axios";
 import Productinfo from "./Productinfo";
 import UploadThumb from "./UploadThumb";
 import { useNavigate } from 'react-router-dom';
-function Writeproduct({cate}) {
+import Fileupload from "./Fileupload";
+function Writeproduct({cate,cates}) {
   const [fileList, setFileList] = useState([
-        
+  ])
+  const [fileLists, setFileLists] = useState([    
   ]);
   const navigate = useNavigate();
   const [productinfo, setProductInfo] =useState({
-    category : '',
-    subcategory : '',
+    catenum : '',
+    subcatenum : '',
     pName : '',
     pquantity :'',
     pPrice :'',
@@ -21,11 +23,18 @@ function Writeproduct({cate}) {
     material :'',
     brand :'',
     color :'',
+    dcrate :'',
+    moq :'',
+    prepare :'',
+    pDetail :'',
 })
   const [value, setValue] = useState('');
   const [title, setTitle] = useState('');
   
-  console.log(fileList,'?')
+  const meta = {
+    title: 'title 1',
+      contents: 'contents 1',
+  }
 
   function addProduct() {
     if (fileList.length === 0) {
@@ -37,13 +46,20 @@ function Writeproduct({cate}) {
       formData.append('images', file.originFileObj
       );
     });
+    const formDatas = new FormData();
+    fileLists.forEach(file =>{
+      const encodedFileName = encodeURIComponent(file.originFileObj.name)
+      formDatas.append('files', file.originFileObj,encodedFileName)
+    } 
+   );
   
+    
     axios.get('/api/uploadproduct', {
       params: {
         title: title,
         content: value,
-        category: productinfo.category,
-        subcategory: productinfo.subcategory,
+        catenum: productinfo.catenum,
+        subcatenum: productinfo.subcatenum,
         pName: productinfo.pName,
         pquantity: productinfo.pquantity,
         pPrice: productinfo.pPrice,
@@ -51,16 +67,32 @@ function Writeproduct({cate}) {
         material: productinfo.material,
         brand: productinfo.brand,
         color: productinfo.color,
+        dcrate: productinfo.dcrate,
+        moq: productinfo.moq,
+        prepare: productinfo.prepare,
+        detail: productinfo.pDetail,
       },
     })
       .then(response => {
         console.log(response.data)
+        if(productinfo.catenum !==3) {
         axios.post('http://localhost:5000/api/imagethumb', formData, {
           headers: {
-            'Content-Type': 'multipart/form-data'
+            'Content-Type': 'multipart/form-data;charset=UTF-8'
+          }
+        })        
+      }else{
+      axios.post('http://localhost:5000/api/fileboard', formDatas, {
+        headers: { 'Content-Type': 'multipart/form-data;charset=UTF-8'}
+      });
+      axios.post('http://localhost:5000/api/imagethumbs', formData, {
+          headers: {
+            'Content-Type': 'multipart/form-data;charset=UTF-8'
           }
         })
-        navigate("/");
+    }
+    alert('게시물이 업로드 되었습니다')
+    navigate("/");
       })
       .catch(error => {
         console.error(error);
@@ -69,10 +101,14 @@ function Writeproduct({cate}) {
 
   return (
     <div className="Writeproduct main">
-        <Productinfo setProductInfo={setProductInfo} productinfo={productinfo} cate={cate}/>
-        <UploadThumb fileList={fileList} setFileList={setFileList} />
-        <Button onClick={addProduct}>전송</Button>
-        <Input onChange={e=>setTitle(e.target.value)}/>
+        <Productinfo setProductInfo={setProductInfo} productinfo={productinfo} cate={cate} cates={cates}/>
+        <UploadThumb num={productinfo.catenum} fileList={fileList} setFileList={setFileList} />
+        {productinfo.catenum === 3 ? 
+        <Fileupload fileList={fileLists} setFileList={setFileLists}/> 
+        :''
+        }
+        <Button className="submitbtn" onClick={addProduct}>전송</Button>
+        <Input className="productSelect con" placeholder="게시물제목" onChange={e=>setTitle(e.target.value)}/>
         <ReactQuills value={value} setValue={setValue} />
     </div>
   );

@@ -1,17 +1,17 @@
 
 import { useEffect, useState } from "react"
-import { recommendlist } from "../../service/product"
+import { recommendlist } from "../../../service/product"
 import { Link } from "react-router-dom"
 const Compareproduct = (props)=>{
     const [list, setList] = useState()
 
     useEffect(()=>{
-        recommendlist(props?.cate)
+        recommendlist(props?.cate, props?.num)
       .then(function (response) {
         setList(response.data)
       })
-    },[props?.pathnum3])
-console.log(list,'list')
+    },[props.num])
+    console.log(props.pathnum3,'props.pathnum3')
     return(
         <div className="shopcompare">
             {list&&list.map((value)=>

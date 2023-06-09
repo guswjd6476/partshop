@@ -4,7 +4,7 @@ import Myinfo from "./Myinfo";
 function Mypage({userId}) {
   const [pagenum, setPageNum] = useState(1)
     return (
-      <div className="third main">
+      <div className="third main displaybox">
         <div className="shop_div">
           <div className="shop_sort">
             <ul className='sort_navi'>

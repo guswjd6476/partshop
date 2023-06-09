@@ -2,6 +2,7 @@ import { Input,Button } from "antd";
 import { useState } from "react";
 import { getPass } from "../../service/user";
 import { useNavigate } from "react-router-dom";
+import Pagetitle from "../components_btn/Pagetitle";
 function Myinfo({userId}) {
     const navigate = useNavigate();
     const [pass, setPass] =useState(null)
@@ -20,8 +21,7 @@ function Myinfo({userId}) {
 
     return (
       <div>
-        <p className="pagetitle">회원정보확인</p>
-        <p className="pagesub">{userId}님의 정보를 안전하게 보호하기 위해 비밀번호를 확인합니다</p>
+         <Pagetitle value='회원정보확인' svalue={`${userId}님의 정보를 안전하게 보호하기 위해 비밀번호를 확인합니다`}/>
         <div className="infowrap">
             <div className="infobox_wrap">
                 <div className="infobox idbox">아이디(이메일)</div>

@@ -1,7 +1,6 @@
 import { PlusOutlined } from '@ant-design/icons';
 import { Modal, Upload } from 'antd';
 import { useState } from 'react';
-import axios from 'axios';
 const getBase64 = (file) =>
   new Promise((resolve, reject) => {
     const reader = new FileReader();
@@ -9,7 +8,7 @@ const getBase64 = (file) =>
     reader.onload = () => resolve(reader.result);
     reader.onerror = (error) => reject(error);
   });
-function UploadThumb({fileList, setFileList}) {
+function UploadThumb({num,fileList, setFileList}) {
     const [previewOpen, setPreviewOpen] = useState(false);
     const [previewImage, setPreviewImage] = useState('');
     const [previewTitle, setPreviewTitle] = useState('');
@@ -47,7 +46,7 @@ function UploadThumb({fileList, setFileList}) {
           onChange={handleChange}
           beforeUpload={() => false}
         >
-          {fileList.length >= 4 ? null : uploadButton}
+          {num ===3?(fileList.length >= 1 ? null : uploadButton) : (fileList.length >= 5 ? null : uploadButton)}
         </Upload>
         <Modal open={previewOpen} title={previewTitle} footer={null} onCancel={handleCancel}>
           <img

@@ -1,5 +1,5 @@
-import { Tabs } from "antd";
-
+import { Tabs,theme } from "antd";
+import StickyBox from 'react-sticky-box';
 function Productdetailsub({content}) {
     const items = [
         {
@@ -8,7 +8,8 @@ function Productdetailsub({content}) {
           children:   <div
           dangerouslySetInnerHTML={{__html: content&&content[0].content}}
           > 
-          </div>
+          </div>,  
+          
         },
         {
           key: '2',
@@ -31,15 +32,33 @@ function Productdetailsub({content}) {
             children: `Content of Tab Pane 2`,
           },
       ];
+      const {
+        token: { colorBgContainer },
+      } = theme.useToken();
+      const renderTabBar = (props, DefaultTabBar) => (
+        <StickyBox
+        offsetTop={0}
+        offsetBottom={20}
+          style={{
+            zIndex: 1,
+          }}
+        >
+          <DefaultTabBar
+            {...props}
+            style={{
+              background: colorBgContainer,
+            }}
+          />
+        </StickyBox>
+      );
   return (
 
-        <div className="content_detail">
-            <Tabs
-                tabPosition={'bottom'}
-                items={items}
-            />
-         
-        </div>
+    <Tabs
+                
+    items={items}
+    defaultActiveKey="1" 
+    renderTabBar={renderTabBar} 
+/>
     
   );
 }

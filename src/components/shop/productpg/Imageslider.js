@@ -17,17 +17,18 @@ function ImageSlider({ data,pathnum3 }) {
       <div className="shop_img" onClick={handleImgClick}>
         <img src={currentImg} />
       </div>
-      <div className="imgslider">
+      
       {data.map((item, idx) => (
-        <div key={idx}>
+      <div className="imgslider" key={idx}>
             {Object.keys(item)
             .filter((key) => key.startsWith("img"))
             .map((key) => (
+              <div className={!item[key]?'none':''}>
                 <img src={item[key]} onClick={handleImgClick} key={key} />
+              </div>
             ))}
-        </div>
-        ))}
-      </div>
+        </div> 
+      ))}
     </div>
     :''
         }

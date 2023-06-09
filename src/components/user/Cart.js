@@ -14,16 +14,15 @@ function Cart({userId}) {
         response.data.map(value => value.productnum)
       )
     })
-  },[])
-
+  },[cartdata.length])
   return (
-    <>
+    <div className="displaybox main">
       {cartdata ? (
-       <Cartcheck cartdata={cartdata} setCartData={setCartData} plainOptions={plainOptions} />
+       <Cartcheck  cartdata={cartdata} setCartData={setCartData} plainOptions={plainOptions} />
       ) : (
         ""
       )}
-    </>
+    </div>
   );
   }
   

@@ -2,7 +2,8 @@ import { Checkbox,Col, Row ,Button } from 'antd';
 import { useState,useEffect } from 'react';
 import { AllCartdelete,Cartdelete } from '../components_btn/Cartbtn';
 import Countbtn from '../components_btn/Countbtn';
-import { numbcom } from '../../service/function';
+import { pricechange } from '../../service/function';
+import Buybtn from '../components_btn/Buybtn';
 const CheckboxGroup = Checkbox.Group;
 
 
@@ -53,7 +54,7 @@ const Cartcheck = (props) => {
       props.setCartData(newdata);
     }
   };
-
+console.log(props.cartdata,'?')
   
   return (
     <>
@@ -61,7 +62,7 @@ const Cartcheck = (props) => {
       <Checkbox indeterminate={indeterminate} onChange={onCheckAllChange} checked={checkAll}>
         Check all
       </Checkbox>
-      <AllCartdelete productid={checkedList}/>
+      <AllCartdelete setCartData={props.setCartData} cartdata={props.cartdata} productid={checkedList}/>
       </div>
       <CheckboxGroup className='check_wrap'  value={checkedList} onChange={onChange}>
        
@@ -76,21 +77,19 @@ const Cartcheck = (props) => {
                       <div>{value.category}</div>
                       <div>{value.subcategory}</div>
                       <div>{value.pName}</div>
-                      <div>{numbcom(value.pPrice)}</div>
+                      <div>{pricechange(value.pPrice)}</div>
                     </div>
                 </div>
                 <Countbtn ids={value.productnum} CountChange={CountChange}  count={value.count}/>
-                <Cartdelete productid={value.productnum}/>
+                <Cartdelete setCartData={props.setCartData} cartdata={props.cartdata} productid={value.productnum}/>
                 </div>
         ))}
     </CheckboxGroup>
     <div className='totalp_wrap'>
       <div className='totalp'>
-        총가격 : {numbcom(total)} 원
+        총가격 : {pricechange(total)} 원
       </div>
-      <Button className='btnsytle'>
-        주문하기
-      </Button>
+        <Buybtn checkedList={checkedList}  cartdata={props.cartdata}/>
     </div>
     </>
   );

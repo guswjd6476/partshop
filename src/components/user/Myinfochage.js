@@ -6,7 +6,7 @@ function Myinfochage({userId}) {
     const [deepinfo, setDeepInfo] = useState(false)
 
     return (
-      <div className="myinfo">
+      <div className="myinfo displaybox">
         <p className="pagetitle">회원정보변경</p>
         <p className="pagesub">{userId}님의 정보를 변경합니다</p>
         <div className="infochangewrap">
