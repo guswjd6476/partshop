@@ -13,7 +13,7 @@ function Mainiot({cates}) {
         setIotlist(response.data)
     })
   },[])
-  const cards = iotlist.map((item) => (
+  const cards = iotlist&&iotlist.map((item) => (
     <div className='mainiotwrap' key={item.id}>
       <div className='mainIotimg'>
         <img src={item.thumb} alt={item.pName} />
