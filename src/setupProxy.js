@@ -6,7 +6,7 @@ module.exports = function(app) {
     app.use(
         //createProxyMiddleware('/api', {
 		createProxyMiddleware('/api',{
-			target: 'http://localhost:5000',
+			target: 'https://port-0-partshopback-lme62alhk7lvdw.sel4.cloudtype.app',
             changeOrigin: true,
         })
     );
