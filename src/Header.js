@@ -53,25 +53,25 @@ const Header = ({isLoggedIn,admin,userInfo,setFilter,sb,setSb,cates,filter}) => 
     <ul className='header_top_box displaybox'>
       {userInfo&&userInfo[1]== 1 ? 
       <li>
-        <a href='/Admin'>
+        <Link to='/Admin'>
         관리자 입니다
-        </a>
+        </Link>
       </li> 
       :'' 
     }
       {!isLoggedIn ? 
     <li>
-    <a href='/Login'>
+    <Link to='/Login'>
     로그인
-    </a>
+    </Link>
   </li>
   :''  
     }
         {!isLoggedIn ? 
       <li style={{marginLeft:'20px'}}>
-        <a href='/Signup'>
+        <Link to='/Signup'>
         회원가입
-        </a>
+        </Link>
       </li>
       :
       ''
@@ -86,17 +86,17 @@ const Header = ({isLoggedIn,admin,userInfo,setFilter,sb,setSb,cates,filter}) => 
       ''
       }
       <li style={{marginLeft:'20px'}}>
-        <a href='/center'>
+        <Link to='/center'>
         고객센터
-        </a>
+        </Link>
       </li>
     </ul>
   </div>
   
  <div className='header_box displaybox'>
-    <a href='/' className='logo'>
+    <Link to='/' className='logo'>
         <img src={logo} alt='logo'/>
-    </a>
+    </Link>
     <div className='search_bar'>
       <AllSearchComponent filter={filter} userId={admin&&admin.split(',')[0]} setSb={setSb} sb={sb} setFilter={setFilter}/>
     </div>
