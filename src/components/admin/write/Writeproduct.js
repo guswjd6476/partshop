@@ -7,6 +7,7 @@ import Productinfo from "./Productinfo";
 import UploadThumb from "./UploadThumb";
 import { useNavigate } from 'react-router-dom';
 import Fileupload from "./Fileupload";
+import { uploadproduct } from "../../../service/product";
 function Writeproduct({cate,cates}) {
   const [fileList, setFileList] = useState([
   ])
@@ -54,38 +55,42 @@ function Writeproduct({cate,cates}) {
    );
   
     
-    axios.get('/api/uploadproduct', {
-      params: {
-        title: title,
-        content: value,
-        catenum: productinfo.catenum,
-        subcatenum: productinfo.subcatenum,
-        pName: productinfo.pName,
-        pquantity: productinfo.pquantity,
-        pPrice: productinfo.pPrice,
-        inch: productinfo.inch,
-        material: productinfo.material,
-        brand: productinfo.brand,
-        color: productinfo.color,
-        dcrate: productinfo.dcrate,
-        moq: productinfo.moq,
-        prepare: productinfo.prepare,
-        detail: productinfo.pDetail,
-      },
-    })
+    // axios.get('/api/uploadproduct', {
+    //   params: {
+    //     title: title,
+    //     content: value,
+    //     catenum: productinfo.catenum,
+    //     subcatenum: productinfo.subcatenum,
+    //     pName: productinfo.pName,
+    //     pquantity: productinfo.pquantity,
+    //     pPrice: productinfo.pPrice,
+    //     inch: productinfo.inch,
+    //     material: productinfo.material,
+    //     brand: productinfo.brand,
+    //     color: productinfo.color,
+    //     dcrate: productinfo.dcrate,
+    //     moq: productinfo.moq,
+    //     prepare: productinfo.prepare,
+    //     detail: productinfo.pDetail,
+    //   },
+    
+    // })
+    uploadproduct(title,value,productinfo.catenum,
+productinfo.subcatenum,productinfo.pName,productinfo.pquantity,productinfo.pPrice,productinfo.inch, productinfo.material,productinfo.brand,productinfo.color, productinfo.dcrate,
+productinfo.moq,productinfo.prepare,productinfo.pDetail)
       .then(response => {
         console.log(response.data)
         if(productinfo.catenum !==3) {
-        axios.post('http://localhost:5000/api/imagethumb', formData, {
+        axios.post('https://port-0-partshopback-lme62alhk7lvdw.sel4.cloudtype.app/api/imagethumb', formData, {
           headers: {
             'Content-Type': 'multipart/form-data;charset=UTF-8'
           }
         })        
       }else{
-      axios.post('http://localhost:5000/api/fileboard', formDatas, {
+      axios.post('https://port-0-partshopback-lme62alhk7lvdw.sel4.cloudtype.app/api/fileboard', formDatas, {
         headers: { 'Content-Type': 'multipart/form-data;charset=UTF-8'}
       });
-      axios.post('http://localhost:5000/api/imagethumbs', formData, {
+      axios.post('https://port-0-partshopback-lme62alhk7lvdw.sel4.cloudtype.app/api/imagethumbs', formData, {
           headers: {
             'Content-Type': 'multipart/form-data;charset=UTF-8'
           }

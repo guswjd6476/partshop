@@ -219,5 +219,10 @@ const updatemain = async (a1,a2,a3,a4,a5,a6,a7,a8,b1,b2,b3,b4,b5,b6,b7,b8) => {
 const getiot = async () => {
   return fetchData('/api/Alliotlist');
 };
-  export { addCart ,getCart,deleteCart,productdetail,getproduct,addsCart,recommendlist,getSort,getAllItem,Wnotice,getItemcon,idQna,Wqna,Wfaq,Wqnaanswer,getPrevNext,updateItem,Allgetproduct,updatemain,getmain,getiot,Allproductdetail,updatenames};
+const uploadproduct = async (title,content,catenum,subcatenum,pName,pquantity,pPrice,inch,material,brand,color,dcrate,moq,prepare,detail) => {
+  return fetchData('/api/uploadproduct',{title,content,catenum,subcatenum,pName,pquantity,pPrice,inch,material,brand,color,dcrate,moq,prepare,detail});
+};
+
+
+  export { addCart ,getCart,deleteCart,productdetail,getproduct,addsCart,recommendlist,getSort,getAllItem,Wnotice,getItemcon,idQna,Wqna,Wfaq,Wqnaanswer,getPrevNext,updateItem,Allgetproduct,updatemain,getmain,getiot,Allproductdetail,updatenames,uploadproduct};
 

@@ -2,7 +2,7 @@ import {   Button,  Form, Input,   } from 'antd';
 import { UserOutlined , LockOutlined  } from '@ant-design/icons';
 import React, { useState,useEffect } from "react";
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
+import { logins } from '../../service/user';
 import logo from '../../Image/logo.png'
 
 const Login = ({setShow,setToken,setUserInfo}) => {
@@ -18,14 +18,7 @@ const Login = ({setShow,setToken,setUserInfo}) => {
     }
 
     const onFinish = (values) => {
-        console.log(values)
-               axios
-                .get('/api/login', {
-                    params: {
-                        userId: values.userId ,
-                        uPassword : values.uPassword
-                    }
-                })
+                logins(values.userId,values.uPassword)
                 .then(function (response) {
                     if(response.data){
                         localStorage.setItem("token", response.data[0].token);

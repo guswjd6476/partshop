@@ -2,9 +2,9 @@ import { useEffect,useState } from "react";
 import logo from '../../Image/logo.png'
 import {Button, Form,Input,Select,Checkbox} from 'antd'
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios'
-import { LockOutlined,  PhoneOutlined, ContactsOutlined,UserOutlined} from '@ant-design/icons';
 
+import { LockOutlined,  PhoneOutlined, ContactsOutlined,UserOutlined} from '@ant-design/icons';
+import { lastjoin, mailing, useridchecks } from "../../service/user";
 function Signup({show, setShow}) {
 
     const [number, setNumber] = useState("randomNumber")
@@ -17,12 +17,7 @@ useEffect(()=>{
     setShow(false)
 },[])
 const useridCheck = (values) =>{
-    axios
-    .get('/api/useridcheck', {
-        params: {
-            userId: values.userId
-        }
-    })
+    useridchecks(values.userId)
     .then(function (response) {
         if(response.data === true){
             alert('이미 등록된 아이디 입니다')                
@@ -33,17 +28,9 @@ const useridCheck = (values) =>{
     .catch(function (error) {
         console.log(error)
     })
-    .then(function () {
-        // 항상 실행
-    });
 }
 const certification = (values) => {
-    axios
-        .get('/api/mail', {
-            params: {
-                userId: values.email
-            }
-        })
+    mailing(values.email)
         .then(function (response) {
       console.log(response.data)
             setNumber(response.data);
@@ -113,17 +100,7 @@ const EMailConfirmFaild = (errorInfo) => {
 //     }
 // }
 const registration = async (values) => {
-    axios
-    .get('/api/join', {
-        params: {
-
-            uPassword : values.uPassword,
-            uPhone : values.uPhone,
-            userId: userIdChange,
-            // email: emailChange,
-            // uName : values.uName,
-        }
-    })
+    lastjoin(values.uPassword, values.uPhone,userIdChange)
     .then(function (response) {
         alert(response.data, "확인 버튼을 눌러 주세요", "success");
         // authService.createUserWithEmailAndPassword(emailChange, values.uPassword);
