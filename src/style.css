@@ -361,7 +361,6 @@
     color: #fff ;
     font-size: 24px;
     font-weight: 900;
-    width: 100%;
     margin-right: 30px !important;
     font-family: 'Roboto', sans-serif !important;
 }
@@ -1848,6 +1847,9 @@ height: calc(100% - 60px);
       
       overflow: hidden;
       padding: 0px 20px;
+    }
+    .navigation{
+        width: 100%;
     }
     .shop_div{
         position: relative;
