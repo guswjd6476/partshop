@@ -19,31 +19,62 @@ const sortList = (filteredArray, sortType) => {
         return filteredArray;
     }
   };
-  const addNeeds = (num,userId,counter) => {
-    return axios.get('/api/addNeeds', {
+  const addNeeds =async (num,userId,counter) => {
+    try {
+    const response = await instance .get('/api/addNeeds', {
       params: {
         num,
         userId,
         counter
-      },
-    });
+      },   
+     
+        headers: {
+          "Content-Type": "application/json",
+        },
+      
+    })
+    return response;
+  } catch (err) {
+    console.log(`오류: ${err}`);
+    return err;
   }
-  const addNeedss = (data,userId) => {
-    return axios.get('/api/addNeeds', {
-      params: {
-        data,
-        userId
-      },
-    });
-  }
-  const getcompare = (num) => {
-    return axios.get('/api/getcompare', {
-      params: {
-        num
-      },
-    });
   }
 
+  const addNeedss =async (data,userId) => {
+    try {
+    const response = await instance .get('/api/addNeeds', {
+      params: {
+        data,userId
+      },   
+        headers: {
+          "Content-Type": "application/json",
+        },
+      
+    })
+    return response;
+  } catch (err) {
+    console.log(`오류: ${err}`);
+    return err;
+  }
+  }
+
+  const getcompare =async (dnum) => {
+    try {
+    const response = await instance .get('/api/getcompare', {
+      params: {
+        num
+      },   
+        headers: {
+          "Content-Type": "application/json",
+        },
+      
+    })
+    return response;
+  } catch (err) {
+    console.log(`오류: ${err}`);
+    return err;
+  }
+  }
 
 // 모든 카테고리 가져오기
 
