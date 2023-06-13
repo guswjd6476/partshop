@@ -14,7 +14,7 @@ function Buybox({total}) {
         orderId: random(),
         amount: parseInt(total.replace(/[,]/g, '')),
         goodsName: '나이스페이-상품',
-        returnUrl: 'http://localhost:3000/serverAuth',
+        returnUrl: 'https://localhost:3000/serverAuth',
         fnError: function (result) {
           alert('고객용메시지 : ' + result.msg + '\n개발자확인용 : ' + result.errorMsg + '')
         }

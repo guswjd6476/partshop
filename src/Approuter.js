@@ -28,7 +28,7 @@ const Approuter = ({setToken,cates,setCates,isLoggedIn,userInfo,setUserInfo,cate
   if(isLoggedIn){
     return (
       <div className="contain">
-          <BrowserRouter  basename={'https://web-partshop-lme62alhk7lvdw.sel4.cloudtype.app/'}>
+          <BrowserRouter  basename={'https://web-partshop-lme62alhk7lvdw.sel4.cloudtype.app'}>
           {show ?<Header filter={filter} setSb={setSb} sb={sb} cates={cates} setFilter={setFilter} cate={cate} isLoggedIn={isLoggedIn} userInfo={userInfo} /> : ''}
             <Routes>
               <Route path="/" element={<Main shows={true} cates={cates}/>} />
@@ -62,7 +62,7 @@ const Approuter = ({setToken,cates,setCates,isLoggedIn,userInfo,setUserInfo,cate
     return (
       <div className="contain">
 
-          <BrowserRouter>
+          <BrowserRouter basename={'https://web-partshop-lme62alhk7lvdw.sel4.cloudtype.app'}>
           {show ?<Header cate={cate} cates={cates}/> : ''}
             <Routes>
               <Route path="/" element={<Main/>} />
