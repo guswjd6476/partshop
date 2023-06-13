@@ -3,7 +3,7 @@ import { fetchData } from "./instance";
   const getPass = async (pass, userId) => {
     return fetchData('/api/getpass', { pass, userId });
   };
-  const userlist = async () => {
+  const userlists = async () => {
     return fetchData('/api/userlist');
   };
   const logins = async (userId,uPassword) => {
@@ -21,4 +21,4 @@ import { fetchData } from "./instance";
   
   
   
-  export  {getPass,userlist,logins,useridchecks,mailing,lastjoin}
+  export  {getPass,userlists,logins,useridchecks,mailing,lastjoin}

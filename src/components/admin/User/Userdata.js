@@ -1,11 +1,10 @@
 import { useEffect,useState } from "react";
-import { userlist } from "../../../service/user";
+import { userlists } from "../../../service/user";
 function Userdata() {
 
     const [userlist, setUserlist] = useState('')
     useEffect(()=>{
-      userlist()
-        .then(function (response) {
+      userlists().then(function (response) {
             setUserlist(response.data)
         })
         .catch(function (error) {
