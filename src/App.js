@@ -15,11 +15,12 @@ const [cate, setCate] = useState([])
     getCate()
     .then(function (response) {
     setCate(response.data) 
-    setInit(true)
+   
       })
       getMainCate().then(function (response) {
         setCates(response.data);
       });
+      setInit(true)
   },[])
  
   return (
