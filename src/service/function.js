@@ -1,5 +1,5 @@
 import axios from "axios";
-import { instance } from "./instance";
+import { fetchData } from "./instance";
 // 최근등록순 등등의 내림차순 정렬 
 const sortList = (filteredArray, sortType) => {
     switch (sortType) {
@@ -40,76 +40,24 @@ const sortList = (filteredArray, sortType) => {
   }
   }
 
-  const addNeedss =async (data,userId) => {
-    try {
-    const response = await instance .get('/api/addNeeds', {
-      params: {
-        data,userId
-      },   
-        headers: {
-          "Content-Type": "application/json",
-        },
-      
-    })
-    return response;
-  } catch (err) {
-    console.log(`오류: ${err}`);
-    return err;
-  }
-  }
+  const addNeedss = async (data, userId) => {
+    return fetchData('/api/addNeeds', { data, userId });
+  };
+  
 
-  const getcompare =async (num) => {
-    try {
-    const response = await instance .get('/api/getcompare', {
-      params: {
-        num
-      },   
-        headers: {
-          "Content-Type": "application/json",
-        },
-      
-    })
-    return response;
-  } catch (err) {
-    console.log(`오류: ${err}`);
-    return err;
-  }
-  }
-
+  const getcompare = async (num) => {
+    return fetchData('/api/getcompare', { num });
+  };
+  
 // 모든 카테고리 가져오기
 
-const getCate =async ()=>{
-  try {
-    const response = await instance.get(
-      '/api/category',
-      {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }
-    );
-    return response;
-  } catch (err) {
-    console.log(`오류: ${err}`);
-    return err;
-  }
-}
-const getMainCate = async ()=>{
-  try {
-    const response = await instance.get(
-      '/api/Maincategory',
-      {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }
-    );
-    return response;
-  } catch (err) {
-    console.log(`오류: ${err}`);
-    return err;
-  }
-}
+
+const getCate = async () => {
+  return fetchData('/api/category');
+};
+const getMainCate = async () => {
+  return fetchData('/api/Maincategory');
+};
 
 // 메인 카테고리 추가하기
 const addMainCate = (cates) => {

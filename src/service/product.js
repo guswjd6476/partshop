@@ -168,21 +168,9 @@ const updatemain = (a1,a2,a3,a4,a5,a6,a7,a8,b1,b2,b3,b4,b5,b6,b7,b8)=>{
   });
 }
 
-const getiot = async ()=>{
-  try {
-    const response = await instance.get(
-      '/api/Alliotlist',
-      {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }
-    );
-    return response;
-  } catch (err) {
-    console.log(`오류: ${err}`);
-    return err;
-  }
-}
+
+const getiot = async () => {
+  return fetchData('/api/Alliotlist');
+};
   export { addCart ,getCart,deleteCart,productdetail,getproduct,addsCart,recommendlist,getSort,getAllItem,Wnotice,getItemcon,idQna,Wqna,Wfaq,Wqnaanswer,getPrevNext,updateItem,Allgetproduct,updatemain,getmain,getiot};
 
