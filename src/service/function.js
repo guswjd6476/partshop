@@ -58,7 +58,7 @@ const sortList = (filteredArray, sortType) => {
   }
   }
 
-  const getcompare =async (dnum) => {
+  const getcompare =async (num) => {
     try {
     const response = await instance .get('/api/getcompare', {
       params: {
