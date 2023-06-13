@@ -1,7 +1,6 @@
 import { useState,useEffect } from "react";
-import axios from "axios";
 import {Button,Input} from 'antd'
-
+import { Allproductdetail } from "../../../service/product";
 function InputInventory(props) {
 const [filter, setFilter] = useState('')
 const [search, setSearch] = useState(false)
@@ -9,12 +8,9 @@ const [search, setSearch] = useState(false)
         setFilter(event.target.value);
       };
       useEffect(()=>{
+
         if(filter){
-        axios.get('/api/Allproductdetail',{
-            params:{
-              filter : filter,
-            }
-        })
+          Allproductdetail(filter)
           .then(response => {
             console.log(response.data)
             const searchResult = response.data.filter(data => {

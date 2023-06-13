@@ -1,11 +1,10 @@
-import axios from "axios";
-const getPass = (pass, userId) => {
-    return axios.get('/api/getpass', {
-      params: {
-        pass,
-        userId
-      },
-    });
-  }
+import { fetchData } from "./instance";
 
-  export  {getPass}
+  const getPass = async (pass, userId) => {
+    return fetchData('/api/getpass', { pass, userId });
+  };
+  const userlist = async () => {
+    return fetchData('/api/userlist');
+  };
+  
+  export  {getPass,userlist}

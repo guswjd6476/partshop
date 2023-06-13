@@ -1,12 +1,10 @@
-import axios from "axios";
 import { useEffect, useState } from "react";
 import {Table, Form, Input,Typography,Popconfirm,InputNumber,Select} from 'antd'
 import InputInventory from "./InputInventory";
-
+import { Allgetproduct,updatenames } from "../../../service/product";
 function InventoryManage() {
     useEffect(()=>{
-        axios
-        .get('/api/Allproductdetail')
+      Allgetproduct()
         .then(function (response) {
         
           setData(response.data)
@@ -19,7 +17,7 @@ function InventoryManage() {
 
     const EditableCell = ({
         editing,
-        dataIndex,
+        dataIndex,  
         title,
         inputType,
         record,
@@ -143,20 +141,7 @@ const save = async (value) => {
   };
 
   function updatename(values, idx) {
-    axios.get('/api/updatename', {
-      params: {
-        id: values[idx].id,
-        category: values[idx].category,
-        subcategory: values[idx].subcategory,
-        pName: values[idx].pName,
-        pquantity: values[idx].pquantity,
-        pPrice: values[idx].pPrice,
-        inch: values[idx].inch,
-        material: values[idx].material,
-        brand: values[idx].brand,
-        color: values[idx].color,
-      }
-    })
+    updatenames(values[idx].id,values[idx].category,values[idx].subcategory,values[idx].pName,values[idx].pquantity,values[idx].pPrice,values[idx].inch,values[idx].material,values[idx].brand,values[idx].color,)
       .then(function (response) {
       })
       .catch(function (error) {

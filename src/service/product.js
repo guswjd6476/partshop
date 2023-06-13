@@ -1,4 +1,4 @@
-import axios from "axios";
+
 import { fetchData } from "./instance";
 // 장바구니 추가 함수 
 
@@ -60,8 +60,15 @@ const getproduct = async (cate,none) => {
 //   return axios.get('/api/Allproductdetail', {
 //   });
 // };
+
+const Allproductdetail = async (filter) => {
+  return fetchData('/api/Allproductdetail', {filter});
+};
 const Allgetproduct = async () => {
   return fetchData('/api/Allproductdetail');
+};
+const updatenames = async (id,category,subcategory,pName,pquantity,pPrice,inch,material,brand,color) => {
+  return fetchData('/api/updatename', {id,category,subcategory,pName,pquantity,pPrice,inch,material,brand,color});
 };
 
 // 추천상품
@@ -212,5 +219,5 @@ const updatemain = async (a1,a2,a3,a4,a5,a6,a7,a8,b1,b2,b3,b4,b5,b6,b7,b8) => {
 const getiot = async () => {
   return fetchData('/api/Alliotlist');
 };
-  export { addCart ,getCart,deleteCart,productdetail,getproduct,addsCart,recommendlist,getSort,getAllItem,Wnotice,getItemcon,idQna,Wqna,Wfaq,Wqnaanswer,getPrevNext,updateItem,Allgetproduct,updatemain,getmain,getiot};
+  export { addCart ,getCart,deleteCart,productdetail,getproduct,addsCart,recommendlist,getSort,getAllItem,Wnotice,getItemcon,idQna,Wqna,Wfaq,Wqnaanswer,getPrevNext,updateItem,Allgetproduct,updatemain,getmain,getiot,Allproductdetail,updatenames};
 

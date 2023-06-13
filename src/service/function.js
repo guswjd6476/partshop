@@ -1,4 +1,3 @@
-import axios from "axios";
 import { fetchData } from "./instance";
 // 최근등록순 등등의 내림차순 정렬 
 const sortList = (filteredArray, sortType) => {
