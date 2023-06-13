@@ -1,5 +1,5 @@
 import axios from "axios";
-import { instance } from "./instance";
+import { fetchData } from "./instance";
 // 장바구니 추가 함수 
 const addCart = (num, userId,counter) => {
     return axios.get('/api/addCart', {

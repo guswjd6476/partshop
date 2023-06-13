@@ -19,27 +19,11 @@ const sortList = (filteredArray, sortType) => {
         return filteredArray;
     }
   };
-  const addNeeds =async (num,userId,counter) => {
-    try {
-    const response = await instance .get('/api/addNeeds', {
-      params: {
-        num,
-        userId,
-        counter
-      },   
-     
-        headers: {
-          "Content-Type": "application/json",
-        },
-      
-    })
-    return response;
-  } catch (err) {
-    console.log(`오류: ${err}`);
-    return err;
-  }
-  }
-
+ 
+  const addNeeds = async (num,userId,counter) => {
+    return fetchData('/api/addNeeds', { num,userId,counter });
+  };
+  
   const addNeedss = async (data, userId) => {
     return fetchData('/api/addNeeds', { data, userId });
   };
