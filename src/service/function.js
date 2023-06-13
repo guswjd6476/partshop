@@ -63,9 +63,23 @@ const getCate =async ()=>{
     return err;
   }
 }
-const getMainCate = ()=>{
-  return axios.get('/api/Maincategory')
+const getMainCate = async ()=>{
+  try {
+    const response = await instance.get(
+      '/api/Maincategory',
+      {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+    return response;
+  } catch (err) {
+    console.log(`오류: ${err}`);
+    return err;
+  }
 }
+
 // 메인 카테고리 추가하기
 const addMainCate = (cates) => {
   console.log(cates,'cates')
