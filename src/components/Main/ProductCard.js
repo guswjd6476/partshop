@@ -10,7 +10,6 @@ const ProductCard = ({ i, style,edit,able,data,datas,setMi,mi }) => {
         const key = edit == 1 ? `a${index+1}`:`b${index+1}`;
         return obj[key];
       }
-      
     return( 
     <>
     {mi.a1 ?
@@ -25,7 +24,7 @@ const ProductCard = ({ i, style,edit,able,data,datas,setMi,mi }) => {
      :
      edit == 1 ?
    <Link to={`/${data?.category}/${data?.subcategory}/${data?.id}`} className="card">
-    <img src={ able == true?datas&&datas.find(value => value.id == srcobj(mi,i)).img1:datas&&datas.find(value => value.id == srcobj(mi,i)).img1} />
+    <img src={ able == true?datas&&datas.find(value => value.id == srcobj(mi,i)).img1: datas&&datas.find(value => value.id == srcobj(mi,i)).img1 } />
     <div>{able == true?datas&&datas.find(value => value.id == srcobj(mi,i)).pName:datas&&datas.find(value => value.id == srcobj(mi,i)).pName}</div>
    </Link>
    :
