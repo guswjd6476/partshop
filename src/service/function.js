@@ -1,4 +1,5 @@
 import axios from "axios";
+import { instance } from "./instance";
 // 최근등록순 등등의 내림차순 정렬 
 const sortList = (filteredArray, sortType) => {
     switch (sortType) {
@@ -46,8 +47,21 @@ const sortList = (filteredArray, sortType) => {
 
 // 모든 카테고리 가져오기
 
-const getCate = ()=>{
-  return axios.get('/api/category')
+const getCate =async ()=>{
+  try {
+    const response = await instance.get(
+      '/api/category',
+      {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+    return response;
+  } catch (err) {
+    console.log(`오류: ${err}`);
+    return err;
+  }
 }
 const getMainCate = ()=>{
   return axios.get('/api/Maincategory')
