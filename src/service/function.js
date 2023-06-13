@@ -44,39 +44,36 @@ const getMainCate = async () => {
 };
 
 // 메인 카테고리 추가하기
-const addMainCate = (cates) => {
-  console.log(cates,'cates')
-  return axios.get('/api/addMainCate', {
-    params: {
-      cates
-    }
-  });
-}
-const addCates = (cate,cates) => {
-  console.log(cate,'cates')
-  return axios.get('/api/addCates', {
-    params: {
-      cate,cates
-    }
-  });
-}
-// 메인 카테고리 삭제하기
-const dMainCate = (num) => {
-  return axios.get('/api/dMainCate', {
-    params: {
-      num
-    }
-  });
-}
-// 서브 카테고리 삭제하기
-const dSubCate = (num) => {
-  return axios.get('/api/dSubCate', {
-    params: {
-      num
-    }
-  });
-}
+const addMainCate = async (cates) => {
+  return fetchData('/api/addMainCate', { cates });
+};
 
+
+const addCates = async (cate,cates) => {
+  return fetchData('/api/addCates', { cate,cates });
+};
+// 메인 카테고리 삭제하기
+// const dMainCate = (num) => {
+//   return axios.get('/api/dMainCate', {
+//     params: {
+//       num
+//     }
+//   });
+// }
+const dMainCate = async (num) => {
+  return fetchData('/api/dMainCate', { num });
+};
+// 서브 카테고리 삭제하기
+// const dSubCate = (num) => {
+//   return axios.get('/api/dSubCate', {
+//     params: {
+//       num
+//     }
+//   });
+// }
+const dSubCate = async (num) => {
+  return fetchData('/api/dSubCate', { num });
+};
 function pricechange(number) {
   const parts = Number(number).toString().split('.');
   parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ',');
