@@ -415,7 +415,7 @@
     padding: 10px 0;
 }
 .productwrap2 .gridflex .gridflex{
-    width: calc(100% - 130px);
+    width: calc(100% - 110px);
 }
 .productwrap2 .ant-col{
     width: 100%;
@@ -463,6 +463,7 @@
 }
 
 .productwrap1 .gridcolum{
+    width: calc(100% - 200px);
     height: 100%;
 }
 .productwrap2 .other_wrap{
@@ -635,7 +636,7 @@ justify-content: space-between;
  }
  .productwrap2 .product_list{
 
-    width: calc(100% - 40px);
+    width: 100%;
  }
 .product_list p{
     color: #000;
@@ -1875,9 +1876,19 @@ height: calc(100% - 60px);
     .sorting_list_btn button{
         padding: 10px;
     }
-      /* .menu-bar.open {
-        right:-20px;
-      } */
+    .footer_logo , .footer_d{
+        margin-right: 70px;
+    }
+    .productwrap1 .product_pic{
+        width: 140px;
+    }
+    .productwrap1 .gridcolum{
+        width: calc(100% - 160px);
+    }
+    .productwrap1 .btnsytle{
+        width: 80px;
+    }
+
   }
   @media screen and (max-width: 1200px) {
     .product_wrap .productbox{
@@ -1888,5 +1899,74 @@ height: calc(100% - 60px);
     }
     .product_wrap .productbox:nth-child(4n) {
         margin-right: 8px;
+    }
+    .productwrap1 .product_pic{
+        width: 100px;
+    }
+    .productwrap1 .gridcolum{
+        width: calc(100% - 120px);
+    }
+    .productwrap1 .btnsytle{
+        width: 50px;
+    }
+  }
+/* 태블릿 */
+  @media screen and (max-width: 980px) {
+    .displaybox{
+        padding: 0px 10px;
+    }
+    /* 전체틀 */
+    .shop_div{
+        display: block;
+    }
+    .shop_content{
+        width: 100%;
+    }
+    .shop_sort{
+        width: 100%;
+    }
+    .sort_navi{
+        display: flex;
+        width: 100%;
+    }
+    .sort_navi>li{
+        flex : 1;
+    }
+    .productwrap1 .product_pic{
+        width: 100px;
+    }
+    .productwrap1 .gridcolum{
+        width: calc(100% - 120px);
+    }
+    .productwrap1 .btnsytle{
+        width: 50px;
+    }
+  }
+  /* 모바일 */
+
+  @media screen and (max-width: 720px) {
+    .productwrap1 .ant-checkbox-group{
+        display: block !important;
+    }
+    .productwrap1 .productbox{
+        width: 100%;
+    }
+    .productwrap1 .product_pic{
+        width: 140px;
+    }
+    .productwrap1 .gridcolum{
+        width: calc(100% - 160px);
+    }
+    .productwrap1 .btnsytle{
+        width: 50px;
+    }
+    .product_wrap .productbox{
+        width: calc(50% - 8px);
+    }
+    .product_wrap .productbox:nth-child(2n) {
+        margin-right: 0px !important;
+    }
+    .product_wrap .productbox:nth-child(3n) {
+        margin-right: 10px;
     }
   }
