@@ -1787,7 +1787,7 @@ height: calc(100% - 60px);
 }
 .mainiotwrap{
     display: flex !important;
-    width: calc(33.3333% - 10px);
+    width: calc(50% - 10px);
     margin-right: 10px;
     background-color: #fff;
     padding: 10px;
