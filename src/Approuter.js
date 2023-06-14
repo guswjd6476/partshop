@@ -20,6 +20,8 @@ import Itemcon  from './components/other/Center/Itemcon';
 import Updatecon from './components/other/Center/Write/Updatecon';
 import Event from './components/Event/Event';
 import { useState } from 'react';
+import {  PC, Tablet } from "./MediaQuery"
+import MHeaer from './MHeaer';
 
 const Approuter = ({setToken,cates,setCates,isLoggedIn,userInfo,setUserInfo,cate,setCate})=> {
   const [filter, setFilter] = useState('');
@@ -29,7 +31,17 @@ const Approuter = ({setToken,cates,setCates,isLoggedIn,userInfo,setUserInfo,cate
     return (
       <div className="contain">
           <BrowserRouter >
-          {show ?<Header filter={filter} setSb={setSb} sb={sb} cates={cates} setFilter={setFilter} cate={cate} isLoggedIn={isLoggedIn} userInfo={userInfo} /> : ''}
+          {show ?
+          <PC>
+          <Header filter={filter} setSb={setSb} sb={sb} cates={cates} setFilter={setFilter} cate={cate} isLoggedIn={isLoggedIn} userInfo={userInfo} />
+          </PC>
+           : ''}
+             {show ?
+          <Tablet>
+          <MHeaer filter={filter} setSb={setSb} sb={sb} cates={cates} setFilter={setFilter} cate={cate} isLoggedIn={isLoggedIn} userInfo={userInfo} />
+          </Tablet>
+           : ''}
+     
             <Routes>
               <Route path="/" element={<Main shows={true} cates={cates}/>} />
               <Route path="/Admin" element={<Admin cates={cates} setCates={setCates} cate={cate} setCate={setCate} />} />

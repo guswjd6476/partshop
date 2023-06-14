@@ -299,6 +299,7 @@
     display: flex;
     width: calc(100% - 440px);
 }
+
 .search_bar>input{
     height: 50px;
     border: none;
@@ -1928,9 +1929,18 @@ height: calc(100% - 60px);
     .sort_navi{
         display: flex;
         width: 100%;
+        margin-bottom: 10px;
     }
     .sort_navi>li{
         flex : 1;
+        border-left: 1px solid #a1a1a1;
+        border-top: 1px solid #a1a1a1;
+        border-bottom: 1px solid #a1a1a1;
+        border-right: unset;
+        padding: 5px;
+    }
+    .sort_navi>li:last-child{
+        border-right: 1px solid #a1a1a1;;
     }
     .productwrap1 .product_pic{
         width: 100px;
@@ -1941,6 +1951,16 @@ height: calc(100% - 60px);
     .productwrap1 .btnsytle{
         width: 50px;
     }
+    .sortTitle{
+        display: none;
+    }
+    .sortWrap button{
+        padding: 5px;
+    }
+    .sorting_list_btn{
+        width: calc(100% - 100px);
+    }
+    
   }
   /* 모바일 */
 
@@ -1968,5 +1988,14 @@ height: calc(100% - 60px);
     }
     .product_wrap .productbox:nth-child(3n) {
         margin-right: 10px;
+    }
+    .noticecons{
+        display: block;
+    }
+    .noticecons>div{
+        width: 100%;
+    }
+    .noticecons>div:first-child{
+        margin-bottom: 20px;
     }
   }
