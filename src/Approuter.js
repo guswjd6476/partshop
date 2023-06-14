@@ -75,7 +75,16 @@ const Approuter = ({setToken,cates,setCates,isLoggedIn,userInfo,setUserInfo,cate
       <div className="contain">
 
           <BrowserRouter>
-          {show ?<Header cate={cate} cates={cates}/> : ''}
+          {show ?
+          <>
+          <PC>
+          <Header filter={filter} setSb={setSb} sb={sb} cates={cates} setFilter={setFilter} cate={cate} isLoggedIn={isLoggedIn} userInfo={userInfo} />
+          </PC>
+          <Tablet>
+              <MHeaer filter={filter} setSb={setSb} sb={sb} cates={cates} setFilter={setFilter} cate={cate} isLoggedIn={isLoggedIn} userInfo={userInfo} />
+        </Tablet>
+          </>
+           : ''}
             <Routes>
               <Route path="/" element={<Main/>} />
               <Route path="/:cate" element={<Shop cate={cate} userId={userInfo&&userInfo[0]} />} />

@@ -9,7 +9,7 @@ const Productbox = (props)=>{
     return(
         <>  
         <div className="sortWrap"> 
-        <Button className="sortbtn" onClick={e=>props.setOnHide(!props.onhide)}>
+        <Button className={props.none ? 'none' : "sortbtn"} onClick={e=>props.setOnHide(!props.onhide)}>
         {!props.onhide ? '필터감추기' :'필터보이기' }</Button>
         <FunctionBtn gridstyle={gridstyle} setGridStyle={setGridStyle} sortOption={sortOption} setSortOption ={setSortOption}/>
         </div>

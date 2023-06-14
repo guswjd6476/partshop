@@ -7,6 +7,8 @@ import Productbox from "./Productbox";
 import { getproduct } from "../../../service/product";
 import Fixedbox from "../../components_btn/Fixedbox";
 import { Crumb1,Crumb2 } from "../../components_btn/Breadcrums";
+import MSortingWrap from "../shop_sort/MSortingWrap";
+import {  PC, Tablet } from "../../../MediaQuery"
 function Shop({cate,userId}) {
   const location = useLocation();
   const [searchArray, setSearchArray] = useState([])
@@ -50,8 +52,15 @@ function Shop({cate,userId}) {
           <Sortnavi cate={cate} pathnum={pathnum1}/>
         </div>
         <div className='shop_content'>
-          <SortingWrap onClick={onClick} setOnHide={setOnHide} onhide={onhide} pathnum1={pathnum1}  pathnum2={pathnum2} searchArray={searchArray} setSearchArray={setSearchArray}/>
-          <Productbox search={search}  setOnHide={setOnHide} onhide={onhide}  lastCheck={lastCheck} setLastCheck={setLastCheck}  userId={userId} plist={allplist} pathnum1={pathnum1}  pathnum2={pathnum2} searchArray={searchArray}/>
+           <PC>
+            <SortingWrap onClick={onClick} setOnHide={setOnHide} onhide={onhide} pathnum1={pathnum1}  pathnum2={pathnum2} searchArray={searchArray} setSearchArray={setSearchArray}/>
+            <Productbox  search={search}  setOnHide={setOnHide} onhide={onhide}  lastCheck={lastCheck} setLastCheck={setLastCheck}  userId={userId} plist={allplist} pathnum1={pathnum1}  pathnum2={pathnum2} searchArray={searchArray}/>
+          </PC>
+          <Tablet>
+            <MSortingWrap onClick={onClick} setOnHide={setOnHide} onhide={onhide} pathnum1={pathnum1}  pathnum2={pathnum2} searchArray={searchArray} setSearchArray={setSearchArray}/>
+            <Productbox none={true} search={search}  setOnHide={setOnHide} onhide={onhide}  lastCheck={lastCheck} setLastCheck={setLastCheck}  userId={userId} plist={allplist} pathnum1={pathnum1}  pathnum2={pathnum2} searchArray={searchArray}/>
+          </Tablet>
+         
           
         </div>
         <Fixedbox userId={userId} lastCheck={lastCheck}/>

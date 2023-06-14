@@ -88,8 +88,8 @@ useEffect(()=>{
               <div className='productwrap2_wrap_div'>
               <div className='productwrap2_wrap'>
                 <div className='product_title'>
-                  <p className='f12 brandt'>[{value.brand}] {props.gridstyle == 0 ? <span className='valueid f12'>[상품코드 : {value.id}]</span> : ''}</p>
-                  <p className={value.pName !==' '?'product_d f14':'none'}>{value.pName}{props.gridstyle !== 0 ? <span className='valueid f12'>[상품코드 : {value.id}]</span> : ''}</p>
+                  <div className='f12 brandt'>[{value.brand}] {props.gridstyle == 0 ? <span className='valueid f12'>[상품코드 : {value.id}]</span> : ''}</div>
+                  <div className={value.pName !==' '?'product_d f14':'none'}>{value.pName}{props.gridstyle !== 0 ? <span className='valueid f12'>[상품코드 : {value.id}]</span> : ''}</div>
                 </div>
                 <div className='product_flex'>
                   <p className={value.inch !==''?'product_d f12':'none'}>{value.inch}인치</p>

@@ -1,14 +1,17 @@
 import { Button } from "antd";
 import Searchcomponent from "./Searchcomponent";
-function SortingWrap(props) {  
+import { useState } from "react";
+function MSortingWrap(props) {  
   const sortT = ['inch','brand','material','color']
+  const [sorts, setSorts] = useState(null)
   return (
     <>
-    <ul className={props.onhide ?'sort_box hide':'sort_box'}>
+    <ul className={props.onhide ?'msort_box hide':'msort_box'}>
     {sortT.map((sortType, index) => (
-    
       <li key={index}>
-        <p>{sortType}</p>
+        <Button onClick={(e)=>{setSorts(sortType)}}>{sortType}</Button>
+        {sortType === sorts ? 
+        <div className="mobile_sort">
         <Searchcomponent
           searchArray={props.searchArray}
           searchResult={props.searchResult}
@@ -19,15 +22,18 @@ function SortingWrap(props) {
           sortT={sortType}
           num={props.num}
         />
+        </div>
+        :''
+        }
       </li>
       
     ))}
     
-    <Button className={props.onhide ?'sortbtns hide':'sortbtns'} onClick={props.onClick}>필터<br/>적용</Button>  
+    <Button className={props.onhide ?'sortbtnss hide':'sortbtnss'} onClick={props.onClick}>필터적용</Button>  
   </ul>
    
   </>
   );
 }
 
-export default SortingWrap;
+export default MSortingWrap;
