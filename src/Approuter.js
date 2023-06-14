@@ -32,14 +32,14 @@ const Approuter = ({setToken,cates,setCates,isLoggedIn,userInfo,setUserInfo,cate
       <div className="contain">
           <BrowserRouter >
           {show ?
+          <>
           <PC>
           <Header filter={filter} setSb={setSb} sb={sb} cates={cates} setFilter={setFilter} cate={cate} isLoggedIn={isLoggedIn} userInfo={userInfo} />
           </PC>
-           : ''}
-             {show ?
           <Tablet>
-          <MHeaer filter={filter} setSb={setSb} sb={sb} cates={cates} setFilter={setFilter} cate={cate} isLoggedIn={isLoggedIn} userInfo={userInfo} />
-          </Tablet>
+              <MHeaer filter={filter} setSb={setSb} sb={sb} cates={cates} setFilter={setFilter} cate={cate} isLoggedIn={isLoggedIn} userInfo={userInfo} />
+        </Tablet>
+          </>
            : ''}
      
             <Routes>
