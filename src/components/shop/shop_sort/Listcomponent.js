@@ -1,7 +1,7 @@
 
 import React, { useEffect, useState } from "react";
 
-function ListComponent({lists,sortT,setSearchArray,pathnum1,pathnum2,setSearchResult}) {
+function ListComponent({searchArray,lists,sortT,setSearchArray,pathnum1,pathnum2,setSearchResult}) {
 
   const [selectedItem, setSelectedItem] = useState([]);
   useEffect(()=>{
@@ -10,8 +10,6 @@ function ListComponent({lists,sortT,setSearchArray,pathnum1,pathnum2,setSearchRe
   // const newlist = lists&&lists.map(value=> value[sortT]).filter((value, index, self) => {
   //   return  value !== ''&& self.indexOf(value) === index;
   // });
-    
-  
   const onClick = (value,index) =>{
     const selectedItemIndex = selectedItem.indexOf(index);
     if (selectedItemIndex === -1) {
@@ -29,7 +27,7 @@ function ListComponent({lists,sortT,setSearchArray,pathnum1,pathnum2,setSearchRe
     <ul className="sort_searched_box">
     {[...new Set(lists&&lists.map((value) => value[sortT]))].map((value, index) => (
     <li
-      className={selectedItem.includes(index) ? "selected" : ""}
+      className={searchArray.find(item => item[sortT] == value) ? "selected" : ""}
       onClick={(e) => onClick(lists[index], index)}
       key={`${value}-${index}`}
     >

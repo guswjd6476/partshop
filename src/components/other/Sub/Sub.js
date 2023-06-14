@@ -5,11 +5,13 @@ import Intro from "./Intro";
 import Place from './Place'
 import Agreement from "./Agreement";
 import Privacy from "./Privacy";
-function Sub() {
-  
+import { useEffect } from "react";
+function Sub({setBack}) {
   const location = useLocation()
   const pathnum1 = location.pathname.split('/')[1]
   const pathnum2 = location.pathname.split('/')[2]
+  
+  useEffect(()=>{setBack(true)},[])
     return (
       <div className="main displaybox" >
         {pathnum2 ?

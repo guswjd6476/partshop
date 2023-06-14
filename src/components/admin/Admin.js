@@ -5,7 +5,9 @@ import InventoryManage from "./InventoryManage/InventoryManage";
 import Userlist from "./User/Userlist";
 import Categorycontrol from "./category/Categorycontrol";
 import Maincontrol from "./maincontrol/Maincontrol";
-function Admin({cate,cates,setCates,setCate}) {
+import { useEffect } from "react";
+function Admin({cate,cates,setCates,setCate, setBack}) {
+  useEffect(()=>{setBack(true)},[])
 
   const items = [
     {

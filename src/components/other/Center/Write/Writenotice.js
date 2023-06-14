@@ -1,11 +1,11 @@
 
-import { useState} from "react";
+import { useState,useEffect} from "react";
 import ReactQuills from "../../../admin/write/ReactQuills";
 import {Button, Input,Select} from 'antd'
 import { useNavigate,useLocation } from 'react-router-dom';
 import { Wnotice,Wfaq,Wqna,Wqnaanswer } from "../../../../service/product";
 import { noticeOption ,faqOption,qnaOption} from "../../../../service/options";
-function Writenotice() {
+function Writenotice({setBack}) {
 
   const navigate = useNavigate();
   
@@ -23,7 +23,7 @@ function Writenotice() {
     category : '',
 })
 
-console.log(values,'values?')
+useEffect(()=>{setBack(true)},[])
 const [value, setValue] = useState('');
 const handleChange = (id, value) => {
     setValues(prevState => ({

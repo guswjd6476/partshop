@@ -8,7 +8,7 @@ import Mainiot from './Mainiot';
 import Mainevent from './Mainevent';
 import Mainnotice from './Mainnotice';
 
-function Main({edit,cates,shows}) {
+function Main({edit,cates,shows,setBack}) {
   console.log(shows,'???shows')
   const [data,setData] = useState()
   const [mi, setMi] =useState({
@@ -42,6 +42,7 @@ function Main({edit,cates,shows}) {
       setMi({a1:response.data[0].p1,a2:response.data[0].p2,a3:response.data[0].p3,a4:response.data[0].p4,a5:response.data[0].p5,a6:response.data[0].p6,a7:response.data[0].p7,a8:response.data[0].p8,a9:response.data[0].p9,a10:response.data[0].p10,
         b1:response.data[1].p1,b2:response.data[1].p2,b3:response.data[1].p3,b4:response.data[1].p4,b5:response.data[1].p5,b6:response.data[1].p6,b7:response.data[1].p7,b8:response.data[1].p8,b9:response.data[1].p9,b10:response.data[1].p10,})
     }) 
+    setBack(false)
 },[])
 
   return (

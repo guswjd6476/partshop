@@ -10,7 +10,7 @@ import { AddCartbtn } from '../components_btn/Cartbtn';
 import Fixedbox from '../components_btn/Fixedbox';
 import SortingWrap from '../shop/shop_sort/SortingWrap';
 
-const AllSearchResult = ({ userId, filter,sb }) => {
+const AllSearchResult = ({ userId,setBack, filter,sb }) => {
 const location = useLocation()
 
   const [onhide, setOnHide] = useState(false)
@@ -58,6 +58,7 @@ useEffect(()=>{
   .catch(error => {
     console.error(error);
   });
+  setBack(true)
 },[num])
 const onClick = ()=>{
   setsearch(searchArray)

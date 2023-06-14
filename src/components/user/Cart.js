@@ -3,7 +3,7 @@ import { getCart } from "../../service/product";
 import Cartcheck from "./Cartcheck";
 
 
-function Cart({userId}) {
+function Cart({userId,setBack}) {
   const [cartdata, setCartData] = useState('')
   const[plainOptions, setplainOptions] = useState([])
   useEffect(()=>{
@@ -14,6 +14,7 @@ function Cart({userId}) {
         response.data.map(value => value.productnum)
       )
     })
+    setBack(true)
   },[cartdata.length])
   return (
     <div className="displaybox main">

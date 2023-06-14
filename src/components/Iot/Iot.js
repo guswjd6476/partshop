@@ -3,12 +3,13 @@ import {  useLocation} from 'react-router-dom';
 import Sortnavi from '../shop/shop_sort/Sortnavi';
 import Pagetitle from '../components_btn/Pagetitle';
 import Iotdetail from './Iotdetail';
-function Iot({cate}) {
+import { useEffect } from 'react';
+function Iot({cate,setBack}) {
   
   const location = useLocation()
   const pathnum1 = location.pathname.split('/')[1]
   const pathnum2= location.pathname.split('/')[2]
-  
+  useEffect(()=>{setBack(true)},[])
     return (
       <div className="main displaybox">
           {pathnum2 ?

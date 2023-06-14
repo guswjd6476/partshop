@@ -14,7 +14,7 @@ import ProductTopTab from "./ProductTopTab";
 import { Crumb2 } from "../../components_btn/Breadcrums";
 import { pricechange } from "../../../service/function";
 import { productdetail } from "../../../service/product";
-function Productdetail({cate,userId}) {
+function Productdetail({cate,userId,setBack}) {
   const [data, setData] =useState('')
   const [buycount, setBuycount] = useState(1)
     const location = useLocation();
@@ -24,6 +24,7 @@ function Productdetail({cate,userId}) {
    
   
     useEffect(()=>{
+      setBack(true)
       let recent = JSON.parse(localStorage.getItem('recent'));
       recent&&recent.push(pathnum3);
       let result = [...new Set(recent)];

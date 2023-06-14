@@ -5,7 +5,7 @@ import { Button } from "antd";
 import Leftnavi from "../Leftnavi";
 import { Crumb1,Crumb2 } from "../../components_btn/Breadcrums";
 import Nextpost from "./Nextpost";
-function Itemcon({userInfo}) {
+function Itemcon({userInfo,setBack}) {
     const location = useLocation();
     const [notice, setNotice] = useState('null')
     const pathnum1 = location.pathname.split('/')[1]
@@ -14,6 +14,7 @@ function Itemcon({userInfo}) {
     const searchParams = new URLSearchParams(location.search);
     const num = searchParams.get('productid');
     useEffect(()=>{
+      setBack(true)
       getItemcon(num,pathnum2).then(function(response){
             setNotice(response.data)
         })

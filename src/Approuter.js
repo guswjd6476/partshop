@@ -19,14 +19,17 @@ import Center from './components/other/Center/Center';
 import Itemcon  from './components/other/Center/Itemcon';
 import Updatecon from './components/other/Center/Write/Updatecon';
 import Event from './components/Event/Event';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import {  PC, Tablet } from "./MediaQuery"
 import MHeaer from './MHeaer';
 
 const Approuter = ({setToken,cates,setCates,isLoggedIn,userInfo,setUserInfo,cate,setCate})=> {
+  
+const [back, setBack] =useState(true)
   const [filter, setFilter] = useState('');
   const [sb, setSb] = useState(false)
   const [show, setShow] =useState(true)
+
   if(isLoggedIn){
     return (
       <div className="contain">
@@ -37,34 +40,34 @@ const Approuter = ({setToken,cates,setCates,isLoggedIn,userInfo,setUserInfo,cate
           <Header filter={filter} setSb={setSb} sb={sb} cates={cates} setFilter={setFilter} cate={cate} isLoggedIn={isLoggedIn} userInfo={userInfo} />
           </PC>
           <Tablet>
-              <MHeaer filter={filter} setSb={setSb} sb={sb} cates={cates} setFilter={setFilter} cate={cate} isLoggedIn={isLoggedIn} userInfo={userInfo} />
+              <MHeaer back={back} filter={filter} setSb={setSb} sb={sb} cates={cates} setFilter={setFilter} cate={cate} isLoggedIn={isLoggedIn} userInfo={userInfo} />
         </Tablet>
           </>
            : ''}
      
             <Routes>
-              <Route path="/" element={<Main shows={true} cates={cates}/>} />
-              <Route path="/Admin" element={<Admin cates={cates} setCates={setCates} cate={cate} setCate={setCate} />} />
+              <Route path="/" element={<Main shows={true} cates={cates}  setBack={setBack}/>} />
+              <Route path="/Admin" element={<Admin setBack={setBack} cates={cates} setCates={setCates} cate={cate} setCate={setCate} />} />
               {/* <Route path="/Writeproduct" element={<Writeproduct/> }/> */}
-              <Route path="/SearchResult" element={   <AllSearchResult userId={userInfo&&userInfo[0]} filter={filter}  sb={sb} />}/>
-              <Route path="/Mypage" element={<Mypage userId={userInfo&&userInfo[0]}/>} />
-              <Route path="/Myinfo" element={<Myinfochage userId={userInfo&&userInfo[0]}/>} />
-              <Route path="/Cart" element={<Cart userId={userInfo&&userInfo[0]} />} />
-              <Route path="/:cate" element={<Shop cate={cate} userId={userInfo&&userInfo[0]} />} />
-              <Route path="/:cate/:subcate" element={<Shop cate={cate} userId={userInfo&&userInfo[0]} />} />
-              <Route path="/:cate/:subcate/:id" element={<Productdetail cate={cate} userId={userInfo&&userInfo[0]} />} />
-              <Route path="/IOT" element={<Iot cate={cate}/>} />
-              <Route path="/IOT/:id" element={<Iot cate={cate}/>} />
-              <Route path="/Sub/:id" element={<Sub/>} />
-              <Route path="/Sub" element={<Sub/>} />
+              <Route path="/SearchResult" element={   <AllSearchResult setBack={setBack}  userId={userInfo&&userInfo[0]} filter={filter}  sb={sb} />}/>
+              <Route path="/Mypage" element={<Mypage  setBack={setBack} userId={userInfo&&userInfo[0]}/>} />
+              <Route path="/Myinfo" element={<Myinfochage setBack={setBack} userId={userInfo&&userInfo[0]}/>} />
+              <Route path="/Cart" element={<Cart setBack={setBack} userId={userInfo&&userInfo[0]} />} />
+              <Route path="/:cate" element={<Shop setBack={setBack} cate={cate} userId={userInfo&&userInfo[0]} />} />
+              <Route path="/:cate/:subcate" element={<Shop setBack={setBack} cate={cate} userId={userInfo&&userInfo[0]} />} />
+              <Route path="/:cate/:subcate/:id" element={<Productdetail setBack={setBack} cate={cate} userId={userInfo&&userInfo[0]} />} />
+              <Route path="/IOT" element={<Iot setBack={setBack} cate={cate}/>} />
+              <Route path="/IOT/:id" element={<Iot setBack={setBack} cate={cate}/>} />
+              <Route path="/Sub/:id" element={<Sub setBack={setBack}/>} />
+              <Route path="/Sub" element={<Sub setBack={setBack}/>} />
               
-              <Route path="/buy" element={<Buy/>} />
-              <Route path="/center" element={<Center/>} />
-              <Route path="/center/:id" element={<Center/>} />
-              <Route path="/Write/:id" element={<Writenotice/>} />
-              <Route path="/Update/:id" element={<Updatecon/>} />
-              <Route path="/center/:qna/:noticecon" element={<Itemcon userInfo={userInfo}/>} />
-              <Route path="/event" element={<Event userInfo={userInfo}/>} />
+              <Route path="/buy" element={<Buy setBack={setBack}/>} />
+              <Route path="/center" element={<Center setBack={setBack}/>} />
+              <Route path="/center/:id" element={<Center setBack={setBack}/>} />
+              <Route path="/Write/:id" element={<Writenotice setBack={setBack}/>} />
+              <Route path="/Update/:id" element={<Updatecon setBack={setBack}/>} />
+              <Route path="/center/:qna/:noticecon" element={<Itemcon setBack={setBack} userInfo={userInfo}/>} />
+              <Route path="/event" element={<Event setBack={setBack} userInfo={userInfo}/>} />
            </Routes>
            {show ?<Footer/> : ''}
         </BrowserRouter>
@@ -81,23 +84,23 @@ const Approuter = ({setToken,cates,setCates,isLoggedIn,userInfo,setUserInfo,cate
           <Header filter={filter} setSb={setSb} sb={sb} cates={cates} setFilter={setFilter} cate={cate} isLoggedIn={isLoggedIn} userInfo={userInfo} />
           </PC>
           <Tablet>
-              <MHeaer filter={filter} setSb={setSb} sb={sb} cates={cates} setFilter={setFilter} cate={cate} isLoggedIn={isLoggedIn} userInfo={userInfo} />
-        </Tablet>
+            <MHeaer back={back} filter={filter} setSb={setSb} sb={sb} cates={cates} setFilter={setFilter} cate={cate} isLoggedIn={isLoggedIn} userInfo={userInfo} />
+          </Tablet>
           </>
            : ''}
             <Routes>
-              <Route path="/" element={<Main/>} />
-              <Route path="/:cate" element={<Shop cate={cate} userId={userInfo&&userInfo[0]} />} />
-              <Route path="/buy" element={<Buy/>} />
-              <Route path="/:cate/:subcate" element={<Shop cate={cate} userId={userInfo&&userInfo[0]} />} />
-              <Route path="/:cate/:subcate/:id" element={<Productdetail cate={cate} userId={userInfo&&userInfo[0]} />} />
-              <Route path="/Signup" element={<Signup show={show} setShow={setShow}/>} />
-              <Route path="/Login" element={<Login setUserInfo={setUserInfo} setToken={setToken}   setShow={setShow} />} />
-              <Route path="/Sub/:id" element={<Sub/>} />
-              <Route path="/Sub" element={<Sub/>} />
-              <Route path="/event" element={<Event userInfo={userInfo}/>} />
+              <Route path="/" element={<Main  setBack={setBack}/>} />
+              <Route path="/:cate" element={<Shop setBack={setBack} cate={cate} userId={userInfo&&userInfo[0]} />} />
+              <Route path="/buy" element={<Buy setBack={setBack}/>} />
+              <Route path="/:cate/:subcate" element={<Shop setBack={setBack} cate={cate} userId={userInfo&&userInfo[0]} />} />
+              <Route path="/:cate/:subcate/:id" element={<Productdetail setBack={setBack} cate={cate}  userId={userInfo&&userInfo[0]} />} />
+              <Route path="/Signup" element={<Signup setBack={setBack} show={show} setShow={setShow}/>} />
+              <Route path="/Login" element={<Login setBack={setBack} setUserInfo={setUserInfo} setToken={setToken}   setShow={setShow} />} />
+              <Route path="/Sub/:id" element={<Sub setBack={setBack}/>} />
+              <Route path="/Sub" element={<Sub setBack={setBack}/>} />
+              <Route path="/event" element={<Event setBack={setBack} userInfo={userInfo}/>} />
      
-              <Route path="/center" element={<Center/>} />
+              <Route path="/center" element={<Center setBack={setBack}/>} />
            </Routes>
            {show ?<Footer/> : ''}
         </BrowserRouter>

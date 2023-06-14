@@ -1,9 +1,10 @@
 import { Input,Button } from "antd";
-import { useState } from "react";
+import { useState,useEffect } from "react";
 
-function Myinfochage({userId}) {
+function Myinfochage({userId,setBack}) {
     const [pass, setPass] =useState(null)
     const [deepinfo, setDeepInfo] = useState(false)
+    useEffect(()=>{setBack(true)},[])
 
     return (
       <div className="myinfo displaybox">

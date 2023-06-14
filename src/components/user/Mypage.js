@@ -1,7 +1,9 @@
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import Myorderlist from "./Myorderlist";
 import Myinfo from "./Myinfo";
-function Mypage({userId}) {
+function Mypage({userId,setBack}) {
+  useEffect(()=>{setBack(true)},[])
+
   const [pagenum, setPageNum] = useState(1)
     return (
       <div className="third main displaybox">

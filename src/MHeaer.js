@@ -1,5 +1,5 @@
 
-import { AppstoreOutlined,  ShoppingCartOutlined,UserAddOutlined,ExclamationCircleFilled,MenuFoldOutlined, MenuUnfoldOutlined } from '@ant-design/icons';
+import { AppstoreOutlined,  ShoppingCartOutlined,UserAddOutlined,ExclamationCircleFilled,MenuFoldOutlined, MenuUnfoldOutlined,LeftOutlined } from '@ant-design/icons';
 import { Menu,Modal,Button  } from 'antd';
 import {  Link,useLocation,} from 'react-router-dom';
 import { useRef,useState,useEffect } from 'react';
@@ -9,7 +9,7 @@ import AllSearchComponent from './components/Allsearch/AllSearchComponent'
 const { confirm } = Modal;
 
 
-const MHeaer = ({isLoggedIn,admin,userInfo,setFilter,sb,setSb,cates,filter}) => {
+const MHeaer = ({isLoggedIn,admin,userInfo,setFilter,sb,setSb,cates,filter,back}) => {
   
   const [navi, setNavi] = useState(false)
   const addedKeys = [];
@@ -34,7 +34,10 @@ const MHeaer = ({isLoggedIn,admin,userInfo,setFilter,sb,setSb,cates,filter}) => 
   // const navigate = useNavigate();
   const location = useLocation()
   const pathKeys = location.pathname.split('/').filter(Boolean)
-
+  const pathnum1 = location.pathname.split('/')[1]
+  const pathnum2= location.pathname.split('/')[2]
+  const pathnum3= location.pathname.split('/')[3]
+  const returns = pathnum3? `/${pathnum1}/${pathnum2}` : pathnum2? `/${pathnum1}`: '/'
   const showConfirm = () => {
     confirm({
       title: '로그아웃 하시겠습니까?',
@@ -64,7 +67,13 @@ const MHeaer = ({isLoggedIn,admin,userInfo,setFilter,sb,setSb,cates,filter}) => 
 },[navi])
   return (
     <div className='mobile_btn_wrap' ref={el} >
-       <Button className='mobile_btn' onClick={()=>setNavi(!navi)}>{navi ? <MenuFoldOutlined /> : <MenuUnfoldOutlined />}</Button>
+      {back ==true ? 
+      <div className='backbtn'>
+      <Link to={returns}> <LeftOutlined /> </Link>
+      </div>
+      :''
+    }
+       <Button className={back ? 'mobile_btn ml30' : 'mobile_btn'} onClick={()=>setNavi(!navi)}>{navi ? <MenuFoldOutlined /> : <MenuUnfoldOutlined />}</Button>
   
  {navi ? 
   <div className='mnavigation '>

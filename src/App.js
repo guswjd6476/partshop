@@ -21,7 +21,9 @@ const [cate, setCate] = useState([])
         setCates(response.data);
       });
       setInit(true)
+
   },[])
+  
  
   return (
     <>

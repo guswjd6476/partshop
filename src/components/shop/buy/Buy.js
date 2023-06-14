@@ -19,6 +19,7 @@ function Buy(props) {
   console.log(userId,'userid')
   const [cartlist, setCartList] = useState()
   useEffect(()=>{
+    props.setBack(true)
     if(userId !=='null'){
     if(checkedList){
       getcompare(checkedList)

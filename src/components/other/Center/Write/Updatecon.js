@@ -5,7 +5,7 @@ import {Button, Input,Select} from 'antd'
 import { useNavigate,useLocation } from 'react-router-dom';
 import { updateItem,getItemcon } from "../../../../service/product";
 import { noticeOption ,faqOption,qnaOption} from "../../../../service/options";
-function Updatecon() {
+function Updatecon({setBack}) {
   const navigate = useNavigate();
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
@@ -32,6 +32,7 @@ const handleChange = (id, value) => {
 }
 console.log(pathnum2,'pathnum2')
 useEffect(()=>{
+  setBack(true)
     getItemcon(num,pathnum2).then(function(response){
         setNotice(response.data)
         setValues({title: response.data[0].title , category : response.data[0].category})

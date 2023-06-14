@@ -5,7 +5,8 @@ import Notice from "./Notice";
 import QNA from "./QNA";
 import FAQ from "./FAQ";
 import Pagetitle from '../../components_btn/Pagetitle';
-function Center() {
+import { useEffect } from 'react';
+function Center({setBack}) {
   
   const location = useLocation()
   const pathnum1 = location.pathname.split('/')[1]
@@ -13,6 +14,7 @@ function Center() {
   const userArray = JSON.parse(localStorage.getItem('userInfo'))
   const user= userArray[0]
   const userGrade= userArray[1]
+  useEffect(()=>{setBack(true)},[])
     return (
       <div className="main displaybox">
           {pathnum2 ?

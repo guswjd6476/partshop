@@ -63,3 +63,25 @@
 .mobile_sort .sortbtn{
     display: none;
 }
+.mobile_btn{
+    background: unset;
+    border: unset;
+    color: #fff;
+    font-weight: 900;
+    font-size: 20px;
+    padding: 0px;
+}
+.ml30{
+    margin-left: 30px;
+}
+.backbtn{
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    z-index: 1000;
+    cursor: pointer;
+}
+.backbtn>a{
+    font-size: 20px;
+    color: #fff;
+}
