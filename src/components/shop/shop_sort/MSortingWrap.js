@@ -19,31 +19,32 @@ function MSortingWrap(props) {
   };
   return (
     <>
-    <ul className={props.onhide ?'msort_box hide':'msort_box'}>
-    {sortT.map((sortType, index) => (
-      <li key={index}>
-        <Button className="filterbtn" onClick={(e)=>{changeOpt(sortType)}}>{sortType}<DownOutlined /></Button>
-        {sortType === sorts ? 
-        <div className="mobile_sort">
-        <Searchcomponent
-          searchArray={props.searchArray}
-          searchResult={props.searchResult}
-          setSearchArray={props.setSearchArray}
-          setSearchResult={props.setSearchResult}
-          pathnum1={props.pathnum1}
-          pathnum2={props.pathnum2}
-          sortT={sortType}
-          num={props.num}
-        />
-        </div>
-        :''
-        }
-      </li>
-      
-    ))}
+    <div className={props.onhide ? 'msort_box hide' : 'msort_box'}>
+  {sortT.map((sortType, index) => (
+    <div key={index}>
+      <Button className="filterbtn" onClick={(e) => { changeOpt(sortType) }}>
+        {sortType}<DownOutlined />
+      </Button>
+      {sortType === sorts ?
+          <Searchcomponent
+          className="mobile_sort" style={{ zIndex: 1000 }}
+            searchArray={props.searchArray}
+            setsearch={props.setsearch}
+            searchResult={props.searchResult}
+            setSearchArray={props.setSearchArray}
+            setSearchResult={props.setSearchResult}
+            pathnum1={props.pathnum1}
+            pathnum2={props.pathnum2}
+            sortT={sortType}
+            num={props.num}
+          />
+        : ''}
+    </div>
+  ))}
+
     
-    <Button  className={props.onhide ?'sortbtnss hide':'sortbtnss'} onClick={ e=>{ props.onClick(); setSorts(null)}}>필터적용</Button>  
-  </ul>
+    {/* <Button  className={props.onhide ?'sortbtnss hide':'sortbtnss'} onClick={ e=>{ props.onClick(); setSorts(null)}}>필터적용</Button>   */}
+  </div>
   {props.searchArray[0] ? 
   <div className="filterwrap">
     {props.searchArray.map((value) => (

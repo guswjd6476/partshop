@@ -42,23 +42,29 @@
     font-size: 20px;
     color: #fff;
 }
-.msort_box{
+.msort_box {
+    width: 100%;
+    height: 100%;
     display: flex;
     padding: 10px 0;
-}
-.msort_box>li{
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+
+  }
+  
+  .msort_box > div {
+    width: 25%;
     position: relative;
-}
-.mobile_sort{
-    z-index: 1000;
-    background-color: #fff;
+  }
+  .msort_box > div>button{
     width: 100%;
-    position: absolute;
-    top: 32px;
-    left: 0;
-}
+  }
+  
+  .msort_box::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
+  }
 .sortbtnss{
-    height: auto;
+    height: 32px;
 }
 .mobile_sort .sortbtn{
     display: none;

@@ -34,7 +34,7 @@ function Searchcomponent(props) {
         searchArray={props.searchArray}
         setSearchResult={props.setSearchResult}
         setSearchArray={props.setSearchArray}
-      
+        setsearch={props.setsearch}
         sortT={props.sortT}
         lists={product}
         spinner={false}

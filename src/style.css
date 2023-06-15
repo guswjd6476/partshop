@@ -969,10 +969,16 @@ margin-bottom: 10px;
 }
 /* 소팅 관련  */
 .search_com{
+    width: 100%;
     height: 170px;
-    overflow-y: scroll;
     border: 1px solid #a1a1a1;
     border-radius: 5px;
+    background-color: #fff;
+}
+.msort_box .search_com{
+    position: absolute;
+    
+    z-index: 1000;
 }
 .sort_tag_box{
     margin-bottom: 20px;
@@ -2015,6 +2021,22 @@ height: calc(100% - 60px);
     .sorting_list{
         justify-content: right;
     }
+    .shop_main{
+        display: block;
+    }
+    .shop_main>div{
+        width: 100%;
+    }
+    .shop_img_wrap{
+        display: flex;
+    }
+    .shop_main .shop_img{
+        width: calc(100% - 80px);
+    }
+    .imgslider{
+        width: 80px;
+        flex-direction: column;
+    }
   }
   /* 모바일 */
 
@@ -2051,5 +2073,18 @@ height: calc(100% - 60px);
     }
     .noticecons>div:first-child{
         margin-bottom: 20px;
+    }
+  
+  }
+  @media screen and (max-width: 500px) {
+    .shop_img_wrap{
+        display: block;
+    }
+    .shop_main .shop_img{
+        width: 100%;
+    }
+    .imgslider{
+        width: 100%;
+        flex-direction: row;
     }
   }
