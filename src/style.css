@@ -5,7 +5,9 @@
 #root{
     font-family: 'Noto Sans KR', sans-serif;
 }
-
+.ant-table-cell{
+    padding: 5px !important;
+}
 /* 폰트사이즈 */
 .f12{
     font-size: 12px !important;

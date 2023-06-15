@@ -17,17 +17,18 @@ function Notice({uGrade}) {
         {
           title: 'id',
           dataIndex: 'id',
+          width:'50px',
           key: 'id',
         },
         {
           title: 'category',
           dataIndex: 'category',
+          width:'100px',
           key: 'category',
         },
         {
           title: 'title',
           dataIndex: 'title',
-          width:'70%',
           key: 'title',
           render: (_,record) => <Link className="noticea" to={`/center/notice/noticecon?&productid=${record.id}` }>{record.title}</Link>,
           
@@ -35,10 +36,13 @@ function Notice({uGrade}) {
         {
           title: 'writer',
           dataIndex: 'writer',
+          width:80,
           key: 'writer',
         },
+        
         {
             title: '작성날짜',
+            width:100,
             dataIndex: 'updatetime',
             key: 'updatetime',
             render: (record) => record.slice(0,10),
