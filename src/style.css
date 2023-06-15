@@ -916,6 +916,25 @@ font-weight: 900;
 font-size: 18px;
 margin-bottom: 10px;
 }
+.filterwrap{
+    display: flex;
+    flex-wrap: wrap;
+}
+.filterwrap>div{
+    margin-right: 10px;
+    width: 70px;
+}
+.filterbtn{
+    border-radius: 20px;
+}
+.filterbtn .anticon{
+    font-size: 10px;
+    color: #676565;
+}
+.msort_grid{
+    width: 30px;
+    height: 30px;
+}
 .sortbtn{
     border-radius: 1px;
     margin-right: 20px;
@@ -924,10 +943,13 @@ margin-bottom: 10px;
     color: #fff;
 
 }
+.sortbtnss{
+    padding: 5px;
+    background-color: #676565;
+    color: #fff;
+}
 .sortbtns{
-    /* position: absolute;
-    left: 15px;
-    bottom: 10px; */
+ 
     border-radius: 1px;
     height: 210px !important;
     width: 60px;
@@ -1963,7 +1985,36 @@ height: calc(100% - 60px);
     .sorting_list_btn{
         width: calc(100% - 100px);
     }
-    
+    .footer_bg_line{
+        height: 40px;
+    }
+    .footer{
+        height: 150px;
+    }
+    .footer_top{
+        height: 40px;
+        font-size: 14px;
+        padding: 5px;
+        align-items: center;
+    }
+    .footer_main{
+        height: 110px;
+    }
+    .footer_top li{
+        margin-right: 10px;
+    }
+    .footer_top li a{
+        color: #000;
+    }
+    .footer li{
+        font-size: 14px;
+    }
+    .sortWrap{
+        margin-bottom: 10px;
+    }
+    .sorting_list{
+        justify-content: right;
+    }
   }
   /* 모바일 */
 
