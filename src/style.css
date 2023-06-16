@@ -481,7 +481,8 @@
 }
 .other_wrap .ant-tag{
     padding: 0;
-    width: 42px !important;
+    margin-inline-end: 5px;
+    width: 35px !important;
     height: 18px;
     font-size: 12px;
     line-height: 15px;
@@ -2090,6 +2091,36 @@ height: calc(100% - 60px);
     .cart_check_wrap{
         width: 100%;
     }
+    .productwrap1 .othertag, .product_wrap .othertag{
+        margin-right: 0px;
+    }
+    .product_wrap .other_wrap{
+        right: 5px;
+    }
+    .dcvalue{
+        left: 55px;
+        top: 1px;
+    }
+    .product_wrap .counterbtrn_wrap{
+        justify-content: space-between;
+    }
+     .product_wrap .counterbtrn_wrap button{
+        width: calc(30% - 3px);
+        margin: 0;
+    }
+    .product_wrap .testbox {
+        width: calc(40% - 3px);
+        margin: 0;
+    }
+    .product_wrap .count_wrap{
+        margin: 0;
+    }
+    .tx{
+        font-size: 12px !important;
+    }
+    .pricebox .product_d{
+        font-size: 18px !important;
+    }
   }
   /* 모바일 */
 
@@ -2156,20 +2187,20 @@ height: calc(100% - 60px);
         width: 100%;
         flex-direction: row;
     }
-    .product_wrap .productbox{
+    /* .product_wrap .productbox{
         width: 100%;
         margin-right: 0px;
     }
-    .counterbtrn_wrap{
+    .product_wrap .counterbtrn_wrap{
         justify-content: space-between;
     }
-    .counterbtrn_wrap button{
+    .product_wrap .counterbtrn_wrap button{
         width: calc(33.333% - 10px) !important;
     }
-    .counterbtrn_wrap  .testbox{
+    .product_wrap .counterbtrn_wrap  .testbox{
         width: calc(33.333% - 10px) !important;
     }
-    .counterbtrn_wrap  .testbox .count_wrap{
+    .product_wrap .counterbtrn_wrap  .testbox .count_wrap{
         width: 100%;
-    }
+    } */
   }
