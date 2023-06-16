@@ -20,7 +20,7 @@ function Cart({userId,setBack}) {
   },[cartdata.length])
   console.log(cartdata,'cd')
   return (
-    <div className="displaybox main">
+    <div className="displaybox cartcon main">
       {cartdata ? (
        <Cartcheck  cartdata={cartdata} setCartData={setCartData} plainOptions={plainOptions} />
       ) : (
