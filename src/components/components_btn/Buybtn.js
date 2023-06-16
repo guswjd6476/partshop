@@ -25,7 +25,7 @@ function Buybtn(props) {
     <Link to={stringifyCheckedList !== 'undefined' ? `/buy?checkedList=${stringifyCheckedList}&productid=${productnum}&count=${count}&userId=${userId}` : 
     `/buy?&productid=${productnum}&count=${count}&userId=${userId}` 
     }>
-      <Button className='btnsytle' >주문하기</Button>
+      <Button className='btnsytle cartbuybtn' >주문하기</Button>
     </Link>
   );
 }

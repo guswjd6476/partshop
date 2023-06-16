@@ -84,7 +84,7 @@ function Productdetail({cate,userId,setBack}) {
          
             <div className="shop_d_box btn_wrap">
               
-              <AddCartbtn/>
+              <AddCartbtn counts={buycount} productid={data[0].id} userId={userId}/>
               <Needsbtn/>
               <Buybtn count={buycount} productnum={data[0].id} userId={userId}/>
             </div>

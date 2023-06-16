@@ -88,7 +88,7 @@ var Settings = {
 const actionButStyle = {
     position: "absolute",
     top: "calc(50% - 40px)",
-    zIndex: 1000,
+    zIndex: 20,
     padding : 0
 
   };

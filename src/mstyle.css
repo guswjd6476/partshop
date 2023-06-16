@@ -4,7 +4,9 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    position: relative;
+    width: 100%;
+    position: fixed;
+    z-index: 50;
 }
 .mobile_btn_wrap .logo{
     width: 100px;
@@ -19,13 +21,25 @@
     width: 100%;
     height: 100%;
 }
+.header_top_box.m{
+    margin-top: 20px;
+}
+.mobileadmin{
+    font-weight: 900;
+    color: #d9d9d9;
+    text-align: right;
+    padding: 0px 10px;
+}
 .mnavigation{
-    background-color: #d9d9d9;
-    position: absolute;
+    background-color: #fff;
+    border-right: 1px solid #d9d9d9;
+    border-bottom: 1px solid #d9d9d9;
+    position: fixed;
+    height: 100vh;
     top: 52px;
     left: 0;
-    z-index: 1000;
-    padding: 10px;
+    z-index: 39;
+    padding: 30px 10px 10px 10px;
 }
 .mnavigation>ul{
     background: unset;

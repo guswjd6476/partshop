@@ -81,19 +81,13 @@ const MHeaer = ({isLoggedIn,admin,userInfo,setFilter,sb,setSb,cates,filter,back}
       <AllSearchComponent filter={filter} userId={admin&&admin.split(',')[0]} setSb={setSb} sb={sb} setFilter={setFilter}/>
     </div>
       <Menu  
+      onClick={e=>setNavi(false)}
     selectedKeys={[...pathKeys, `/${pathKeys[0]}`]} mode="inline" items={newItems} />
- <ul className='header_top_box '>
-      {userInfo&&userInfo[1]== 1 ? 
-      <li>
-        <Link to='/Admin'>
-        관리자 입니다
-        </Link>
-      </li> 
-      :'' 
-    }
+ <ul className='header_top_box  m'>
+    
       {!isLoggedIn ? 
     <li>
-    <Link to='/Login'>
+    <Link  to='/Login'>
     로그인
     </Link>
   </li>
@@ -108,6 +102,17 @@ const MHeaer = ({isLoggedIn,admin,userInfo,setFilter,sb,setSb,cates,filter,back}
       :
       ''
       }
+     
+      <li onClick={e=>setNavi(false)} style={{marginLeft:'20px'}}>
+        <Link to='/center'>
+        고객센터
+        </Link>
+      </li>
+      <li style={{marginLeft:'20px'}}>
+      <Link  to={!isLoggedIn ? '/Login':'/Mypage'} className='function_head_box login'>
+            <div>마이페이지</div>
+          </Link>
+      </li>
       {isLoggedIn ? 
       <li onClick={showConfirm} style={{marginLeft:'20px'}}>
         <a>
@@ -117,22 +122,23 @@ const MHeaer = ({isLoggedIn,admin,userInfo,setFilter,sb,setSb,cates,filter,back}
       :
       ''
       }
-      <li style={{marginLeft:'20px'}}>
-        <Link to='/center'>
-        고객센터
-        </Link>
-      </li>
     </ul>
-    <Link  to={!isLoggedIn ? '/Login':'/Mypage'} className='function_head_box login'>
-            <UserAddOutlined />
-            <div>마이페이지</div>
-          </Link>
+    
+    {userInfo&&userInfo[1]== 1 ? 
+      <div className='mobileadmin'>
+        <Link to='/Admin'>
+        관리자 입니다
+        </Link>
+      </div> 
+      :'' 
+    }
+   
   </div>
 :''}
-      <Link to='/' className='logo'>
+      <Link  onClick={e=>setNavi(false)} to='/' className='logo'>
         <img src={logow} alt='logo'/>
       </Link>
-      <div className='shopcart'>
+      <div  onClick={e=>setNavi(false)} className='shopcart'>
           
           <Link to={'/Cart'} className='function_head_box cart'>
             <ShoppingCartOutlined />

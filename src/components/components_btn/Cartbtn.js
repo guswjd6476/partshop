@@ -3,7 +3,7 @@ import { deleteCart,addCart } from '../../service/product';
 import { ShoppingCartOutlined,DeleteOutlined} from '@ant-design/icons';
 
 function AddCartbtn(props) {
-  const counter = props.counter&&!props.counter[0] ? 1 : props.counter&&props.counter[0].count
+  const counter = props.counter&&!props.counter[0] ? 1 : props.counter&&props.counter[0].count || props.counts
     const onClick=()=>{
     addCart(props.productid, props.userId, counter)
     .then(function (response) {
