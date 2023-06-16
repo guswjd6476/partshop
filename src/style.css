@@ -2134,7 +2134,15 @@ height: calc(100% - 60px);
     .noticecons>div:first-child{
         margin-bottom: 20px;
     }
-   
+    .shop_d_p{
+        display: block
+    }
+    .shop_d_p .dcprice{
+        margin-bottom: 20px;
+    }
+    /* .shop_d_P .countwrap{
+        margin-top: 20px;
+    } */
   
   }
   @media screen and (max-width: 500px) {
