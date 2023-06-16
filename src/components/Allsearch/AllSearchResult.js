@@ -9,7 +9,9 @@ import Countbtn from '../components_btn/Countbtn';
 import { AddCartbtn } from '../components_btn/Cartbtn';
 import Fixedbox from '../components_btn/Fixedbox';
 import SortingWrap from '../shop/shop_sort/SortingWrap';
-
+import MSortingWrap from '../shop/shop_sort/MSortingWrap';
+import MFunctionBtn from '../components_btn/MFunctionBtn';
+import {  PC, Tablet } from "../../MediaQuery"
 const AllSearchResult = ({ userId,setBack, filter,sb }) => {
 const location = useLocation()
 
@@ -34,7 +36,6 @@ let   matchCountArray =searchResult&&searchResult.map((item) => {
   }
   return matchCount;
 });
- console.log(searchArray,'searchArraysearchArraysearchArraysearchArraysearchArraysearchArray')
 const handleCountChange = (index, count, ids) => {
   setCounts(prevCounts => {
     const existingCount = prevCounts.find(obj => obj.id === ids);
@@ -98,10 +99,19 @@ useEffect(()=>{
 sortList(searchResult,sortOption);
 
   return (
-    <div className='searchresult displaybox'>
-    <FunctionBtn setGridStyle={setGridStyle} sortOption={sortOption} setSortOption ={setSortOption}/>
+    <div className='searchresult main displaybox'>
+       <PC>
+       <FunctionBtn setGridStyle={setGridStyle} sortOption={sortOption} setSortOption ={setSortOption}/>
     
     <SortingWrap onClick={onClick} setOnHide={setOnHide} onhide={onhide}  num={num} searchResult={searchResult}setSearchResult={setSearchResult} setSearchArray={setSearchArray} searchArray={searchArray}/>
+          </PC>
+
+          <Tablet>
+ 
+            <MSortingWrap setsearch={setsearch}  onClick={onClick} setOnHide={setOnHide} onhide={onhide}  num={num} searchResult={searchResult}setSearchResult={setSearchResult} setSearchArray={setSearchArray} searchArray={searchArray}/>
+            <MFunctionBtn setGridStyle={setGridStyle} sortOption={sortOption}  gridstyle={gridstyle} setSortOption ={setSortOption}/>
+          </Tablet>
+
     <ul  className={gridstyle == 1 ? 'productwrap1' :gridstyle == 2 ? 'productwrap2' : 'product_wrap'}>
         
     <Checkbox.Group
