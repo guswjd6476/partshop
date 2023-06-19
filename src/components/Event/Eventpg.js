@@ -51,15 +51,6 @@ function Eventpg({userInfo,setBack}) {
           </div>
         </div>
         <div className="qnacon"  dangerouslySetInnerHTML={{__html: notice&&notice[0].content}}></div>
-        {notice[0].answer ? 
-        <div  className="qnaanswer">
-        <div className="mr"> 답변</div>
-        <div  dangerouslySetInnerHTML={{__html: notice&&notice[0].answer}}></div>
-
-        </div>
-        :''
-        }
-      
        <Nextpost id={pathnum2}/>
        {uGrade === 1 &&  pathnum2 ==='qna'?
         <a className="astyle" href={`/Write/qnaanswer?&productid=${notice[0].id}`}>{notice[0].answer ?'답변수정' : '답변작성'}</a>

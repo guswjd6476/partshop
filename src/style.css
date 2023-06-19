@@ -2237,7 +2237,23 @@ color: #000;
     .iotcontains .maineventwrap:last-child{
         display: none !important;
     }
-   
+    .footer li{
+        font-size: 12px;
+    }
+    .footer_logo{
+        width: 100px;
+        padding: 5px;
+        margin-right: 5px;
+    }
+    .footer_d{
+        width: 120px;
+        padding: 5px;
+        margin-right: 5px;
+    }
+    .footer_d_d{
+        width: 90px;
+    }
+
   
   }
   @media screen and (max-width: 500px) {

@@ -14,7 +14,6 @@ const searchParams = new URLSearchParams(location.search);
 const num = searchParams.get('productid');
 useEffect(()=>{
   getPrevNext(num,id).then(function(response){
-    console.log(response.data,'data')
    if(response.data.length>1){
     setPrev(response.data[0])
     setNext(response.data[1])

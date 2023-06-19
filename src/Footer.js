@@ -33,7 +33,7 @@ const Footer = () => {
             <li>통신판매신고번호 : </li>
           </ul>
         </li>
-        <li>
+        <li className='footer_d_d'>
           <ul>
             <li>
               <a className='center' href='/center'>고객센터 ></a>
