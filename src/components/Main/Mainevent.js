@@ -1,15 +1,15 @@
 
 import { useState, useEffect } from 'react';
 import Pagetitle from '../components_btn/Pagetitle';
-import { getiot } from '../../service/product';
+import { getevent } from '../../service/product';
 import { Mainlinkto } from './Mainfunction';
 
 function Mainevent({cates}) {
   console.log(cates,'?')
-    const [iotlist, setIotlist] = useState()
+    const [eventlist, setEventlist] = useState()
   useEffect(()=>{
-    getiot().then(function(response){
-        setIotlist(response.data)
+    getevent().then(function(response){
+      setEventlist(response.data)
     })
   },[])
 
@@ -19,14 +19,13 @@ function Mainevent({cates}) {
       <Pagetitle value={'진행중인 이벤트'} main={true}/>
       <Mainlinkto cates={cates} num={4} value={'이벤트'} color={'b'}/>
       <div className='iotcontains'>
-        {iotlist && iotlist.slice(0, 2).map(value =>
-          <div className='mainiotwrap' key={value.id}>
-            <div className='mainIotimg'>
+        {eventlist && eventlist.slice(0, 2).map(value =>
+          <div className='maineventwrap' key={value.id}>
+            <div className='maineventimg'>
               <img src={value.thumb} />
             </div>
             <div>
-              <span>[{value.brand}]{value.pName}</span>
-              <p>{value.pDetail}</p>
+              <p>{value.title}</p>
             </div>
           </div>
         )}

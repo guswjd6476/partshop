@@ -763,7 +763,7 @@ justify-content: space-between;
     font-size: 18px;
 }
 .shop_main_detail{
-    width: calc(100% - 440px);
+    width: calc(100% - 420px);
 }
 
 /* 별점 */
@@ -823,7 +823,7 @@ line-height: 16px;
     font-weight: 900;
 }
 .shop_d_box>a>button, .cartbuybtn{
-    width: 100%;
+    width: 100% !important;
     background-color: #0b255b;
     color: #fff;
 }
@@ -1832,6 +1832,7 @@ height: calc(100% - 60px);
 }
 .iotcontains{
     display: flex;
+    flex-wrap: wrap;
 }
 .mainiotwrap{
     display: flex !important;
@@ -1840,7 +1841,45 @@ height: calc(100% - 60px);
     background-color: #fff;
     padding: 10px;
 }
+.maineventwrap{
+    display: block !important;
+    width: calc(50% - 10px);
+    margin-right: 10px;
+    background-color: #fff;
+    padding: 10px;
+}
+.eventpgCon{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
 
+.eventpgWrap{
+    width: calc(50% - 30px);   
+}
+.eventT{
+padding: 5px 0;
+font-size: 18px;
+font-weight: 900;
+text-align: left;
+color: #000;
+}
+.eventD{
+    padding: 5px 0;
+    display: flex;
+    justify-content: left;
+    font-size: 16px;
+    font-weight: 900;
+    color: #a1a1a1;
+}
+.maineventimg{
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+}
+.maineventimg img{
+    width: 100%;
+}
 .iotcontains .mainiotwrap:last-child{
     margin-right: 0px;
 }
@@ -1908,8 +1947,8 @@ height: calc(100% - 60px);
       width: 100%;
       
       overflow: hidden;
-      padding-left: 20px;
-      padding-right: 20px;
+      padding-left: 10px;
+      padding-right: 10px;
     }
    
     .navigation li{
@@ -2121,6 +2160,19 @@ height: calc(100% - 60px);
     .pricebox .product_d{
         font-size: 18px !important;
     }
+    .productwrap2 .btnsytle{
+        width: 70px;
+    }   
+    .productwrap2 .pricebox{
+        width: 80px;
+    }
+    .productwrap2 .productwrap2_wrap_div{
+        width: calc(100% - 100px);
+        margin-right: 10px;
+    }
+    .productwrap2 .other_wrap{
+        width: 80px;
+    }
   }
   /* 모바일 */
 
@@ -2128,10 +2180,15 @@ height: calc(100% - 60px);
     .productwrap1 .ant-checkbox-group{
         display: block !important;
     }
+    .productwrap2 .productwrap2_wrap_div{
+        width: 200px;
+    }
     .login_logo{
         width: 80%;
     }
-   
+    .productwrap2 .other_wrap{
+       display: none;
+    }
     .allbox{
         width: 100%;
     }
@@ -2174,6 +2231,13 @@ height: calc(100% - 60px);
     /* .shop_d_P .countwrap{
         margin-top: 20px;
     } */
+    .maineventwrap{
+        width: 100%;
+    }
+    .iotcontains .maineventwrap:last-child{
+        display: none !important;
+    }
+   
   
   }
   @media screen and (max-width: 500px) {

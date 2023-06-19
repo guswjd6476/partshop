@@ -28,6 +28,8 @@ function Writeproduct({cate,cates}) {
     moq :'',
     prepare :'',
     pDetail :'',
+    startday :'',
+    lastday :'',
 })
   const [value, setValue] = useState('');
   const [title, setTitle] = useState('');
@@ -77,20 +79,27 @@ function Writeproduct({cate,cates}) {
     // })
     uploadproduct(title,value,productinfo.catenum,
 productinfo.subcatenum,productinfo.pName,productinfo.pquantity,productinfo.pPrice,productinfo.inch, productinfo.material,productinfo.brand,productinfo.color, productinfo.dcrate,
-productinfo.moq,productinfo.prepare,productinfo.pDetail)
+productinfo.moq,productinfo.prepare,productinfo.pDetail,productinfo.startday,productinfo.lastday)
       .then(response => {
         console.log(response.data)
-        if(productinfo.catenum !==3) {
+        if(productinfo.catenum <3) {
         axios.post('https://port-0-partshopback-lme62alhk7lvdw.sel4.cloudtype.app/api/imagethumb', formData, {
           headers: {
             'Content-Type': 'multipart/form-data;charset=UTF-8'
           }
         })        
-      }else{
+      }else if(productinfo.catenum === 3){
       axios.post('https://port-0-partshopback-lme62alhk7lvdw.sel4.cloudtype.app/api/fileboard', formDatas, {
         headers: { 'Content-Type': 'multipart/form-data;charset=UTF-8'}
       });
       axios.post('https://port-0-partshopback-lme62alhk7lvdw.sel4.cloudtype.app/api/imagethumbs', formData, {
+          headers: {
+            'Content-Type': 'multipart/form-data;charset=UTF-8'
+          }
+        })
+    }else if(productinfo.catenum === 4){
+     
+      axios.post('https://port-0-partshopback-lme62alhk7lvdw.sel4.cloudtype.app/api/eventthumbs', formData, {
           headers: {
             'Content-Type': 'multipart/form-data;charset=UTF-8'
           }

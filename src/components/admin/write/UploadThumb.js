@@ -46,7 +46,7 @@ function UploadThumb({num,fileList, setFileList}) {
           onChange={handleChange}
           beforeUpload={() => false}
         >
-          {num ===3?(fileList.length >= 1 ? null : uploadButton) : (fileList.length >= 5 ? null : uploadButton)}
+          {num ===3 || 4?(fileList.length >= 1 ? null : uploadButton) : (fileList.length >= 5 ? null : uploadButton)}
         </Upload>
         <Modal open={previewOpen} title={previewTitle} footer={null} onCancel={handleCancel}>
           <img

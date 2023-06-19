@@ -219,10 +219,18 @@ const updatemain = async (a1,a2,a3,a4,a5,a6,a7,a8,b1,b2,b3,b4,b5,b6,b7,b8) => {
 const getiot = async () => {
   return fetchData('/api/Alliotlist');
 };
-const uploadproduct = async (title,content,catenum,subcatenum,pName,pquantity,pPrice,inch,material,brand,color,dcrate,moq,prepare,detail) => {
-  return fetchData('/api/uploadproduct',{title,content,catenum,subcatenum,pName,pquantity,pPrice,inch,material,brand,color,dcrate,moq,prepare,detail});
+const uploadproduct = async (title,content,catenum,subcatenum,pName,pquantity,pPrice,inch,material,brand,color,dcrate,moq,prepare,detail,startday,lastday) => {
+  return fetchData('/api/uploadproduct',{title,content,catenum,subcatenum,pName,pquantity,pPrice,inch,material,brand,color,dcrate,moq,prepare,detail,startday,lastday});
+};
+
+const getevent = async () => {
+  return fetchData('/api/getevent');
+};
+const getsubevent = async (id) => {
+  return fetchData('/api/getsubevent',{id});
 };
 
 
-  export { addCart ,getCart,deleteCart,productdetail,getproduct,addsCart,recommendlist,getSort,getAllItem,Wnotice,getItemcon,idQna,Wqna,Wfaq,Wqnaanswer,getPrevNext,updateItem,Allgetproduct,updatemain,getmain,getiot,Allproductdetail,updatenames,uploadproduct};
+
+  export { addCart ,getCart,deleteCart,productdetail,getproduct,addsCart,recommendlist,getSort,getAllItem,Wnotice,getItemcon,idQna,Wqna,Wfaq,Wqnaanswer,getPrevNext,updateItem,Allgetproduct,updatemain,getmain,getiot,Allproductdetail,updatenames,uploadproduct,getevent,getsubevent};
 

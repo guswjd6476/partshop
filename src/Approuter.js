@@ -19,6 +19,7 @@ import Center from './components/other/Center/Center';
 import Itemcon  from './components/other/Center/Itemcon';
 import Updatecon from './components/other/Center/Write/Updatecon';
 import Event from './components/Event/Event';
+import Eventpg from './components/Event/Eventpg';
 import { useEffect, useState } from 'react';
 import {  PC, Tablet } from "./MediaQuery"
 import MHeaer from './MHeaer';
@@ -68,6 +69,7 @@ const [back, setBack] =useState(true)
               <Route path="/Update/:id" element={<Updatecon setBack={setBack}/>} />
               <Route path="/center/:qna/:noticecon" element={<Itemcon setBack={setBack} userInfo={userInfo}/>} />
               <Route path="/event" element={<Event setBack={setBack} userInfo={userInfo}/>} />
+              <Route path="/event/:id" element={<Eventpg setBack={setBack} userInfo={userInfo}/>} />
            </Routes>
            {show ?<Footer/> : ''}
         </BrowserRouter>
@@ -99,7 +101,7 @@ const [back, setBack] =useState(true)
               <Route path="/Sub/:id" element={<Sub setBack={setBack}/>} />
               <Route path="/Sub" element={<Sub setBack={setBack}/>} />
               <Route path="/event" element={<Event setBack={setBack} userInfo={userInfo}/>} />
-     
+              <Route path="/event/:id" element={<Eventpg setBack={setBack} userInfo={userInfo}/>} />
               <Route path="/center" element={<Center setBack={setBack}/>} />
            </Routes>
            {show ?<Footer/> : ''}
