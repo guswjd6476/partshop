@@ -1,11 +1,8 @@
-import {  Link} from 'react-router-dom';
-import { AddCartbtn } from '../../components_btn/Cartbtn';
+
 import { sortList,pricechange } from '../../../service/function';
 import { useEffect, useState } from 'react';
-import { Checkbox,Tag} from 'antd';
-
-import Countbtn from '../../components_btn/Countbtn';
-import Needsbtn from '../../components_btn/Needsbtn';
+import { Checkbox} from 'antd';
+import Productform from './Productform';
 
 const ProductList  = (props)=>{
   const [counts, setCounts] = useState([]);
@@ -74,80 +71,7 @@ useEffect(()=>{
         {filteredArray&&filteredArray.map((value, index ) => {
            const pathValue = props.pathnum2 ? `/${props.pathnum1}/${props.pathnum2}/${value.id}` : `/${props.pathnum1}/${value.subcategory}/${value.id}`;
            return(
-            <div className='productbox' key={value.id}>
-        
-             
-            {props.gridstyle !== 2 ? <Checkbox value={value.id}></Checkbox> : ''}
-            <div className="product_list" key={`${value.id}-${index}`}>
-            <div className={props.gridstyle == 0 ?'gridcolum' : 'gridflex'}>
-              <Link className='product_pic'  to={pathValue}>
-                <img src={value.img1}/>
-              </Link>
-              <div className={props.gridstyle == 1 ? 'gridcolum' : 'gridflex'}>
-              <Link  to={pathValue}>
-              <div className='productwrap2_wrap_div'>
-              <div className='productwrap2_wrap'>
-                <div className='product_title'>
-                  <div className='f12 brandt'>[{value.brand}] {props.gridstyle == 0 ? <span className='valueid f12'>[상품코드 : {value.id}]</span> : ''}</div>
-                  <div className={value.pName !==' '?'product_d f14':'none'}>{value.pName}{props.gridstyle !== 0 ? <span className='valueid f12'>[상품코드 : {value.id}]</span> : ''}</div>
-                </div>
-                <div className='product_flex'>
-                  <p className={value.inch !==''?'product_d f12':'none'}>{value.inch}인치</p>
-                
-                  <p className={value.material !==''?'product_d f12':'none'} >{value.material}</p>
-                  <p className={value.color !==''?'product_d f12':'none'} > {value.color}</p>
-                </div>
-              </div>
-              <div className={value.pDetail !=='' ?'f12 product_d detail':'none'} >{value.pDetail}</div>
-              </div>
-              <div className='pricebox'>
-                <p className={value.pCost !=='' ?'tx f14':'none'} >{pricechange(value.pCost)}<span className='tx f14'>원</span></p>
-                <span className='dcvalue'>{value.dcrate}%</span>
-                <p className={value.pPrice !==''?'product_d f22':'none'} >{pricechange(value.pPrice)}<span className='f18'>원</span></p>
-              </div>
-              </Link>
-              
-              {props.gridstyle !== 0 ?
-              <>
-            <div className='other_wrap'>
-            <p className='othertag f12'><Tag className='navi'>m.o.q</Tag>{value.moq}</p>
-            <p className='f12'><Tag className='grey'>준비</Tag>약{value.prepare}일</p>
-            </div>
-            <div className='counterbtrn_wrap'>
-              <div className='testbox'>
-                {props.gridstyle == 2 ? <Checkbox value={value.id}></Checkbox> : ''}
-                <Countbtn ids={value.id} key={index} index={index} onCountChange={handleCountChange} />
-              </div>
-              <div className='functionbtn_wrap'>
-              <Needsbtn />
-              <AddCartbtn counts={counts} productid={value.id} userId={props.userId}/>
-              </div>
-            </div>
-            </>
-            :''
-            }
-              </div>
-            </div>
-            {props.gridstyle == 0 ?
-            <>
-            <div className='other_wrap'>
-             <p className='othertag f12'><Tag className='navi'>m.o.q</Tag>{value.moq}</p>
-             <p className='f12'><Tag className='grey'>준비</Tag>약{value.prepare}일</p>
-           </div>
-            <div className='counterbtrn_wrap'>
-              <div className='testbox'>
-                {props.gridstyle == 2 ? <Checkbox value={value.id}></Checkbox> : ''}
-                <Countbtn ids={value.id} key={index} index={index} onCountChange={handleCountChange} />
-              </div>
-              <Needsbtn counter={counts} productid={value.id} userId={props.userId}/>
-              <AddCartbtn counter={counts} productid={value.id} userId={props.userId}/>
-            </div>
-            </>
-            :''
-            }
-          </div>
-          </div>
-          
+          <Productform counts={counts} index={index} pathValue={pathValue} userId={props.userId} gridstyle={props.gridstyle} handleCountChange={handleCountChange} value={value}/>
           )
   })}
   </Checkbox.Group>

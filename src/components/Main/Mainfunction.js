@@ -93,7 +93,6 @@ const actionButStyle = {
 
   };
 const productStyle = {
-    height: "300px",
     borderRadius: 10,
     display: "flex",
     justifyContent: "center",

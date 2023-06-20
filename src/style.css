@@ -571,6 +571,9 @@ justify-content: space-between;
     display: flex;
     flex-wrap: wrap;
 }
+.product_wrap.wide .productbox{
+    width: 100% !important;
+}
 .product_wrap .productbox{
     border: 1px solid #bbbbbb;
     width: calc(20% - 8px);
@@ -1813,15 +1816,21 @@ flex-wrap: wrap;
     height: 100%;
     display: block;
 }
-.cardbox .card>div{
-    height: 60px;
+
+.cardp{
+    background-color: #fff;
     font-size: 18px;
-    font-weight: 700;
     color: #000;
+    font-weight: 700;
+    padding: 10px;
+    margin-top: 1.25rem !important;
 }
 .cardbox>a>img{
 width: 100%;
-height: calc(100% - 60px);
+height: 200px;
+}
+.slick-track{
+    padding: 10px 0;
 }
 .modalbox{
     cursor: pointer;
@@ -1856,6 +1865,7 @@ height: calc(100% - 60px);
 
 .eventpgWrap{
     width: calc(50% - 30px);   
+    display: block;
 }
 .eventT{
 padding: 5px 0;
@@ -1865,7 +1875,7 @@ text-align: left;
 color: #000;
 }
 .eventD{
-    padding: 5px 0;
+    padding-bottom: 5px ;
     display: flex;
     justify-content: left;
     font-size: 16px;
@@ -1942,6 +1952,13 @@ color: #000;
     text-align: center;
     transform: translate(-50%, -50%);
 }
+
+.cardbox .card{
+    box-shadow: 0 0.25rem 0.5rem 0 rgb(0 0 0 / 8%);
+    overflow: hidden;
+    border-radius: 0.25rem;
+    background-color: #fff;
+}
 @media screen and (max-width: 1480px) {
     .displaybox{
       width: 100%;
@@ -1965,9 +1982,13 @@ color: #000;
         transition: right 0.3s ease-in-out;
       }
       
+   
     .product_wrap .productbox{
         width: calc(25% - 8px);
     }
+    .product_wrap.wide .productbox{
+        width: 100% !important;
+      }
     .product_wrap .productbox:nth-child(4n) {
         margin-right: 0px;
     }
@@ -2253,7 +2274,17 @@ color: #000;
     .footer_d_d{
         width: 90px;
     }
-
+    .eventpgCon{
+        display: block;
+    }
+    .eventpgWrap{
+        width: 100%;
+        margin-bottom: 10px;
+    }
+    .eventpgWrap:last-child{
+        margin-bottom: 0px;
+    }
+    
   
   }
   @media screen and (max-width: 500px) {
@@ -2266,6 +2297,10 @@ color: #000;
     .imgslider{
         width: 100%;
         flex-direction: row;
+    }
+    .maineventimg img{
+        width: 100%;
+        height: 100%;
     }
     /* .product_wrap .productbox{
         width: 100%;

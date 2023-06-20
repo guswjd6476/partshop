@@ -23,7 +23,7 @@ const updatemains = ()=>{
 }
   return (
     <>
-    <div style={{ position: "relative" }}>
+    <div className="carousel_wrap" style={{ position: "relative" }}>
       <Button
         style={{
           ...actionButStyle,
