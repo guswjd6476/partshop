@@ -212,8 +212,8 @@ const getmain = async () => {
 //     },
 //   });
 // }
-const updatemain = async (a1,a2,a3,a4,a5,a6,a7,a8,b1,b2,b3,b4,b5,b6,b7,b8) => {
-  return fetchData('/api/updatemain',{a1,a2,a3,a4,a5,a6,a7,a8,b1,b2,b3,b4,b5,b6,b7,b8});
+const updatemain = async (a1,a2,a3,a4,a5,a6,a7,a8,a9,a10,b1,b2,b3,b4,b5,b6,b7,b8,b9,b10) => {
+  return fetchData('/api/updatemain',{a1,a2,a3,a4,a5,a6,a7,a8,a9,a10,b1,b2,b3,b4,b5,b6,b7,b8,b9,b10});
 };
 
 const getiot = async () => {
