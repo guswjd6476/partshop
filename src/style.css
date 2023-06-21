@@ -303,12 +303,19 @@
 
 
 /* 헤더 */
-.header_box .logo img{
+.header .logo {
     width: 150px;
-}
-.logo{
+    height: auto;
     display: block;
     cursor: pointer;
+}
+
+.search_btn{
+    cursor: pointer;
+}
+.logo img{
+    width: 100%;
+    height: 100%;
 }
 .displaybox{
     margin: auto;
@@ -320,9 +327,23 @@
     align-items: center;
     justify-content: space-between;
 }
+.ant-popover-arrow{
+    display: none !important;
+}
 .search_bar{
+    margin: auto;
     display: flex;
-    width: calc(100% - 440px);
+    flex-direction: column;
+    width: 1440px;
+    padding: 20px;
+}
+.searchbar_title{
+    font-size: 20px;
+    font-weight: 900;
+}
+.ant-popover {
+    width: 100%;
+    border-radius:0px
 }
 
 .search_bar>input{
@@ -355,7 +376,7 @@
     justify-content: space-between;
 }
 .function_head svg, .function_head a{
-    color: #0b255b;
+    color: #000;
 
 }
 .function_head_box{
@@ -370,22 +391,19 @@
 
 /* 탑 카테고리 네비게이션 메뉴 */
 .navigation{
-    justify-content: left;
-    padding: 10px 0 !important;
-    background: unset;
-    padding-left: 180px !important;
+    justify-content: center;
+    background: unset;;
 }
 .ant-menu-item-selected{
-    color: #fff !important;
+    color: #000 !important;
     text-decoration: underline !important;
 }
 .ant-menu-item:hover{
-    color: #fff !important;
+    color: #000 !important;
     text-decoration: underline !important;
 }
 .navigation li{
-    color: #fff ;
-    font-size: 24px;
+    font-size: 20px;
     font-weight: 900;
     margin-right: 30px !important;
     font-family: 'Roboto', sans-serif !important;
@@ -398,12 +416,22 @@
     width: 100%;
     background-color: #d9d9d9;
 }
-
+.header{
+    border-bottom: 1px solid #676565;
+    background-color: #fff;
+}
+.header_wrap{
+    display: flex;
+    height: 100px;
+    align-items: center;
+    justify-content: space-between;
+}
 .header_bottom_bg{
     height: 67px;
+    position: absolute;
+    z-index: -1;
     width: 100%;
-
-    background-color: #0b255b;
+    background-color: #404d69;
 }
 /* .titlew{
     color: #fff !important;
@@ -1459,7 +1487,13 @@ width: 300px;
 .fixed{
     position: fixed;
     right: 20px;
-
+}
+.fix{
+    width: 100%;
+    position: fixed;
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
 }
 .divbox{
     display: flex;
@@ -1879,7 +1913,7 @@ color: #000;
     }
    
     .navigation li{
-        font-size: 20px;
+        font-size: 18px;
         margin-right: 15px !important;
     }
     .shop_div{
