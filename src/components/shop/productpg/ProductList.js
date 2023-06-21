@@ -63,7 +63,7 @@ useEffect(()=>{
 },[counts,check])
 
   return (
-    <div className={props.gridstyle == 1 ? 'productwrap1' : props.gridstyle == 2 ? 'productwrap2' : 'product_wrap'}>
+    <div className='product_wrap'>
          <Checkbox.Group
     
     onChange={onChange}
@@ -71,7 +71,7 @@ useEffect(()=>{
         {filteredArray&&filteredArray.map((value, index ) => {
            const pathValue = props.pathnum2 ? `/${props.pathnum1}/${props.pathnum2}/${value.id}` : `/${props.pathnum1}/${value.subcategory}/${value.id}`;
            return(
-          <Productform counts={counts} index={index} pathValue={pathValue} userId={props.userId} gridstyle={props.gridstyle} handleCountChange={handleCountChange} value={value}/>
+          <Productform key={value.id} counts={counts} index={index} pathValue={pathValue} userId={props.userId} gridstyle={props.gridstyle} handleCountChange={handleCountChange} value={value}/>
           )
   })}
   </Checkbox.Group>

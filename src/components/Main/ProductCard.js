@@ -11,7 +11,6 @@ const ProductCard = ({ i, style,edit,able,data,datas,setMi,mi }) => {
     function srcobj(obj, index) {
  
         const key = edit == 1 ? `a${index+1}`:`b${index+1}`;
-        console.log(key,'iiii')
         return obj[key];
       }
     const rValue = datas&&datas.find(value => value.id == srcobj(mi,i))

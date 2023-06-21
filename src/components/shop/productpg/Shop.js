@@ -13,7 +13,7 @@ function Shop({cate,userId,setBack}) {
   const location = useLocation();
   const [searchArray, setSearchArray] = useState([])
   const [search, setsearch] = useState([])
-  const [onhide, setOnHide] = useState(false)
+  const [onhide, setOnHide] = useState(true)
   const pathnum1 = location.pathname.split('/')[1]
   const pathnum2 = location.pathname.split('/')[2]
   const [allplist,setAllPlist] = useState([])

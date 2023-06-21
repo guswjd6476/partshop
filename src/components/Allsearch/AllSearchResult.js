@@ -15,7 +15,7 @@ import {  PC, Tablet } from "../../MediaQuery"
 const AllSearchResult = ({ userId,setBack, filter,sb }) => {
 const location = useLocation()
 
-  const [onhide, setOnHide] = useState(false)
+  const [onhide, setOnHide] = useState(true)
 const searchParams = new URLSearchParams(location.search);
 const num = searchParams.get('productid');
 const [lastCheck, setLastCheck] =useState([])
