@@ -23,7 +23,7 @@ return(
         <div className='product_title'>
           <div className='f12 brandt'>[{value.brand}] 
           <span className='valueid f12'>[상품코드 : {value.id}]</span>  </div>
-          <div className={value.pName !==' '?'product_d f14':'none'}>{value.pName}</div>
+          <div className={value.pName !==' '?'product_d pName f14':'none'}>{value.pName}</div>
         </div>
         <div className='flex pinfobox'>
           <p className={value.inch !==''?'product_d f12':'none'}>{value.inch}인치</p>
@@ -69,33 +69,44 @@ return(
         <Link className='product_pic_bg'  to={pathValue}>
         </Link>
         <img src={value.img1}/>
-        <div className='product_de abpostion flex j'>
+        <div className='product_de  flex j'>
           <div className='product_title'>
               <div className='f12 brandt'>[{value.brand}] 
               <span className='valueid f12'>[상품코드 : {value.id}]</span>  </div>
-              <div className={'f12 product_d detail'} >{value.pDetail}</div>
-  
               <div className='flex pinfobox'>
               <p className={value.inch !==''?'product_d f12':'none'}>{value.inch}인치</p>
               <p className={value.material !==''?'product_d f12':'none'} >{value.material}</p>
               <p className={value.color !==''?'product_d f12':'none'} > {value.color}</p>
             </div>
+              <div className={'f12 product_d detail'} >{value.pDetail}</div>
+  
+              
           </div>
-          <div className='other_wrap'>
-            <p className='othertag f12'><Tag className='navi'>m.o.q</Tag>{value.moq}</p>
-            <p className='f12'><Tag className='grey'>준비</Tag>약{value.prepare}일</p>
-          </div>
+          
         </div>
       </Link>
       <div>
       <div className='flex flexc'>
-      <div className={value.pName !==' '?'product_d ':'none'}>{value.pName}</div>
+
       <div className='flex j'>
+      <div>
+      <div className={value.pName !==' '?'product_d ':'none'}>{value.pName}</div>
       <div className='pricebox'>
         <p className={value.pCost !=='' ?'tx f14':'none'} >{pricechange(value.pCost)}<span className='tx f14'>원</span></p>
         <span className='dcvalue'>{value.dcrate}%</span>
         <p className={value.pPrice !==''?'product_d f20':'none'} >{pricechange(value.pPrice)}<span className='f18'>원</span></p>
       </div>
+      <div>
+      </div>
+     
+        
+      </div>
+
+    <div>
+      <div className='other_wrap'>
+            <p className='othertag f12'><Tag className='navi'>m.o.q</Tag>{value.moq}</p>
+            <p className='f12'><Tag className='grey'>준비</Tag>약{value.prepare}일</p>
+          </div>
       <div className='counterbtrn_wrap'>
       <div className='testbox'>
         {gridstyle == 2 ? <Checkbox value={value.id}></Checkbox> : ''}
@@ -104,6 +115,8 @@ return(
       <Needsbtn counter={counts} productid={value.id} userId={userId}/>
       <AddCartbtn counter={counts} productid={value.id} userId={userId}/>
     </div>
+    </div>
+     
       </div>
       </div>
       </div>
@@ -148,7 +161,7 @@ return(
         {gridstyle == 2 ? <Checkbox value={value.id}></Checkbox> : ''}
         <Countbtn ids={value.id} key={index} index={index} onCountChange={handleCountChange} />
       </div>
-      <div>
+      <div className='gridbtnwrap'>
       <Needsbtn counter={counts} productid={value.id} userId={userId}/>
       <AddCartbtn counter={counts} productid={value.id} userId={userId}/>
       </div>

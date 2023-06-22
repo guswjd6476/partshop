@@ -16,7 +16,6 @@ function Main({edit,cates,shows,setBack}) {
      b1 : '', b2 : '', b3 :'', b4 :'', b5 :'', b6 :'', b7 :'', b8 :'',b9 :'',b10 :'',
      
 })
-console.log(mi,'?')
   const items = []
   const labels = ['New parts','Best parts','NZR Signature']
     for (let i = 0; i <= 2; i++) {
@@ -47,8 +46,8 @@ console.log(mi,'?')
 },[])
 
   return (
-    <div className="main ">
-      <div className='displaybox'>
+    <div className="main ptx">
+      <div className='mainslide'>
         <Mainslide/>
       </div>
       <div className='maintabs displaybox'>

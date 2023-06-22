@@ -35,7 +35,7 @@ function Itemcon({userInfo,setBack}) {
         <div className="notice_title">
           <div className="titletext">
             <span className="category">{notice[0].category}</span>
-            <span className="title">{notice[0].title}</span>
+            <span className="titles">{notice[0].title}</span>
           </div>
           <div className="titlebtn">
             <a className="astyle" href={`/Update/${pathnum2}?&productid=${notice[0].id}`}>수정</a>

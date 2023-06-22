@@ -42,6 +42,7 @@
     display: flex;
 }
 .flex.j{
+    align-items: center;
     justify-content: space-between;
 }
 .pricebox{
@@ -57,6 +58,9 @@
     top: 3px;
     left: 75px;
 }
+.w100{
+    width: 100% !important;
+}
 /* 컬러 */
 .navi{
     background-color: #0b255b;
@@ -67,9 +71,7 @@
     color: #fff;
 }
 /* 공통 */
-.displaybox{
-    width: 1440px;
-}
+
 .pageTbox{
     margin-bottom: 20px;
     position: relative;
@@ -145,10 +147,13 @@
   
 
 .main{
-    padding: 10px 0 80px 10px;
-    min-height: calc(100vh - 400px);
+    padding-bottom:  80px;
+    padding-top: 100px;
+    min-height: calc(100vh - 200px);
     position: relative;
-
+}
+.ptx{
+    padding-top: 0px !important;
 }
 .login_logo>a{
     width: 100%;
@@ -319,7 +324,8 @@
 }
 .displaybox{
     margin: auto;
-    width: 1440px;
+
+    width: 1600px;
 }
 .header_box{
     padding: 30px 10px !important;
@@ -341,12 +347,22 @@
     font-size: 20px;
     font-weight: 900;
 }
+.ant-popover-inner{
+
+    border-radius:0px !important;  
+}
 .ant-popover {
     width: 100%;
-    border-radius:0px
+    top: 100px !important;
 }
-
-.search_bar>input{
+.searchInner{
+    margin-top: 30px;
+}
+.search_b{
+    padding: 10px;
+    cursor: pointer;
+}
+.search_bar>.flex>input{
     height: 50px;
     border: none;
     border-bottom: 3px solid #0b255b;
@@ -354,16 +370,16 @@
     border-radius: 0px;
     margin-right: 20px;
 }
-.search_bar>input:focus{
+.search_bar>.flex>input:focus{
     border-color: #0b255b;
     box-shadow:unset;
     border-inline-end-width: unset;
     outline: 0;
 }
-.search_bar>input:hover{
+.search_bar>.flex>input:hover{
     border-color: #0b255b;
 }
-.search_bar>a{
+.search_bar>.flex>a{
     border: none;
     font-size: 20px;
     font-weight: 900;
@@ -377,7 +393,6 @@
 }
 .function_head svg, .function_head a{
     color: #000;
-
 }
 .function_head_box{
     display: flex;
@@ -385,12 +400,13 @@
     cursor: pointer;
 }
 
-.function_head_box svg{
+.function_head svg{
     font-size: 26px;
 }
 
 /* 탑 카테고리 네비게이션 메뉴 */
 .navigation{
+    border-bottom:unset !important;
     justify-content: center;
     background: unset;;
 }
@@ -417,6 +433,10 @@
     background-color: #d9d9d9;
 }
 .header{
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
     border-bottom: 1px solid #676565;
     background-color: #fff;
 }
@@ -476,7 +496,19 @@
     color: #a1a1a1;
     font-weight: 900;
 }
-
+.pName{
+    font-weight: 900 !important;
+}
+.gridbtnwrap{width: 100px;}
+.productwrap2_wrap_div{
+    height: 100px;
+}
+.product_d,.other_wrap,.pricebox{
+    color: #0b255b;
+}
+.grid3 .neeedsbtn{
+    margin-right: 0 !important;
+}
 .grid2 .product_d{
     font-size: 18px;
     color: #0b255b;
@@ -530,20 +562,22 @@ color: #000;
     position: relative;
     padding: 5px;
 }
-.mr10{
-    margin-right: 10px;
-}
+
 .grid2{
     padding: 10px;
     transition: all 0.5s ease-out;
 }
 .grid3wrap{
-    width: calc(100% - 80px);
+    width: calc(100% - 280px);
     justify-content: space-between;
 }
 .product_de{
     width: 60%;
     display: none;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%,0);
 }
 .grid2 .other_wrap{
     margin-right: 10px;
@@ -1341,7 +1375,7 @@ width: calc(100% - 100px);
 .totalp_wrap{
     display: flex;
     align-items: center;
-    width: 97%;
+    width: 100%;
     justify-content: space-between;
     position: absolute;
     bottom: 0;
@@ -1489,11 +1523,10 @@ width: 300px;
     right: 20px;
 }
 .fix{
+    background-color: #ffffffa2;
+}
+.mainslide{
     width: 100%;
-    position: fixed;
-    z-index: 1000;
-    display: flex;
-    justify-content: center;
 }
 .divbox{
     display: flex;
@@ -1903,15 +1936,82 @@ color: #000;
     border-radius: 0.25rem;
     background-color: #fff;
 }
-@media screen and (max-width: 1480px) {
+.tablewrap{
+    padding: 10px;
+    margin-top: 20px;
+}
+.tablediv{
+    border-bottom: 1px solid #676565;
+}
+.tableT{
+    width: 150px;
+    font-size: 18px;
+    font-weight: 900;
+    padding: 10px;
+}
+.tableD{
+    width: calc(100% - 150px);
+    font-size: 16px;
+    font-weight: 400;
+    padding: 10px;
+}
+/* sub */
+.title{
+    font-size: 1.8em;
+    font-weight: bold;
+    line-height: 2.5em;
+    margin-top: 50px;
+    text-align: center;
+}
+.subtitle{
+    font-size: 1.4em;
+    border-bottom: 1px solid #ded4c8;
+    padding-bottom: 5px;
+    font-weight: bold;
+    padding-top: 30px;
+    margin-bottom: 10px !important;
+}
+.textwrap>p{
+    margin-bottom: 5px;
+}
+.startT{
+    margin-bottom: 30px;
+}
+.inntertab{
+    cursor: pointer;
+    width: 150px;
+    font-size: 18px;
+    font-weight: 900;
+    text-align: center;
+    padding: 10px 0;
+}
+
+.inntertab:first-child>span{
+    width: 100% ;
+    display: block;
+    border-right: 1px solid #676565;
+}
+.innerdiv{
+   width: 100%;
+   justify-content: center;
+   padding: 10px;
+   border-bottom: 1px solid #676565;
+}
+.inntertab.clicked{
+border-bottom: 3px solid #0b255b;
+}
+@media screen and (max-width: 1600px) {
     .displaybox{
-      width: 100%;
-      
-      overflow: hidden;
-      padding-left: 10px;
-      padding-right: 10px;
-    }
-   
+        width: 100%;
+        
+        overflow: hidden;
+        padding-left: 10px;
+        padding-right: 10px;
+      }
+     
+}
+@media screen and (max-width: 1480px) {
+
     .navigation li{
         font-size: 18px;
         margin-right: 15px !important;
@@ -2076,6 +2176,12 @@ color: #000;
         padding: 0px 5px;
         width: 25px;
     }
+    .content_detail .ant-tabs-tab{
+        font-size: 14px;
+    }
+    .ant-tabs-tabpane img{
+        width: 100% !important;
+    }
   }
   /* 모바일 */
 
@@ -2153,7 +2259,12 @@ color: #000;
     .productbox.grid1:nth-child(2n) {
         margin-right: 0 !important;
     }
-  
+    .grid3 .other_wrap{
+        display: none;
+    }
+    .grid3 .pricebox{
+        width: 100px;
+    }
   }
   @media screen and (max-width: 500px) {
     .shop_img_wrap{

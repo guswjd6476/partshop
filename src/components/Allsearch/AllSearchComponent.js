@@ -8,7 +8,7 @@ const AllSearchComponent = ({userId,setFilter,setSb,sb,filter}) => {
     localStorage.setItem("filter", event.target.value);
   };
   return (
-      <>
+      <div className='flex'>
         <Input
           type="text"
           onChange={handleInputChange}
@@ -16,7 +16,7 @@ const AllSearchComponent = ({userId,setFilter,setSb,sb,filter}) => {
         />
         <Link className='allbtn' to={`/SearchResult?&productid=${filter}`}><SearchOutlined /></Link>
        
-      </>
+      </div>
   );
 };
 export default AllSearchComponent;

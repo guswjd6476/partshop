@@ -13,19 +13,11 @@ const Header = ({isLoggedIn,admin,userInfo,setFilter,sb,setSb,cates,filter}) => 
   const [isHeaderFixed, setIsHeaderFixed] = useState(false);
   const [searchon, setSearchon] = useState(false)
   useEffect(() => {
-    let prevScrollY = 0;
-  
     const handleScroll = () => {
-      const currentScrollY = window.scrollY;
-  
-      if (currentScrollY !== prevScrollY) {
-        if (currentScrollY > 80) {
-          setIsHeaderFixed(true);
-        } else {
-          setIsHeaderFixed(false);
-        }
-  
-        prevScrollY = currentScrollY;
+      if (window.scrollY > 100) {
+        setIsHeaderFixed(true);
+      } else if (window.scrollY <= 100 ) {
+        setIsHeaderFixed(false);
       }
     };
   
@@ -80,7 +72,7 @@ const Header = ({isLoggedIn,admin,userInfo,setFilter,sb,setSb,cates,filter}) => 
       key: '0',
     },
     {
-      label:  <div style={{marginLeft:'20px'}}>
+      label:  <div  className='function_head_box ' style={{marginLeft:'20px'}}>
       <Link to='/center'>
       고객센터
       </Link>
@@ -109,6 +101,7 @@ const Header = ({isLoggedIn,admin,userInfo,setFilter,sb,setSb,cates,filter}) => 
     }:''
   ];
   const [open, setOpen] = useState(false);
+  const serachA = ['AGV','BOARD','WHEEL','SENSOR','MOTER']
   const hide = () => {
     setOpen(false);
   };
@@ -136,6 +129,12 @@ selectedKeys={[...pathKeys, `/${pathKeys[0]}`]} mode="horizontal" items={newItem
       <div className='search_bar'>
         <div className='searchbar_title'>검색어를 입력해주세요</div>
         <AllSearchComponent onClick={hide} filter={filter} userId={admin&&admin.split(',')[0]} setSb={setSb} sb={sb} setFilter={setFilter}/>
+        <div className='searchInner'>
+          <div className='searchbar_title'>인기검색어</div>
+          <div className='flex'>
+            {serachA.map(value=><div className='search_b'><SearchOutlined /> {value}</div>)}
+          </div>
+        </div>
       </div>
     }
       trigger="click"

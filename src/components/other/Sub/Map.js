@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 
+
 const { kakao } = window;
 function Map() {
     const [map,setMap] = useState(null);
@@ -24,7 +25,7 @@ function Map() {
     },[])
 
     return (
-      <div id="map" style={{ width:"100%", height:"400px"}}></div>
+        <div id="map" style={{ width:"100%", height:"400px"}}></div>
     )
   }
   
