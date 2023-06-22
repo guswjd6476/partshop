@@ -41,12 +41,18 @@ function Shop({cate,userId,setBack}) {
   }
  
   return (
+    <>
+    {/* <div className="innerban">
+        <img src='https://guswjd6476.speedgabia.com/thumb/ban1.jpg'/>
+      </div> */}
     <div className="shop main displaybox">
+         
       {!pathnum2 ?
       <Crumb1 num={pathnum1}/>
       :
       <Crumb2 num1={pathnum1} num2={pathnum2}/>
       }
+   
       <div className='shop_div'>
         <div className='shop_sort'>
           <Sortnavi cate={cate} pathnum={pathnum1}/>
@@ -67,6 +73,7 @@ function Shop({cate,userId,setBack}) {
       </div>
         
     </div>
+    </>
   );
 }
 

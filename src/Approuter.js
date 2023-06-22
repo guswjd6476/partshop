@@ -68,7 +68,7 @@ const [back, setBack] =useState(true)
               <Route path="/center/:id" element={<Center setBack={setBack}/>} />
               <Route path="/Write/:id" element={<Writenotice setBack={setBack}/>} />
               <Route path="/Update/:id" element={<Updatecon setBack={setBack}/>} />
-              <Route path="/center/:qna/:noticecon" element={<Itemcon setBack={setBack} userInfo={userInfo}/>} />
+              <Route path="/center/:qna/:noticecon" element={<Itemcon setBack={setBack} isLoggedIn={isLoggedIn} userInfo={userInfo}/>} />
               <Route path="/event" element={<Event setBack={setBack} userInfo={userInfo}/>} />
               <Route path="/event/:id" element={<Eventpg setBack={setBack} userInfo={userInfo}/>} />
               <Route path="/PROJECT" element={<Project setBack={setBack} userInfo={userInfo}/>} />
@@ -107,7 +107,9 @@ const [back, setBack] =useState(true)
               <Route path="/event/:id" element={<Eventpg setBack={setBack} userInfo={userInfo}/>} />
               <Route path="/center" element={<Center setBack={setBack}/>} />
               <Route path="/PROJECT" element={<Project setBack={setBack} userInfo={userInfo}/>} />
+              <Route path="/center/:id" element={<Center setBack={setBack}/>} />
               <Route path="/PROJECT/:id" element={<Project setBack={setBack} userInfo={userInfo}/>} />
+              <Route path="/center/:qna/:noticecon" element={<Itemcon setBack={setBack} isLoggedIn={isLoggedIn} userInfo={userInfo}/>} />
            </Routes>
            {show ?<Footer/> : ''}
         </BrowserRouter>

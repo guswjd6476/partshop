@@ -12,8 +12,8 @@ function Center({setBack}) {
   const pathnum1 = location.pathname.split('/')[1]
   const pathnum2 = location.pathname.split('/')[2]
   const userArray = JSON.parse(localStorage.getItem('userInfo'))
-  const user= userArray[0]
-  const userGrade= userArray[1]
+  const user= userArray&&userArray[0]
+  const userGrade= userArray&&userArray[1]
   useEffect(()=>{setBack(true)},[])
     return (
       <div className="main displaybox">

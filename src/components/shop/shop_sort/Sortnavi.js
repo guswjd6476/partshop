@@ -7,7 +7,7 @@ function Sortnavi(props) {
 
   return (
     <div className='shop_sort'>
-    <div className='sortTitle'>세부카테고리</div>
+    <div className='sortTitle'>CATEGORIES</div>
     <ul className='sort_navi'>
       {props.cate&&props.cate.filter(value=>value.category==props.pathnum).map((value,index)=>
       <li className={pathKeys == value.subcategory ? 

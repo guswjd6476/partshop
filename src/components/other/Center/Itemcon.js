@@ -5,7 +5,7 @@ import { Button } from "antd";
 import Leftnavi from "../Leftnavi";
 import { Crumb1,Crumb2 } from "../../components_btn/Breadcrums";
 import Nextpost from "./Nextpost";
-function Itemcon({userInfo,setBack}) {
+function Itemcon({userInfo,setBack,isLoggedIn}) {
   const navigate = useNavigate();
     const location = useLocation();
     const [notice, setNotice] = useState('null')
@@ -14,8 +14,10 @@ function Itemcon({userInfo,setBack}) {
     const uGrade = userInfo&&userInfo[1]
     const searchParams = new URLSearchParams(location.search);
     const num = searchParams.get('productid');
+    
+    console.log(isLoggedIn,'???')
     useEffect(()=>{
-      if(!userInfo){
+      if(!isLoggedIn){
         alert('로그인후 이용 가능합니다')
         navigate("/Login");
       }

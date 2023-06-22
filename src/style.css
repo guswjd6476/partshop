@@ -164,6 +164,14 @@
     width: 100%;
     height: 100%;
 }
+/* .innerban{
+    width: 100%;
+    height: 400px;
+}
+.innerban img{
+width: 100%;
+height: 100%;
+} */
 /* innerSearch */
 .sdiv{
     
@@ -660,45 +668,44 @@ margin-right: 5px;
     margin-right: 40px;
 }
 .sortTitle{
-    background-color: #0b255b;
-    color: #fff;
-    padding: 10px;
+    color: #000;
+    padding: 10px 0px  20px;
+
     font-weight: 900;
     font-size: 18px;
-    margin-bottom: 5px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #676565;
 }
 /* 왼쪽 네비게이션 색상 들어가는 부분 */
 .sort_navi>li{
     cursor: pointer;
     /* background-color: #0b255b; */
-    padding: 10px 10px;
-    border-left: 1px solid #a1a1a1;
-    border-right: 1px solid #a1a1a1;
-    border-top: 1px solid #a1a1a1;
+   padding: 10px 0;
+    
 }
-.sort_navi>li:last-child{
-    border-bottom: 1px solid #a1a1a1;
-}
+
 
 .sort_navi>li>a{
     width: 100%;
     height: 100%;
     display: block;
-    color: #bbbbbb;
-    font-weight: 900;
+    color: #000;
+    font-weight: 100;
     font-size: 18px;
 }
-.sort_navi>li:hover{
+/* .sort_navi>li:hover{
     background-color: #0b255b
-}
+} */
 .sort_navi>li:hover a,.sort_navi>li:hover {
-    color: #fff;
+    color: #000;
+    font-weight: 900;
 }
-.sort_navi>li.active{
+/* .sort_navi>li.active{
     background-color: #0b255b
-}
+} */
 .sort_navi>li.active a, .sort_navi>li.active{
-    color: #fff ;
+    color: #000 ;
+    font-weight: 900;
 }
 .shop_content{
     width: calc(100% - 200px);
@@ -1041,7 +1048,7 @@ margin-bottom: 10px;
     color: #fff;
 }
 .menu-bar {
-    z-index: 60;
+    z-index: 1001;
     position: fixed;
     top: 0;
     right: -300px; /* 초기에 오른쪽으로 숨김 */
