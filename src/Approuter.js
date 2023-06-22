@@ -23,6 +23,7 @@ import Eventpg from './components/Event/Eventpg';
 import { useEffect, useState } from 'react';
 import {  PC, Tablet } from "./MediaQuery"
 import MHeaer from './MHeaer';
+import Project from './components/project/Project';
 
 const Approuter = ({setToken,cates,setCates,isLoggedIn,userInfo,setUserInfo,cate,setCate})=> {
   
@@ -70,6 +71,8 @@ const [back, setBack] =useState(true)
               <Route path="/center/:qna/:noticecon" element={<Itemcon setBack={setBack} userInfo={userInfo}/>} />
               <Route path="/event" element={<Event setBack={setBack} userInfo={userInfo}/>} />
               <Route path="/event/:id" element={<Eventpg setBack={setBack} userInfo={userInfo}/>} />
+              <Route path="/PROJECT" element={<Project setBack={setBack} userInfo={userInfo}/>} />
+              <Route path="/PROJECT/:id" element={<Project setBack={setBack} userInfo={userInfo}/>} />
            </Routes>
            {show ?<Footer/> : ''}
         </BrowserRouter>
@@ -103,6 +106,8 @@ const [back, setBack] =useState(true)
               <Route path="/event" element={<Event setBack={setBack} userInfo={userInfo}/>} />
               <Route path="/event/:id" element={<Eventpg setBack={setBack} userInfo={userInfo}/>} />
               <Route path="/center" element={<Center setBack={setBack}/>} />
+              <Route path="/PROJECT" element={<Project setBack={setBack} userInfo={userInfo}/>} />
+              <Route path="/PROJECT/:id" element={<Project setBack={setBack} userInfo={userInfo}/>} />
            </Routes>
            {show ?<Footer/> : ''}
         </BrowserRouter>

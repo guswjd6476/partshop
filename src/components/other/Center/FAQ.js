@@ -34,7 +34,7 @@ console.log(notice,'notice변화추이')
             <div className="shop_content_box">
              <Collapse accordion>
               {notice&&notice.map(value=>(
-                <Panel header={<div className="tablediv left"><span className="category">{value.category} </span> <span>{value.title}</span></div>} key={value.id}>
+                <Panel header={<div className="tabledivs left"><span className="category">{value.category} </span> <span>{value.title}</span></div>} key={value.id}>
                 <p dangerouslySetInnerHTML={{__html:value.content}}></p>
               </Panel>
               ))}

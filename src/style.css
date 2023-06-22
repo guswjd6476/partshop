@@ -708,7 +708,6 @@ margin-right: 5px;
     min-height: 400px;
 }
 .shop_content_1{
-    padding: 20px;
     width: calc(100% - 200px);
     position: relative;
     
@@ -1615,7 +1614,7 @@ border-right: 1px solid #a1a1a1;
     color: #fff;
     margin-right: 20px;
 }
-.tablediv{
+.tabledivs{
     display: flex;
     justify-content: space-between;
     color: #000;

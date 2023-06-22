@@ -25,7 +25,7 @@ function QNA() {
           title: 'title',
           dataIndex: 'title',
           key: 'title',
-          render: (_,record) => <Link className="tablediv" to={`/center/qna/Qnacon?&productid=${record.id}` }><span>{record.title}</span>
+          render: (_,record) => <Link className="tabledivs" to={`/center/qna/Qnacon?&productid=${record.id}` }><span>{record.title}</span>
           {record.answer ? <span className="answerbox done">답변완료</span> :  <span className="answerbox">답변대기</span>}
           </Link>,
         },
