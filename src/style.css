@@ -2262,7 +2262,11 @@ border-bottom: 3px solid #0b255b;
         display: none;
     }
     .grid3 .pricebox{
-        width: 100px;
+        width: 90px;
+    }
+    .grid3 .gridbtnwrap,.grid3 .neeedsbtn,.grid3 .cartbtn{width: 80px;}
+    .productwraps{
+        width: 200px;
     }
   }
   @media screen and (max-width: 500px) {

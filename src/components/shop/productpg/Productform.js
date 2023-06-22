@@ -127,7 +127,7 @@ return(
         <img src={value.img1}/>
       </Link>
       <Link className='flex grid3wrap'  to={pathValue}>
-      <div >
+      <div className='productwraps'>
       <div className='productwrap2_wrap'>
         <div className='product_title'>
           <div className='f12 brandt'>[{value.brand}] 

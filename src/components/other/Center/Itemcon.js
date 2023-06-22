@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
-import { useLocation } from 'react-router-dom';
+import { useLocation,useNavigate } from 'react-router-dom';
 import { getItemcon } from "../../../service/product";
 import { Button } from "antd";
 import Leftnavi from "../Leftnavi";
 import { Crumb1,Crumb2 } from "../../components_btn/Breadcrums";
 import Nextpost from "./Nextpost";
 function Itemcon({userInfo,setBack}) {
+  const navigate = useNavigate();
     const location = useLocation();
     const [notice, setNotice] = useState('null')
     const pathnum1 = location.pathname.split('/')[1]
@@ -14,6 +15,10 @@ function Itemcon({userInfo,setBack}) {
     const searchParams = new URLSearchParams(location.search);
     const num = searchParams.get('productid');
     useEffect(()=>{
+      if(!userInfo){
+        alert('로그인후 이용 가능합니다')
+        navigate("/Login");
+      }
       setBack(true)
       getItemcon(num,pathnum2).then(function(response){
             setNotice(response.data)
