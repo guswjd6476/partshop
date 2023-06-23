@@ -53,7 +53,7 @@ useEffect(()=>{
   .then(response => {
     console.log(response.data,'responsedta')
     setSearchResult(response.data.filter(data => {
-      return data.title.toUpperCase().includes(num.toUpperCase()) || data.content.toUpperCase().includes(num.toUpperCase()) || data.pName.toUpperCase().includes(num.toUpperCase()) || data.category.toUpperCase().includes(num.toUpperCase()) || data.subcategory.toUpperCase().includes(num.toUpperCase()) || data.material.toUpperCase().includes(num.toUpperCase());
+      return data.title.toUpperCase().includes(num.toUpperCase()) || data.content.toUpperCase().includes(num.toUpperCase()) || data.pName.toUpperCase().includes(num.toUpperCase()) || data.material.toUpperCase().includes(num.toUpperCase())|| data.inch.toUpperCase().includes(num.toUpperCase())|| data.color.toUpperCase().includes(num.toUpperCase());
     }));
   })
   .catch(error => {
@@ -65,7 +65,6 @@ const onClick = ()=>{
   setsearch(searchArray)
 }
 
-console.log(search,'????????search')
 let results = [];
 search&&search.forEach((obj) => {
   const [key] = Object.keys(obj);
@@ -78,6 +77,35 @@ search&&search.forEach((obj) => {
 });
   let filteredArray = (searchResult&&searchResult.filter((item, index) => matchCountArray&&matchCountArray[index] === results.length))||searchResult;
   sortList(filteredArray, sortOption);
+  function extractUniqueKeysWithCount(arr, key) {
+    const uniqueKeys = new Map();
+    
+    arr.forEach(obj => {
+      const keyValue = obj[key];
+      if (uniqueKeys.has(keyValue)) {
+        uniqueKeys.set(keyValue, uniqueKeys.get(keyValue) + 1);
+      } else {
+        uniqueKeys.set(keyValue, 1);
+      }
+    });
+    
+    const uniqueArray = Array.from(uniqueKeys.keys());
+    const uniqueArrays = Array.from(uniqueKeys.keys());
+    const duplicateCounts = Array.from(uniqueKeys.entries()).filter(([key, value]) => value > 1);
+    
+    return {
+      uniqueArray,
+      count: uniqueArray.length,
+      duplicateCounts
+    };
+  }
+  
+  const { uniqueArray, count, duplicateCounts } = extractUniqueKeysWithCount(filteredArray, 'subcategory');
+  
+console.log(uniqueArray,'uniqueArray')
+console.log(duplicateCounts,'duplicateCounts')
+console.log(count,'count')
+
 const onChange = (checkedValues) => {
   const checkedList = checkedValues.map((id) => ({ id: id }));
   setCheck(checkedList);
@@ -97,11 +125,14 @@ useEffect(()=>{
 },[counts,check])
 
 sortList(searchResult,sortOption);
-
   return (
-    <div className='searchresult main displaybox'>
+    <div className='searchresult main displaybox'>      
+    <div className='searchTopic'>'{num}' 검색결과</div>
+    <div>
+      {uniqueArray&&uniqueArray.map(value=><div>{value}</div>)}
+    </div>
        <PC>
-       <FunctionBtn setGridStyle={setGridStyle} sortOption={sortOption} setSortOption ={setSortOption}/>
+       <FunctionBtn none={true} sortOption={sortOption} setSortOption ={setSortOption}/>
     
     <SortingWrap onClick={onClick} setOnHide={setOnHide} onhide={onhide}  num={num} searchResult={searchResult}setSearchResult={setSearchResult} setSearchArray={setSearchArray} searchArray={searchArray}/>
           </PC>
@@ -112,91 +143,70 @@ sortList(searchResult,sortOption);
             <MFunctionBtn setGridStyle={setGridStyle} sortOption={sortOption}  gridstyle={gridstyle} setSortOption ={setSortOption}/>
           </Tablet>
 
-    <ul  className={gridstyle == 1 ? 'productwrap1' :gridstyle == 2 ? 'productwrap2' : 'product_wrap'}>
-        
+
     <Checkbox.Group
     onChange={onChange}
   >
-        {filteredArray&&filteredArray.map((data, index ) => {
-           const pathdata =`/${data.category}/${data.subcategory}/${data.id}`;
-           return(
-              <div className='productbox' key={data.id}>
-             
-            {gridstyle !== 2 ? <Checkbox value={data.id}></Checkbox> : ''}
-            <div className="product_list" key={`${data.id}-${index}`}>
-            <div className={gridstyle == 0 ?'gridcolum' : 'gridflex'}>
-              <Link className='product_pic'  to={pathdata}>
-                <img src={data.img1}/>
-              </Link>
-              <div className={gridstyle == 1 ? 'gridcolum' : 'gridflex'}>
-              <Link  to={pathdata}>
-              <div className='productwrap2_wrap_div'>
-              <div className='productwrap2_wrap'>
-                <div className='product_title'>
-                  <p className='f12 brandt'>[{data.brand}] {gridstyle == 0 ? <span className='valueid f12'>[상품코드 : {data.id}]</span> : ''}</p>
-                  <p className={data.pName !==' '?'product_d f14':'none'}>{data.pName}{gridstyle !== 0 ? <span className='valueid f12'>[상품코드 : {data.id}]</span> : ''}</p>
-                </div>
-                <div className='product_flex'>
-                  <p className={data.inch !==''?'product_d f12':'none'}>{data.inch}인치</p>
-                
-                  <p className={data.material !==''?'product_d f12':'none'} >{data.material}</p>
-                  <p className={data.color !==''?'product_d f12':'none'} > {data.color}</p>
-                </div>
-              </div>
-              <div className={data.pDetail !=='' ?'f12 product_d detail':'none'} >{data.pDetail}</div>
-              </div>
-              <div className='pricebox'>
-                <p className={data.pCost !=='' ?'tx f14':'none'} >{pricechange(data.pCost)}<span className='tx f14'>원</span></p>
-                <span className='dcvalue'>{data.dcrate}%</span>
-                <p className={data.pPrice !==''?'product_d f22':'none'} >{pricechange(data.pPrice)}<span className='f18'>원</span></p>
-              </div>
-              </Link>
-              
-              {gridstyle !== 0 ?
-              <>
-            <div className='other_wrap'>
-            <p className='othertag f12'><Tag className='navi'>m.o.q</Tag>{data.moq}</p>
-            <p className='f12'><Tag className='grey'>준비</Tag>약{data.prepare}일</p>
-            </div>
-            <div className='counterbtrn_wrap'>
-              <div className='testbox'>
-                {gridstyle == 2 ? <Checkbox value={data.id}></Checkbox> : ''}
-                <Countbtn ids={data.id} key={index} index={index} onCountChange={handleCountChange} />
-              </div>
-              <div className='functionbtn_wrap'>
-              <Needsbtn />
-              <AddCartbtn counts={counts} productid={data.id} userId={userId}/>
-              </div>
-            </div>
-            </>
-            :''
-            }
-              </div>
-            </div>
-            {gridstyle == 0 ?
-            <>
-            <div className='other_wrap'>
-             <p className='othertag f12'><Tag className='navi'>m.o.q</Tag>{data.moq}</p>
-             <p className='f12'><Tag className='grey'>준비</Tag>약{data.prepare}일</p>
-           </div>
-            <div className='counterbtrn_wrap'>
-              <div className='testbox'>
-                {gridstyle == 2 ? <Checkbox value={data.id}></Checkbox> : ''}
-                <Countbtn ids={data.id} key={index} index={index} onCountChange={handleCountChange} />
-              </div>
-              <Needsbtn counter={counts} productid={data.id} userId={userId}/>
-              <AddCartbtn counter={counts} productid={data.id} userId={userId}/>
-            </div>
-            </>
-            :''
-            }
-          </div>
-          </div>
+    <div className='arraylength'>총 {filteredArray.length}건</div>
+   {filteredArray&&filteredArray.map((data, index ) => {
+   const pathdata =`/${data.category}/${data.subcategory}/${data.id}`;
+     return(
           
+            <div className='productbox grid3'>
+      <Link className='product_pic'  to={pathdata}>
+        <img src={data.img1}/>
+      </Link>
+      <Link className='flex grid3wrap'  to={pathdata}>
+        <div className='grid3top'>
+          <div className='f13 grid31 flex '>
+            <span className='brand'>[{data.brand}] </span>
+            <div className={data.pName !==' '?'product_d f13 bold':'none'}>{data.pName}</div>
+            <span className='dataid f13'>[상품코드 : {data.id}]</span>  
+          </div>
+              
+          <div className='grid32 flex'> 
+            <p className={data.pCost !=='' ?'tx f14':'none'} >{pricechange(data.pCost)}<span className='tx f14'>원</span></p>
+            <span className='dcdata'>{data.dcrate}%</span>
+          </div>
+          <div className='grid33 other_wrap  flex'> 
+          
+            <p className='othertag f12'><Tag className='navi'>m.o.q</Tag>{data.moq}</p>
+          </div>
+          <div className='grid34'>
+            <Checkbox data={data.id}></Checkbox>
+          </div>
+          <div className='grid35'>
+            <Needsbtn counter={counts} productid={data.id} userId={userId}/>
+          </div>
+           
+        </div>
+        <div className='grid3bottom'>
+          <div className='flex pinfobox grid31'>
+            <p className={data.inch !==''?'product_d f12':'none'}>{data.inch}인치</p>
+            <p className={data.material !==''?'product_d f12':'none'} >{data.material}</p>
+            <p className={data.color !==''?'product_d f12':'none'} > {data.color}</p>
+            <div className={'f12 product_d detail'} >{data.pDetail}</div>
+          </div>
+          <div className='pricebox grid32'>
+      
+            <p className={data.pPrice !==''?'product_d f20':'none'} >{pricechange(data.pPrice)}<span className='f18'>원</span></p>
+          </div>
+          <div className='other_wrap grid33'>
+            <p className='f12'><Tag className='grey'>준비</Tag>약{data.prepare}일</p>
+          </div>
+          <div className='grid34'>  
+        <Countbtn ids={data.id} key={index} index={index} onCountChange={handleCountChange} />
+          </div>
+          <div className='gridbtnwrap grid35'>
+      <AddCartbtn counter={counts} productid={data.id} userId={userId}/>
+      </div>
+        </div>
+      
+      </Link>
+  </div>
           )
   })}
   </Checkbox.Group>
-    </ul>
     <Fixedbox userId={userId} lastCheck={lastCheck}/>
     </div>
     

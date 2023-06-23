@@ -53,7 +53,7 @@ function Buy(props) {
   
 
   return (
-  <div className='buy_wrap displaybox'>
+  <div className='buy_wrap main displaybox'>
     <Pagetitle value={'주문/결제 페이지'} svalue={'다양한 수단으로 결제가 가능합니다'}/>
     <div className='buycontain'>
       <div className='buydiv'>

@@ -25,7 +25,7 @@ function Countbtn(props) {
     return(
         <div className='count_wrap'>
             <Button className='counterbtn' onClick={inc}>+</Button>
-            <span className='counter f18'>{count}</span>
+            <span className='counter f11'>{count}</span>
             <Button className='counterbtn'  onClick={dec}>-</Button>
         </div>
     )

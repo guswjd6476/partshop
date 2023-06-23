@@ -24,6 +24,8 @@ function FunctionBtn(props) {
         <Button  className={props.sortOption == 'high'? 'clicked' : ''}onClick={() => handleClick('high')}>높은가격순</Button>
         </li>
     </ul>
+    {props.none&&props.none ? 
+    '':
     <ul className='sorting_list_grid'>
       <li className={props.gridstyle == 0 ? 'clicked' : ''} onClick={e=>{props.setGridStyle(0)}}>
         <TableOutlined />
@@ -35,6 +37,7 @@ function FunctionBtn(props) {
         <PicLeftOutlined />
       </li>
     </ul>
+    }
     </div>
   );
 }
