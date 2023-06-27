@@ -38,13 +38,14 @@ function Productdetail({cate,userId,setBack}) {
 
   return (
     <div className="shop main content_detail displaybox">
-      <Crumb2 num1={pathnum1} num2={pathnum2} />
+ 
     {data[0] ?  
     <div className='shop_div'>
       <div className='shop_sort'>
         <Sortnavi cate={cate} pathnum={pathnum1}/>
       </div>
       <div className='shop_content'>
+      <Crumb2 num1={pathnum1} num2={pathnum2} />
         <div className="shop_main">
           <ImageSlider pathnum3={pathnum3} data={data}/>
           <div className="shop_main_detail">

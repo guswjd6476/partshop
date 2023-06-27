@@ -46,18 +46,18 @@ function Shop({cate,userId,setBack}) {
         <img src='https://guswjd6476.speedgabia.com/thumb/ban1.jpg'/>
       </div> */}
     <div className="shop main displaybox">
-         
-      {!pathnum2 ?
-      <Crumb1 num={pathnum1}/>
-      :
-      <Crumb2 num1={pathnum1} num2={pathnum2}/>
-      }
-   
+      
       <div className='shop_div'>
         <div className='shop_sort'>
           <Sortnavi cate={cate} pathnum={pathnum1}/>
         </div>
         <div className='shop_content'>
+        {!pathnum2 ?
+      <Crumb1 num={pathnum1}/>
+      :
+      <Crumb2 num1={pathnum1} num2={pathnum2}/>
+      }
+   
            <PC>
             <SortingWrap  onClick={onClick} setOnHide={setOnHide} onhide={onhide} pathnum1={pathnum1}  pathnum2={pathnum2} searchArray={searchArray} setSearchArray={setSearchArray}/>
             <Productbox  search={search}  setOnHide={setOnHide} onhide={onhide}  lastCheck={lastCheck} setLastCheck={setLastCheck}  userId={userId} plist={allplist} pathnum1={pathnum1}  pathnum2={pathnum2} searchArray={searchArray}/>

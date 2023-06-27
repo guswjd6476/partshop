@@ -7,6 +7,8 @@ function FunctionBtn(props) {
 
   return (
     <div className='sorting_list'>
+       <Button className={props.none ? 'sortbtn' : "none"} onClick={e=>props.setOnHide(!props.onhide)}>
+        {!props.onhide ? '필터감추기' :'필터보이기' }</Button>
     <ul className='sorting_list_btn'>
         <li>
         <Button  className={props.sortOption == 'daydesc' ? 'clicked' : ''} onClick={() => handleClick('daydesc')}>최근등록순</Button>

@@ -26,6 +26,10 @@ const [sortOption, setSortOption] = useState("default");
 const [gridstyle, setGridStyle] = useState(0)
 const [counts, setCounts] = useState([]);
 const [check, setCheck] = useState([])
+const [filteredArrays, setFilteredArrays] = useState([]);
+const [checkfilter, setCheckFilter] = useState(null)
+
+
 let   matchCountArray =searchResult&&searchResult.map((item) => {
   let matchCount = 0;
   for (const filter of search) {
@@ -40,7 +44,6 @@ const handleCountChange = (index, count, ids) => {
   setCounts(prevCounts => {
     const existingCount = prevCounts.find(obj => obj.id === ids);
     if (existingCount) {
-      // id가 이미 있는 경우, count만 업데이트
       return prevCounts.map(obj => obj.id === ids ? {id : ids, count : count} : obj);
     } else {
       // id가 없는 경우, 새로운 object 추가
@@ -48,10 +51,10 @@ const handleCountChange = (index, count, ids) => {
     }
   });
 };
+
 useEffect(()=>{
   axios.get('/api/Allproductdetail')
   .then(response => {
-    console.log(response.data,'responsedta')
     setSearchResult(response.data.filter(data => {
       return data.title.toUpperCase().includes(num.toUpperCase()) || data.content.toUpperCase().includes(num.toUpperCase()) || data.pName.toUpperCase().includes(num.toUpperCase()) || data.material.toUpperCase().includes(num.toUpperCase())|| data.inch.toUpperCase().includes(num.toUpperCase())|| data.color.toUpperCase().includes(num.toUpperCase());
     }));
@@ -61,6 +64,7 @@ useEffect(()=>{
   });
   setBack(true)
 },[num])
+
 const onClick = ()=>{
   setsearch(searchArray)
 }
@@ -75,36 +79,32 @@ search&&search.forEach((obj) => {
     results.push({ [key]: [obj[key]] });
   }
 });
-  let filteredArray = (searchResult&&searchResult.filter((item, index) => matchCountArray&&matchCountArray[index] === results.length))||searchResult;
+  let filteredArray = checkfilter? filteredArrays.filter((item, index) => matchCountArray&&matchCountArray[index] === results.length) : (searchResult&&searchResult.filter((item, index) => matchCountArray&&matchCountArray[index] === results.length))||searchResult;
   sortList(filteredArray, sortOption);
-  function extractUniqueKeysWithCount(arr, key) {
+
+  function extractUniqueKeysWithCount(arr, categoryKey, subcategoryKey) {
     const uniqueKeys = new Map();
-    
     arr.forEach(obj => {
-      const keyValue = obj[key];
-      if (uniqueKeys.has(keyValue)) {
-        uniqueKeys.set(keyValue, uniqueKeys.get(keyValue) + 1);
+      const categoryValue = obj[categoryKey];
+      const subcategoryValue = obj[subcategoryKey];      const combinedKey = `${categoryValue}-${subcategoryValue}`;
+      
+      if (uniqueKeys.has(combinedKey)) {
+        uniqueKeys.set(combinedKey, uniqueKeys.get(combinedKey) + 1);
       } else {
-        uniqueKeys.set(keyValue, 1);
+        uniqueKeys.set(combinedKey, 1);
       }
     });
     
-    const uniqueArray = Array.from(uniqueKeys.keys());
-    const uniqueArrays = Array.from(uniqueKeys.keys());
-    const duplicateCounts = Array.from(uniqueKeys.entries()).filter(([key, value]) => value > 1);
+    const uniqueArray = Array.from(uniqueKeys.entries()).map(([combinedKey, count]) => {
+      const [category, subcategory] = combinedKey.split('-');
+      return {category, subcategory, count };
+    });
     
-    return {
-      uniqueArray,
-      count: uniqueArray.length,
-      duplicateCounts
-    };
+    return uniqueArray;
   }
   
-  const { uniqueArray, count, duplicateCounts } = extractUniqueKeysWithCount(filteredArray, 'subcategory');
-  
+  const uniqueArray = extractUniqueKeysWithCount(searchResult, 'category', 'subcategory','id');
 console.log(uniqueArray,'uniqueArray')
-console.log(duplicateCounts,'duplicateCounts')
-console.log(count,'count')
 
 const onChange = (checkedValues) => {
   const checkedList = checkedValues.map((id) => ({ id: id }));
@@ -125,16 +125,27 @@ useEffect(()=>{
 },[counts,check])
 
 sortList(searchResult,sortOption);
+const uniquefilter = (sub,index) => {
+  const filterResult = searchResult.filter(value => value.subcategory == sub);
+  setFilteredArrays(filterResult);
+ if (checkfilter!==null&&checkfilter==index){
+  setCheckFilter(null)
+}else{
+  setCheckFilter(index)
+}
+}
+console.log(checkfilter,'checkfilter')
   return (
     <div className='searchresult main displaybox'>      
     <div className='searchTopic'>'{num}' 검색결과</div>
-    <div>
-      {uniqueArray&&uniqueArray.map(value=><div>{value}</div>)}
+    <div className='cateArrayHead'>검색된 카테고리</div>
+    <div className='cateArray'>
+      {uniqueArray&&uniqueArray.map((value,index)=><div className={checkfilter==index+1 ? 'clicked':
+    ''} key={value.subcategory} onClick={() => uniquefilter(value.subcategory,index+1)}>{value.category}/{value.subcategory} ({value.count})</div>)}
     </div>
        <PC>
-       <FunctionBtn none={true} sortOption={sortOption} setSortOption ={setSortOption}/>
-    
-    <SortingWrap onClick={onClick} setOnHide={setOnHide} onhide={onhide}  num={num} searchResult={searchResult}setSearchResult={setSearchResult} setSearchArray={setSearchArray} searchArray={searchArray}/>
+       <SortingWrap onClick={onClick} setOnHide={setOnHide} onhide={onhide}  num={num} searchResult={searchResult}setSearchResult={setSearchResult} setSearchArray={setSearchArray} searchArray={searchArray}/>
+       <FunctionBtn setOnHide={setOnHide} onhide={onhide} none={true} sortOption={sortOption} setSortOption ={setSortOption}/>
           </PC>
 
           <Tablet>
@@ -152,7 +163,7 @@ sortList(searchResult,sortOption);
    const pathdata =`/${data.category}/${data.subcategory}/${data.id}`;
      return(
           
-            <div className='productbox grid3'>
+      <div className='productbox grid3' key={index}>
       <Link className='product_pic'  to={pathdata}>
         <img src={data.img1}/>
       </Link>

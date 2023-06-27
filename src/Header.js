@@ -5,6 +5,13 @@ import {  Link,useLocation,} from 'react-router-dom';
 import logo from './Image/logo.png'
 import AllSearchComponent from './components/Allsearch/AllSearchComponent'
 import { useState,useEffect } from 'react';
+import agv from './Image/agv.png'
+import board from './Image/board.png'
+import sensor from './Image/sensor.png'
+import iot from './Image/ito.png'
+import event from './Image/event.png'
+import project from './Image/project.png'
+import purchase from './Image/purchase.png'
 const { confirm } = Modal;
 
 
@@ -27,22 +34,19 @@ const Header = ({isLoggedIn,admin,userInfo,setFilter,sb,setSb,cates,filter}) => 
       window.removeEventListener('scroll', handleScroll);
     };
   }, []);
-  const addedKeys = [];
   const newItems = cates&&cates.map((item) => {
     const key = `/${item.category}`;
-    const keys = item.category
-    if (addedKeys.includes(key)) {
-      // 중복된 key일 경우 무시
-      return null;
-    }
-    addedKeys.push(key);
-
-   
     return {
-      label: <Link to={`/${item.category}`}>{item.category}</Link>,
+      label: 
+      <Link className='menuli' to={`/${item.category}`}>
+        <div className='menuicon'>
+          <img src={item.catenum == 0 ? agv: item.catenum == 1 ? board:item.catenum == 2 ? sensor:item.catenum == 3 ? iot:item.catenum == 4 ? event:item.catenum == 5 ? project:purchase}/></div>
+        <div>
+        {item.category}
+        </div>
+        </Link>,
       key,
       path: key,
-      icon: <AppstoreOutlined />,
 
     };
   });
@@ -115,12 +119,14 @@ const Header = ({isLoggedIn,admin,userInfo,setFilter,sb,setSb,cates,filter}) => 
  {/* <div className='header_bottom_bg'>
  </div> */}
   <div className='header_wrap displaybox'>
- <Link to='/' className='logo'>
+    <div className='logowrap'>
+    <Link to='/' className='logo'>
         <img src={logo} alt='logo'/>
     </Link>
+    </div>
   <Menu className='navigation ' 
 selectedKeys={[...pathKeys, `/${pathKeys[0]}`]} mode="horizontal" items={newItems} />
- <ul className='function_head'>
+  <ul className='function_head'>
     <div className='function_head_box login'>
       
       <Popover
@@ -163,6 +169,9 @@ selectedKeys={[...pathKeys, `/${pathKeys[0]}`]} mode="horizontal" items={newItem
         </Link>
     </ul>
   </div>
+  {/* <div className='header_b'>
+
+  </div> */}
  
   </div>
   )

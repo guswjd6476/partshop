@@ -13,16 +13,17 @@ function Sub({setBack}) {
   
   useEffect(()=>{setBack(true)},[])
     return (
-      <div className="main displaybox" >
-        {pathnum2 ?
-         <Crumb2 num1={pathnum1} num2={pathnum2}/>
-        :
-        <Crumb1 num={pathnum1} /> }
+      <div className="main shop displaybox" >
+       
         <div className='shop_div'>
           <div className='shop_sort'>
             <Leftnavi num1={pathnum1} num2={pathnum2}/>
           </div>
           <div className='shop_content'>
+          {pathnum2 ?
+         <Crumb2 num1={pathnum1} num2={pathnum2}/>
+        :
+        <Crumb1 num={pathnum1} /> }
             {
               pathnum2 === 'Intro' ? <Intro/> 
               :  pathnum2 === 'place' ? <Place/> 

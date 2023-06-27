@@ -17,11 +17,11 @@ function Place() {
                 </div>
                 <div className="tablediv flex">
                     <div className="tableT">이메일</div>
-                    <div className="tableD"> jpily111@gmail.com</div>
+                    <div className="tableD"> sspp45555@gmail.com</div>
                 </div>
                 <div className="tablediv flex">
                     <div className="tableT">대표전화</div>
-                    <div className="tableD"> jpily111@gmail.com</div>
+                    <div className="tableD"> 070-8281-7976</div>
                 </div>
             </div>    
         </div>

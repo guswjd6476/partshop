@@ -10,23 +10,34 @@ function Mypage({userId,setBack}) {
   const pathnum2 = location.pathname.split('/')[2]
   const [pagenum, setPageNum] = useState(1)
     return (
-      <div className="third main displaybox">
-         {pathnum2 ?
+      <div className="shop main displaybox">
+  
+        <div className="shop_div">
+          <div className="shop_sort">
+          <div className="shop_sort">
+          <div className='sortTitle'>
+            <span>CATEGORIES</span></div>
+            <ul className='sort_navi'>
+              <li
+              className={pagenum == 1 ? 'active snavili' : 'snavili'} 
+              onClick={e=>setPageNum(1)}>
+                <a>주문정보</a>
+                <div className={pagenum == 1 ? 
+      'active triangle' : 'none'}></div>
+              </li>
+              <li  onClick={e=>setPageNum(2)}
+              className={pagenum == 2 ? 'active snavili' : 'snavili'} 
+              ><a>정보변경</a>
+              <div className={pagenum == 2 ? 
+    'active triangle' : 'none'}></div></li>
+            </ul>
+          </div>
+          </div>
+          <div className="shop_content">
+          {pathnum2 ?
          <Crumb2 num1={pathnum1} num2={pathnum2}/>
         :
         <Crumb1 num={pathnum1} /> }
-        <div className="shop_div">
-          <div className="shop_sort">
-            <ul className='sort_navi'>
-              <li
-              className={pagenum == 1 ? 'active' : ''} 
-              onClick={e=>setPageNum(1)}>주문목록</li>
-              <li  onClick={e=>setPageNum(2)}
-              className={pagenum == 2 ? 'active' : ''} 
-              >정보변경</li>
-            </ul>
-          </div>
-          <div className="shop_content_1">
             {
               pagenum ===1 ? <Myorderlist/>:
               pagenum ===2 ? <Myinfo userId={userId}/>:

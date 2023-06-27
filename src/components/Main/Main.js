@@ -50,7 +50,7 @@ function Main({edit,cates,shows,setBack}) {
       <div className='mainslide'>
         <Mainslide/>
       </div>
-      <div className='maintabs displaybox'>
+      <div className='maintabs  displaybox'>
           <Tabs defaultActiveKey="1" items={items} onChange={onChange} />
       </div>
 
