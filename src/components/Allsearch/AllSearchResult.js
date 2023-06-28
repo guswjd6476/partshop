@@ -1,8 +1,9 @@
 import React, { useEffect ,useState} from 'react';
 import axios from 'axios';
 import {Link,useLocation} from 'react-router-dom';
-import { sortList,pricechange } from '../../service/function';
+import { sortList,pricechange, } from '../../service/function';
 import FunctionBtn from '../components_btn/FunctionBtn';
+import { Allproductdetail } from '../../service/product';
 import { Checkbox ,Tag } from 'antd';
 import Needsbtn from '../components_btn/Needsbtn';
 import Countbtn from '../components_btn/Countbtn';
@@ -53,7 +54,7 @@ const handleCountChange = (index, count, ids) => {
 };
 
 useEffect(()=>{
-  axios.get('/api/Allproductdetail')
+  Allproductdetail(filter)
   .then(response => {
     setSearchResult(response.data.filter(data => {
       return data.title.toUpperCase().includes(num.toUpperCase()) || data.content.toUpperCase().includes(num.toUpperCase()) || data.pName.toUpperCase().includes(num.toUpperCase()) || data.material.toUpperCase().includes(num.toUpperCase())|| data.inch.toUpperCase().includes(num.toUpperCase())|| data.color.toUpperCase().includes(num.toUpperCase());
