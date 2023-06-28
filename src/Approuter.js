@@ -31,7 +31,6 @@ const [back, setBack] =useState(true)
   const [filter, setFilter] = useState('');
   const [sb, setSb] = useState(false)
   const [show, setShow] =useState(true)
-
   if(isLoggedIn){
     return (
       <div className="contain">
@@ -96,7 +95,7 @@ const [back, setBack] =useState(true)
             <Routes>
               <Route path="/" element={<Main  setBack={setBack}/>} />
               <Route path="/:cate" element={<Shop setBack={setBack} cate={cate} userId={userInfo&&userInfo[0]} />} />
-              <Route path="/buy" element={<Buy setBack={setBack}/>} />
+              <Route path="/buy" element={<Buy setBack={setBack} userInfo={userInfo}/>} />
               <Route path="/:cate/:subcate" element={<Shop setBack={setBack} cate={cate} userId={userInfo&&userInfo[0]} />} />
               <Route path="/:cate/:subcate/:id" element={<Productdetail setBack={setBack} cate={cate}  userId={userInfo&&userInfo[0]} />} />
               <Route path="/Signup" element={<Signup setBack={setBack} show={show} setShow={setShow}/>} />

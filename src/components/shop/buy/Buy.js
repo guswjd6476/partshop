@@ -6,6 +6,7 @@ import { getcompare,pricechange } from '../../../service/function';
 import Buybox from './Buybox';
 import Pagetitle from '../../components_btn/Pagetitle';
 import Buyagree from './Buyagree';
+import Buyorder from './Buyorder';
 function Buy(props) {
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
@@ -84,9 +85,7 @@ function Buy(props) {
         </div>
       
         <Buyagree setCheck={setCheck} check={check}/>
-        <div  className='buywrap'>
-          <p className='smallT'> 주문자 정보</p>
-        </div>
+       <Buyorder userInfo={props.userInfo}/>
         <div  className='buywrap'>
           <p className='smallT'> 배송지 정보</p>
         </div>

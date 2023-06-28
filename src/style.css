@@ -1833,7 +1833,7 @@ width: 300px;
 }
 .buytitle{
     margin-right: 10px;
-    width: 80px;
+    width: 90px;
 }
 .buybtn{
     width: 100%;
@@ -2524,6 +2524,14 @@ border-bottom: 3px solid #0b255b;
     }
     .ant-tabs-tabpane img{
         width: 100% !important;
+    }
+    .buydiv{
+        width: 100%;
+    }
+    .buybtnwrap{
+        width: 100%;
+        position: relative;
+        right: 0
     }
   }
   /* 모바일 */
