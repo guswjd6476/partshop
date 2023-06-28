@@ -4,7 +4,6 @@ import Buytotal from "./Buytotal";
 import Buyway from "./Buyway";
 const { AUTHNICE } = window;
 function Buybox({total}) {
-  console.log(total,'???')
     const [isHeaderFixed, setIsHeaderFixed] = useState(false);
     const [activeButton, setActiveButton] = useState('');
     function serverAuth() {

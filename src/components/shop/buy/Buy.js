@@ -5,6 +5,7 @@ import { productdetail } from '../../../service/product';
 import { getcompare,pricechange } from '../../../service/function';
 import Buybox from './Buybox';
 import Pagetitle from '../../components_btn/Pagetitle';
+import Buyagree from './Buyagree';
 function Buy(props) {
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
@@ -12,11 +13,12 @@ function Buy(props) {
   const checkedListString = searchParams.get('checkedList')||null;
   const navigate = useNavigate();
   const checkedList = checkedListString&&JSON.parse(decodeURIComponent(checkedListString));
-  
   const userId = searchParams.get('userId');
   const count = searchParams.get('count');
+  const [check, setCheck] = useState(false)
 
-  console.log(userId,'userid')
+ 
+  console.log(check,'????')
   const [cartlist, setCartList] = useState()
   useEffect(()=>{
     props.setBack(true)
@@ -81,10 +83,7 @@ function Buy(props) {
         
         </div>
       
-        <div  className='buywrap'>
-          <p className='smallT'> 최종구매 전 동의사항</p>
-        
-        </div>
+        <Buyagree setCheck={setCheck} check={check}/>
         <div  className='buywrap'>
           <p className='smallT'> 주문자 정보</p>
         </div>

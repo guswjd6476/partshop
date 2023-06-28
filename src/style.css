@@ -708,7 +708,7 @@ color: #000;
 .productbox.grid1 {
     display: flex;
     flex-direction: column;
-    width: calc(20% - 8px);
+    width: calc(16.5% - 8px);
     margin-right: 10px;
     border: 1px solid #0b255b;
     transition: all 0.5s ease-out;
@@ -755,11 +755,14 @@ color: #000;
     height: 18px;
 }
 
-.productbox.grid1:nth-child(5n){
+.productbox.grid1:nth-child(6n){
     margin-right: 0;
 }
 .grid1 .pName{
     font-weight: 600;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
     line-height: 18px;
 }
 .grid2Pname{
@@ -2301,6 +2304,23 @@ color: #000;
 .inntertab.clicked{
 border-bottom: 3px solid #0b255b;
 }
+@media screen and (max-width: 1700px) {
+    .productbox.grid1 {
+        display: flex;
+        flex-direction: column;
+        width: calc(20% - 8px);
+        margin-right: 10px;
+        border: 1px solid #0b255b;
+        transition: all 0.5s ease-out;
+        margin-bottom: 10px;
+    }
+    .productbox.grid1:nth-child(5n){
+        margin-right: 0;
+    }
+    .productbox.grid1:nth-child(6n){
+        margin-right: 10px;
+    }
+}
 @media screen and (max-width: 1600px) {
     .displaybox{
         width: 100%;
@@ -2327,12 +2347,7 @@ border-bottom: 3px solid #0b255b;
         width: 100px;
         transition: right 0.3s ease-in-out;
       }
-      
-  
-
-  }
-  @media screen and (max-width: 1200px) {
-    .productbox.grid1 {
+      .productbox.grid1 {
         width: calc(25% - 8px);
     }
     .productbox.grid1:nth-child(4n) {
@@ -2341,12 +2356,26 @@ border-bottom: 3px solid #0b255b;
     .productbox.grid1:nth-child(5n) {
         margin-right: 10px;
     }
+  
+
+  }
+  @media screen and (max-width: 1200px) {
+   
     .grid2 .btnsytle{
         width: 60px;
     }  
     .navigation li{
         width: 85px;
         font-size: 16px;
+    }
+    .productbox.grid1 {
+        width: calc(33.3333% - 8px);
+    }
+    .productbox.grid1:nth-child(3n) {
+        margin-right: 0;
+    }
+    .productbox.grid1:nth-child(4n) {
+        margin-right: 10px;
     }
   }
 /* 태블릿 */
@@ -2485,15 +2514,7 @@ border-bottom: 3px solid #0b255b;
     .pricebox .product_d{
         font-size: 18px !important;
     }
-    .productbox.grid1 {
-        width: calc(33.333% - 8px);
-    }
-    .productbox.grid1:nth-child(3n) {
-        margin: 0;
-    }
-    .productbox.grid1:nth-child(4n) {
-        margin-right: 10px;
-    }
+
     .counter{
         padding: 0px 5px;
         width: 25px;
