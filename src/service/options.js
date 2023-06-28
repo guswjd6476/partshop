@@ -68,6 +68,14 @@ const colorOption = () => {
         {
             label : '파랑',
             value : 'blue'
+        },
+        {
+            label : '검정',
+            value : 'black'
+        },
+        {
+            label : '갈색',
+            value : 'brown'
         }
     ]
     )

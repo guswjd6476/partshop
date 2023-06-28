@@ -37,7 +37,7 @@ const Footer = () => {
         <div className='footer_d_d'>
           <ul>
             <li>
-              <a className='center' href='/center'>고객센터 ></a>
+              <a className='center' href='/center'>고객센터 </a>
             </li>
             <li>대표전화 : 070-8281-7976 </li>
             <li>이메일 : sspp45555@gmail.com  </li>

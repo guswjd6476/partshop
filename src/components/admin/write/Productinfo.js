@@ -14,7 +14,7 @@ function Productinfo({cate,cates,setProductInfo,productinfo}) {
           ...prevState,
           [id]: value
         }));
-        if(id == 'pPrice' || id == 'pName'|| id == 'pDetail'){
+        if(id == 'pPrice' || id == 'pName'|| id == 'pDetail'||id=='brand'){
             setProductInfo(prevState => ({
                 ...prevState,
                 [id]: value.target.value
@@ -74,7 +74,8 @@ function Productinfo({cate,cates,setProductInfo,productinfo}) {
         }
           {productinfo.catenum !==4  ?
             <>
-            <Select placeholder="제조사" onChange={value =>handleChange('brand',value)}  className="brand productSelect" options={brandOption()}></Select>
+        
+            <Input placeholder="제조사" onChange={value =>handleChange('brand',value)} className="brand productSelect"/>
           
             <Input onChange={value =>handleChange('pDetail',value)} className="productSelect de" showCount  placeholder='세부사양'  maxLength={300} />
             </>
