@@ -3,10 +3,11 @@ import { Button } from "antd";
 import Buytotal from "./Buytotal";
 import Buyway from "./Buyway";
 const { AUTHNICE } = window;
-function Buybox({total}) {
+function Buybox({total,check}) {
     const [isHeaderFixed, setIsHeaderFixed] = useState(false);
     const [activeButton, setActiveButton] = useState('');
     function serverAuth() {
+      if(check){
       AUTHNICE.requestPay({
         clientId: 'S2_f0937a1cf19e40bf8004fb1ed3acb03a',
         method: activeButton === '카드' ? 'card' : activeButton === '가상계좌 (무통장입금)' ? 'vbank' : activeButton === '실시간계좌이체' ? 'bank': activeButton === '카카오페이' ? 'kakaopay' : activeButton === '네이버페이' ? 'naverpayCard': activeButton === '휴대폰' ? 'cellphone':'all' ,
@@ -18,6 +19,9 @@ function Buybox({total}) {
           alert('고객용메시지 : ' + result.msg + '\n개발자확인용 : ' + result.errorMsg + '')
         }
       });
+    }else{
+      alert('동의사항을 체크해주세요')
+    }
     }
     
 

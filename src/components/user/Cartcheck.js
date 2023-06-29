@@ -89,7 +89,7 @@ console.log(props.cartdata,'?')
       <div className='totalp'>
         총가격 : {pricechange(total)} 원
       </div>
-        <Buybtn checkedList={checkedList}  cartdata={props.cartdata}/>
+        <Buybtn checkedList={checkedList} userId={props.userId}  cartdata={props.cartdata}/>
     </div>
     </>
   );

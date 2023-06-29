@@ -7,6 +7,8 @@ import Buybox from './Buybox';
 import Pagetitle from '../../components_btn/Pagetitle';
 import Buyagree from './Buyagree';
 import Buyorder from './Buyorder';
+import Buyaddress from './Buyaddress';
+import { getUser,getAddress } from '../../../service/user';
 function Buy(props) {
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
@@ -14,16 +16,15 @@ function Buy(props) {
   const checkedListString = searchParams.get('checkedList')||null;
   const navigate = useNavigate();
   const checkedList = checkedListString&&JSON.parse(decodeURIComponent(checkedListString));
-  const userId = searchParams.get('userId');
   const count = searchParams.get('count');
   const [check, setCheck] = useState(false)
-
- 
-  console.log(check,'????')
+  const [user,setUser] = useState('')
+  const [addresslist,setAddresslist] = useState([])
+  const [address, setAddress] = useState()
   const [cartlist, setCartList] = useState()
   useEffect(()=>{
     props.setBack(true)
-    if(userId !=='null'){
+    if(props.userId !=='null'&&props.userId){
     if(checkedList){
       getcompare(checkedList)
     .then(function (response) {
@@ -43,10 +44,20 @@ function Buy(props) {
     productdetail(productnum).then(function(response){
       setCartList(response.data)
     })
+  
   }
 }else{
   alert('로그인해주세요')
   navigate('/Login')
+}  
+if(props.userId){
+  getUser(props.userId).then(function(response){
+    setUser(response.data)
+})
+getAddress(props.userId).then(function(response){
+  setAddresslist(response.data)
+  setAddress(response.data.find(value=>value.selected === 1))
+})
 }
   },[])
   
@@ -54,6 +65,10 @@ function Buy(props) {
     return sum + item.count * item.pPrice;
   }, 0);
   
+  console.log(props.userId,'userid')
+  console.log(user,'user')
+  console.log(address,'address')
+  console.log(addresslist,'addresslist')
 
   return (
   <div className='buy_wrap main displaybox'>
@@ -85,13 +100,10 @@ function Buy(props) {
         </div>
       
         <Buyagree setCheck={setCheck} check={check}/>
-       <Buyorder userInfo={props.userInfo}/>
-        <div  className='buywrap'>
-          <p className='smallT'> 배송지 정보</p>
-        </div>
-      
+        <Buyorder address={address} addresslist={addresslist} user={user[0]}/>
+        <Buyaddress setAddress={setAddress} address={address} user={user[0]}/>
       </div>
-      <Buybox total={pricechange(total||cartlist&&cartlist[0].pPrice)}/>
+      <Buybox check={check} total={pricechange(total||cartlist&&cartlist[0].pPrice)}/>
     </div>
   </div>
   );

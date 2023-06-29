@@ -24,6 +24,8 @@ import { useEffect, useState } from 'react';
 import {  PC, Tablet } from "./MediaQuery"
 import MHeaer from './MHeaer';
 import Project from './components/project/Project';
+import Buyaddressplus from './components/shop/buy/Buyaddressplus';
+import BuyaddAddress from './components/shop/buy/BuyaddAddress';
 
 const Approuter = ({setToken,cates,setCates,isLoggedIn,userInfo,setUserInfo,cate,setCate})=> {
   
@@ -31,6 +33,8 @@ const [back, setBack] =useState(true)
   const [filter, setFilter] = useState('');
   const [sb, setSb] = useState(false)
   const [show, setShow] =useState(true)
+  const [update, setUpdate] = useState(false)
+  console.log(update)
   if(isLoggedIn){
     return (
       <div className="contain">
@@ -62,7 +66,7 @@ const [back, setBack] =useState(true)
               <Route path="/Sub/:id" element={<Sub setBack={setBack}/>} />
               <Route path="/Sub" element={<Sub setBack={setBack}/>} />
               
-              <Route path="/buy" element={<Buy setBack={setBack}/>} />
+              <Route path="/buy" element={<Buy setBack={setBack} userInfo={userInfo} userId={userInfo&&userInfo[0]}/> } />
               <Route path="/center" element={<Center setBack={setBack}/>} />
               <Route path="/center/:id" element={<Center setBack={setBack}/>} />
               <Route path="/Write/:id" element={<Writenotice setBack={setBack}/>} />
@@ -72,6 +76,8 @@ const [back, setBack] =useState(true)
               <Route path="/event/:id" element={<Eventpg setBack={setBack} userInfo={userInfo}/>} />
               <Route path="/PROJECT" element={<Project setBack={setBack} userInfo={userInfo}/>} />
               <Route path="/PROJECT/:id" element={<Eventpg setBack={setBack} userInfo={userInfo}/>} />
+              <Route path="/address" element={<Buyaddressplus update={update} setShow={setShow}  userId={userInfo&&userInfo[0]} userInfo={userInfo}/>} />
+              <Route path="/addaddress" element={<BuyaddAddress setUpdate={setUpdate}  update={update} setShow={setShow}  userId={userInfo&&userInfo[0]} userInfo={userInfo}/>} />
            </Routes>
            {show ?<Footer/> : ''}
         </BrowserRouter>
@@ -95,7 +101,7 @@ const [back, setBack] =useState(true)
             <Routes>
               <Route path="/" element={<Main  setBack={setBack}/>} />
               <Route path="/:cate" element={<Shop setBack={setBack} cate={cate} userId={userInfo&&userInfo[0]} />} />
-              <Route path="/buy" element={<Buy setBack={setBack} userInfo={userInfo}/>} />
+              <Route path="/buy" element={<Buy setBack={setBack} userInfo={userInfo} userId={userInfo&&userInfo[0]}/> } />
               <Route path="/:cate/:subcate" element={<Shop setBack={setBack} cate={cate} userId={userInfo&&userInfo[0]} />} />
               <Route path="/:cate/:subcate/:id" element={<Productdetail setBack={setBack} cate={cate}  userId={userInfo&&userInfo[0]} />} />
               <Route path="/Signup" element={<Signup setBack={setBack} show={show} setShow={setShow}/>} />

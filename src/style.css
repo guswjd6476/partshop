@@ -137,7 +137,16 @@
     background-color: #0b255b;
     left:50%; margin-left:-30px;
   }
-
+.addressbox{
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: inset 0px 1px 0px rgba(255,255,255,.8),0px 1px 3px ;
+    padding-left: 10px;
+    margin-bottom: 10px;
+}
+.addressbox:last-child{
+    margin-bottom: 0px;
+}
 .mpgt{
     font-weight: 700;
     font-size: 30px;
@@ -523,7 +532,7 @@ height: 100%;
 .header_wrap{
     display: flex;
     height: 120px;
-    padding-left: 0px;
+    padding-left: 0px !important;
     align-items: center;
     justify-content: space-between;
 }
@@ -848,7 +857,13 @@ padding: 2px;
     width: 100% !important;
 }
 .shop{
-    padding-left: 0px;
+    padding-left: 0px !important;
+}
+.npd{
+    padding: 5px !important;
+}
+.postmodal{
+    position: relative;
 }
 .shop_div{
     display: flex;
@@ -1473,11 +1488,12 @@ display: flex;
     height: 30px;
     border-radius: 0px;
 }
-.btnsytle{
+.btnstyle{
     width: 100px;
     height: 30px;
     border-radius: 1px;
 }
+
 .counter{
     color: #000;
     display:block;
@@ -1807,7 +1823,6 @@ width: 300px;
     border-bottom: 1px solid #000;
     font-size: 22px;
     font-weight: 900;
-    width: 100;
     margin-bottom: 10px;
 }
 .buybtnwrap{
@@ -1816,6 +1831,18 @@ width: 300px;
     top: 0;
     width: 400px;
     padding: 10px;
+}
+.addresswrap, .addressbtnwrap{
+    margin-bottom: 10px;
+}
+.addresswrap input{
+    width: 200px;
+}
+.addresswrap.phone input{
+    width: 100px;
+}
+.addresswrap.long input{
+    width: calc(50% - 5px);
 }
 .fixed{
     position: fixed;
@@ -2304,6 +2331,10 @@ color: #000;
 .inntertab.clicked{
 border-bottom: 3px solid #0b255b;
 }
+.wrapT{
+    width: 120px;
+    font-weight: bold;
+}
 @media screen and (max-width: 1700px) {
     .productbox.grid1 {
         display: flex;
@@ -2326,6 +2357,7 @@ border-bottom: 3px solid #0b255b;
         width: 100%;
         overflow: hidden;
         padding-right: 10px;
+        padding-left: 10px;
       }
       .shop_sort > .shop_sort{
         padding-left: 10px;
@@ -2361,7 +2393,7 @@ border-bottom: 3px solid #0b255b;
   }
   @media screen and (max-width: 1200px) {
    
-    .grid2 .btnsytle{
+    .grid2 .btnstyle{
         width: 60px;
     }  
     .navigation li{

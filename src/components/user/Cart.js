@@ -22,7 +22,7 @@ function Cart({userId,setBack}) {
   return (
     <div className="displaybox cartcon main">
       {cartdata ? (
-       <Cartcheck  cartdata={cartdata} setCartData={setCartData} plainOptions={plainOptions} />
+       <Cartcheck userId={userId}  cartdata={cartdata} setCartData={setCartData} plainOptions={plainOptions} />
       ) : (
         <EmptyCart/>
       )}

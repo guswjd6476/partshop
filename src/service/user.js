@@ -6,6 +6,18 @@ import { fetchData } from "./instance";
   const userlists = async () => {
     return fetchData('/api/userlist');
   };
+  const getUser = async (userId) => {
+    return fetchData('/api/getUser',{userId});
+  };
+  const getAddress = async (userId) => {
+    return fetchData('/api/getAddress',{userId});
+  };
+  const addAddress = async (userId,address,addtype,addressnum,subaddress,uName,uPhone) => {
+    return fetchData('/api/addAddress',{userId,address,addtype,addressnum,subaddress,uName,uPhone});
+  };
+  const selectAddress = async (num) => {
+    return fetchData('/api/selectAddress',{num});
+  };
   const logins = async (userId,uPassword) => {
     return fetchData('/api/login', { userId,uPassword});
   };
@@ -21,4 +33,4 @@ import { fetchData } from "./instance";
   
   
   
-  export  {getPass,userlists,logins,useridchecks,mailing,lastjoin}
+  export  {getPass,userlists,logins,useridchecks,mailing,lastjoin,getUser,getAddress,addAddress,selectAddress}
