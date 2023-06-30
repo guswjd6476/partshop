@@ -105,8 +105,6 @@ search&&search.forEach((obj) => {
   }
   
   const uniqueArray = extractUniqueKeysWithCount(searchResult, 'category', 'subcategory','id');
-console.log(uniqueArray,'uniqueArray')
-
 const onChange = (checkedValues) => {
   const checkedList = checkedValues.map((id) => ({ id: id }));
   setCheck(checkedList);
@@ -135,7 +133,6 @@ const uniquefilter = (sub,index) => {
   setCheckFilter(index)
 }
 }
-console.log(checkfilter,'checkfilter')
   return (
     <div className='searchresult main displaybox'>      
     <div className='searchTopic'>'{num}' 검색결과</div>

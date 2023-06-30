@@ -36,12 +36,9 @@ function Admin({cate,cates,setCates,setCate, setBack}) {
       children: <Maincontrol/>,
     },
   ];
-    const onChange = (key) => {
-        console.log(key);
-      };
   return (
     <div className="Admin main displaybox">
-         <Tabs defaultActiveKey="1" items={items} onChange={onChange} />
+         <Tabs defaultActiveKey="1" items={items} />
     </div>
   );
 }

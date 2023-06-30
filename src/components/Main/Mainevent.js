@@ -5,7 +5,6 @@ import { getevent } from '../../service/product';
 import { Mainlinkto } from './Mainfunction';
 
 function Mainevent({cates}) {
-  console.log(cates,'?')
     const [eventlist, setEventlist] = useState()
   useEffect(()=>{
     getevent().then(function(response){

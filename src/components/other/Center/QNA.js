@@ -13,7 +13,6 @@ function QNA() {
             setNotice(response.data)
         })
     },[])
-    console.log(notice)
     const columns = [
         {
           title: 'id',

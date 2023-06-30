@@ -12,7 +12,6 @@ function Notice({uGrade}) {
             setNotice(response.data)
         })
     },[])
-    console.log(notice)
     const columns = [
         {
           title: 'id',

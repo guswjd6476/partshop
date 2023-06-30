@@ -10,37 +10,16 @@ import { fetchData } from "./instance";
 const addsCart = async (data,userId) => {
   return fetchData('/api/addCart', { data,userId });
 };
-// 장바구니 가져오기 함수
-// const getCart = (userId) => {
-//     return axios.get('/api/getCart', {
-//       params: {
-//         userId,
-//       },
-//     });
-//   };
+
   const getCart = async (userId) => {
     return fetchData('/api/getCart', {userId});
   };
-  // 장바구니 삭제하기 함수
-// const deleteCart = (num) => {
-//   console.log(num,'????')
-//   return axios.get('/api/deleteCart', {
-//     params: {
-//       num,
-//     },
-//   });
-// };
+
 const deleteCart = async (num) => {
   return fetchData('/api/deleteCart', {num});
 };
 
-// const productdetail = (id) => {
-//   return axios.get('/api/productdetail', {
-//     params: {
-//       id,
-//     },
-//   });
-// };
+
 const productdetail = async (id) => {
   return fetchData('/api/productdetail', {id});
 };
@@ -93,15 +72,7 @@ const recommendlist = async (subcate, num) => {
 const getSort = async (sort,path) => {
   return fetchData('/api/product', {sort,path});
 };
-// 공지사항 글 불러오기 
-// const getAllItem = (path)=>{
-//   console.log(path,'?path')
-//   return axios.get('/api/getAllItem', {
-//     params: {
-//       path
-//       }
-//   });
-// }
+
 const getAllItem = async (path) => {
   return fetchData('/api/getAllItem', {path});
 };
@@ -184,15 +155,7 @@ const Wfaq = async (title,content,writer,category) => {
 const getPrevNext = async (num,id) => {
   return fetchData('/api/prevNext', {num,id});
 };
-// 게시물 수정하기
-// const updateItem = (title, content, category, id, path)=>{
-//   console.log(path,'?path')
-//   return axios.get('/api/updateItem', {
-//     params: {
-//     title,content,category,id,path
-//     },
-//   });
-// }
+
 const updateItem = async (title, content, category, id, path) => {
   return fetchData('/api/updateItem', {title, content, category, id, path});
 };

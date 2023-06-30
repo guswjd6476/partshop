@@ -25,7 +25,6 @@ function FAQ({uGrade}) {
       setOn(null)
     }
     }
-console.log(notice,'notice변화추이')
     return (
         <>
             <Pagetitle value={'FAQ'} svalue={'빠르게 답변해 드립니다'}/>

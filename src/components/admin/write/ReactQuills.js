@@ -18,13 +18,10 @@ function ReactQuills(props) {
   
     // input에 변화가 생긴다면 = 이미지를 선택
     input.addEventListener('change', async () => {
-      console.log('온체인지');
       const file = input.files[0];
-      console.log(file,'filefilefile')
       // multer에 맞는 형식으로 데이터 만들어준다.
       const formData = new FormData();
       formData.append('img', file); // formData는 키-밸류 구조
-      console.log(formData,'formdata!')
       // 백엔드 multer라우터에 이미지를 보낸다.
       try {
         const result = await axios.post('https://port-0-partshopback-lme62alhk7lvdw.sel4.cloudtype.app/api/images', formData);

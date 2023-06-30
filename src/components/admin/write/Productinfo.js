@@ -42,7 +42,6 @@ function Productinfo({cate,cates,setProductInfo,productinfo}) {
         };
       });
      
-    console.log(productinfo,'productinfo')
   return (
     <div className="Productinfo productSelectwrap">
         <div className="cateinfo">

@@ -34,7 +34,6 @@ const certification = (values) => {
         .then(function (response) {
       console.log(response.data)
             setNumber(response.data);
-            //console.log(response.data);
             alert("인증번호가 발송 되었습니다.", "확인 버튼을 눌러 주세요", "success");
         })
         .catch(function (error) {
@@ -47,9 +46,6 @@ const certification = (values) => {
 
 };
 
-const certificationFaild = (errorInfo) => {
-    console.log('Failed:', errorInfo);
-};
 
 const useridCheckFaild = (errorInfo) => {
     console.log('Failed:', errorInfo);
@@ -64,9 +60,6 @@ const EMailConfirm = (values) => {
     }
 };
 
-const EMailConfirmFaild = (errorInfo) => {
-    console.log('Failed:', errorInfo);
-};
 
 // const registration = async (values) => {
 //     if (Numbercertification === false) {

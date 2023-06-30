@@ -6,8 +6,7 @@ import { actionButStyle,Settings } from "./Mainfunction";
 
 function ProductCarousel({edit,able,data,mi,setMi}) {
   const carouselRef = useRef();
-console.log(edit,'eidt')
-console.log(mi,'mi')
+
   const cards = [];
   for (let i = 0; i <= 9; i++) {
     cards.push(

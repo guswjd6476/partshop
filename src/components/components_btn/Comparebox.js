@@ -18,7 +18,6 @@ const [comparelist, setComparelist] =useState([])
     const newData = comparelist.filter((item) => item.id !== id);
     setComparelist(newData);
   };
-  console.log(comparelist,'comparelist')
   const columns = [
     {
       title: 'img',

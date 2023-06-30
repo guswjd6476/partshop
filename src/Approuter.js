@@ -33,8 +33,6 @@ const [back, setBack] =useState(true)
   const [filter, setFilter] = useState('');
   const [sb, setSb] = useState(false)
   const [show, setShow] =useState(true)
-  const [update, setUpdate] = useState(false)
-  console.log(update)
   if(isLoggedIn){
     return (
       <div className="contain">
@@ -76,8 +74,8 @@ const [back, setBack] =useState(true)
               <Route path="/event/:id" element={<Eventpg setBack={setBack} userInfo={userInfo}/>} />
               <Route path="/PROJECT" element={<Project setBack={setBack} userInfo={userInfo}/>} />
               <Route path="/PROJECT/:id" element={<Eventpg setBack={setBack} userInfo={userInfo}/>} />
-              <Route path="/address" element={<Buyaddressplus update={update} setShow={setShow}  userId={userInfo&&userInfo[0]} userInfo={userInfo}/>} />
-              <Route path="/addaddress" element={<BuyaddAddress setUpdate={setUpdate}  update={update} setShow={setShow}  userId={userInfo&&userInfo[0]} userInfo={userInfo}/>} />
+              <Route path="/address" element={<Buyaddressplus setShow={setShow}  userId={userInfo&&userInfo[0]} userInfo={userInfo}/>} />
+              <Route path="/addaddress" element={<BuyaddAddress setShow={setShow}  userId={userInfo&&userInfo[0]} userInfo={userInfo}/>} />
            </Routes>
            {show ?<Footer/> : ''}
         </BrowserRouter>

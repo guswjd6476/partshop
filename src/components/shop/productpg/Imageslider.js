@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 
 function ImageSlider({ data,pathnum3 }) {
-  console.log(data ,'imgslide')
   const [currentImg, setCurrentImg] = useState(data[0]?.img1);
   useEffect(() => {
     setCurrentImg(data[0]?.img1);

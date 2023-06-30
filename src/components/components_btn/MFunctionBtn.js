@@ -31,7 +31,6 @@ function MFunctionBtn(props) {
  
   ];
   const handleChange = (value) => {
-    console.log(`selected ${value}`);
     props.setSortOption(value)
   };
   const gridClick = (e)=>{

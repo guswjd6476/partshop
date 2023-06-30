@@ -16,7 +16,6 @@ function Updatecon({setBack}) {
     title : '',
     category : '',
 })
-console.log(values,'values')
 const [value, setValue] = useState('');
 const handleChange = (id, value) => {
     setValues(prevState => ({
@@ -30,7 +29,6 @@ const handleChange = (id, value) => {
     })); 
     }
 }
-console.log(pathnum2,'pathnum2')
 useEffect(()=>{
   setBack(true)
     getItemcon(num,pathnum2).then(function(response){
@@ -42,7 +40,6 @@ useEffect(()=>{
 
   function updateProduct() {  
     updateItem(values.title,value,values.category,notice[0].id,pathnum2).then(response => {
-        console.log(response.data)
         navigate(`/center/${pathnum2}/noticecon?&productid=${notice[0].id}`);
       }).catch(error => {
       console.error(error);

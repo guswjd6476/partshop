@@ -12,7 +12,6 @@ const [search, setSearch] = useState(false)
         if(filter){
           Allproductdetail(filter)
           .then(response => {
-            console.log(response.data)
             const searchResult = response.data.filter(data => {
               return data.pName.toUpperCase().includes(filter.toUpperCase()) || data.category.toUpperCase().includes(filter.toUpperCase()) || data.subcategory.toUpperCase().includes(filter.toUpperCase()) ||  data.material.toUpperCase().includes(filter.toUpperCase());
             });
@@ -24,7 +23,6 @@ const [search, setSearch] = useState(false)
         }
     },[search])
     
-    console.log( props.data,'data')
     return (
     <div className="inventory_input">
         <Input

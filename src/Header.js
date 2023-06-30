@@ -64,7 +64,7 @@ const Header = ({isLoggedIn,admin,userInfo,setFilter,sb,setSb,cates,filter}) => 
           window.location.href = '/'
       },
       onCancel() {
-        console.log('Cancel');
+    
       },
     });
   };

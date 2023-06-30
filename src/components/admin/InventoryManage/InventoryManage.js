@@ -136,7 +136,6 @@ const save = async (value) => {
         setEditingKey('');
       }
     } catch (errInfo) {
-      console.log('Validate Failed:', errInfo);
     }
   };
 
@@ -293,9 +292,7 @@ const columns = [
     },
   },
 ];
-const onChange = (pagination, filters, sorter, extra) => {
-    console.log('params', pagination, filters, sorter, extra);
-  };
+
 const mergedColumns = columns.map((col) => {
   if (!col.editable) {
     return col;
@@ -322,7 +319,6 @@ return (
           cell: EditableCell,
         },
       }}
-      onChange={onChange}
       bordered
       dataSource={data}
       columns={mergedColumns}

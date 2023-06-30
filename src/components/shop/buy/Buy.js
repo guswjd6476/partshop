@@ -64,11 +64,6 @@ getAddress(props.userId).then(function(response){
   const total = cartlist&&cartlist.reduce((sum, item) => {
     return sum + item.count * item.pPrice;
   }, 0);
-  
-  console.log(props.userId,'userid')
-  console.log(user,'user')
-  console.log(address,'address')
-  console.log(addresslist,'addresslist')
 
   return (
   <div className='buy_wrap main displaybox'>

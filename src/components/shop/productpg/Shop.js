@@ -23,14 +23,12 @@ function Shop({cate,userId,setBack}) {
     if(pathnum2){
       getproduct(pathnum2)
       .then(function (response) {
-        console.log(response.data,'???')
         setAllPlist(response.data)
       })
     }else{
       getproduct(pathnum1)
       .then(function (response) {
         
-        console.log(response.data,'???')
         setAllPlist(response.data)
       })
     }

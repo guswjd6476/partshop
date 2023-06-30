@@ -4,8 +4,7 @@ import { noticeOption,faqOption,qnaOption } from '../../service/options';
 
 
 const Innersearch = ({path,value, setValue, setFilter,filter}) => {
-console.log(value,'value')
-console.log(filter,'filter')
+
   const handleInputChange = (event) => {
     setFilter(event.target.value);
   };

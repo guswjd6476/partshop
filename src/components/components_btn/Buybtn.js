@@ -19,8 +19,6 @@ function Buybtn(props) {
     
     const stringifyCheckedList = encodeURIComponent(JSON.stringify(checkedLists));
     
-    console.log(stringifyCheckedList)
-    console.log(checkedLists,'checkedLists')
   return (
     <Link to={stringifyCheckedList !== 'undefined' ? `/buy?checkedList=${stringifyCheckedList}&productid=${productnum}&count=${count}&userId=${userId}` : 
     `/buy?&productid=${productnum}&count=${count}&userId=${userId}` 

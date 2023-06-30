@@ -9,7 +9,6 @@ import Mainevent from './Mainevent';
 import Mainnotice from './Mainnotice';
 
 function Main({edit,cates,shows,setBack}) {
-  console.log(shows,'???shows')
   const [data,setData] = useState()
   const [mi, setMi] =useState({
      a1 : '', a2 : '', a3 :'', a4 :'', a5 :'', a6 :'', a7 :'', a8 :'', a9 :'', a10 :'',
@@ -27,9 +26,7 @@ function Main({edit,cates,shows,setBack}) {
       }
     )
     }
-  const onChange = (key) => {
-    console.log(key);
-  };
+
   useEffect(()=>{
     Allgetproduct()
     .then(function (response) {
@@ -51,7 +48,7 @@ function Main({edit,cates,shows,setBack}) {
         <Mainslide/>
       </div>
       <div className='maintabs  displaybox'>
-          <Tabs defaultActiveKey="1" items={items} onChange={onChange} />
+          <Tabs defaultActiveKey="1" items={items}  />
       </div>
 
       <div className='mainbgwrap' >

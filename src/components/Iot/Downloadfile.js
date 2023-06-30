@@ -8,7 +8,6 @@ function Downloadfile({list}) {
         
     } 
     
-console.log(list)
     return (
     <div className="filewrap">
          {list.file1? 

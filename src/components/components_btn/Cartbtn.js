@@ -34,7 +34,6 @@ const Cartdelete = (props) => {
 
 
 const AllCartdelete = (props) => {
-  console.log(props.productid,'??')
     const onClick=()=>{
         deleteCart(props.productid)
         .then(function (response) {
@@ -42,7 +41,6 @@ const AllCartdelete = (props) => {
           const newCartData = props.cartdata.filter(
             (item) => !props.productid.includes(item.productnum)
           );
-          console.log(newCartData,'?')
           props.setCartData(newCartData);
         })
     }

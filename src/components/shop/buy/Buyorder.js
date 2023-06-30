@@ -1,6 +1,5 @@
 
 function Buyorder({user,address}) {
-console.log(user,'?')
     return (
         <div  className='buywrap'>
             {

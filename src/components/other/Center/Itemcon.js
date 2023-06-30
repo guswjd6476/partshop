@@ -15,7 +15,6 @@ function Itemcon({userInfo,setBack,isLoggedIn}) {
     const searchParams = new URLSearchParams(location.search);
     const num = searchParams.get('productid');
     
-    console.log(isLoggedIn,'???')
     useEffect(()=>{
       if(!isLoggedIn){
         alert('로그인후 이용 가능합니다')

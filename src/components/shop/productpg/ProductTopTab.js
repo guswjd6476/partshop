@@ -1,9 +1,7 @@
 import { Tabs } from "antd";
 
 function ProductTopTab({data}) {
-    const onChange = (key) => {
-        console.log(key);
-      };
+
     const items = [
         {
           key: '1',
@@ -17,7 +15,7 @@ function ProductTopTab({data}) {
         },
       ];
   return (
-    <Tabs defaultActiveKey="1" items={items} onChange={onChange} />
+    <Tabs defaultActiveKey="1" items={items} />
   );
 }
 

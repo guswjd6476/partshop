@@ -11,11 +11,9 @@ function Writenotice({setBack}) {
   
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
-  console.log(searchParams,'???')
   const pathnum2 = location.pathname.split('/')[2].split("&")[0]
   const userArray = JSON.parse(localStorage.getItem('userInfo'))
   const num = searchParams.get('productid');
-  console.log(num,'?')
   const user= userArray[0]
   const userGrade= userArray[1]
   const [values, setValues] =useState({
@@ -40,7 +38,6 @@ const handleChange = (id, value) => {
   function addProduct() {  
     {pathnum2 ==='notice' ?
     Wnotice(values.title,value,user,values.category).then(response => {
-      console.log(response.data)
       navigate("/center/notice");
     })
     .catch(error => {
@@ -48,7 +45,6 @@ const handleChange = (id, value) => {
     })
     : pathnum2 ==='faq' ?
     Wfaq(values.title,value,user,values.category).then(response => {
-      console.log(response.data)
       navigate("/center/FAQ");
     })
     .catch(error => {
@@ -56,7 +52,6 @@ const handleChange = (id, value) => {
     })
     : pathnum2 ==='qna' ?
     Wqna(values.title,value,user,values.category).then(response => {
-      console.log(response.data)
       navigate(`/center/qna`);
     })
     .catch(error => {

@@ -44,18 +44,14 @@ const Cartcheck = (props) => {
 
   const CountChange = (count, ids) => {
     const existingCount = props.cartdata.find((obj) => obj.productnum === ids);
-    console.log(existingCount, 'existingCount');
 
     if (existingCount) {
       const newdata = props.cartdata.map((obj) =>
         obj.productnum === ids ? { ...obj, count: count } : obj
       );
-      console.log(newdata, 'nd');
       props.setCartData(newdata);
     }
   };
-console.log(props.cartdata,'?')
-  
   return (
     <>
       <div className='checkwrap' style={{display:'flex', justifyContent:'space-between', marginBottom:'20px', marginTop:'20px'}}>

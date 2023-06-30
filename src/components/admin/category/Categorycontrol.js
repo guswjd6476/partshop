@@ -38,7 +38,6 @@ const [category, setCategory] = useState([...cates])
     let lastcate = [...updatedCate,...othercate]
     setCate(lastcate);
   };
-console.log(edit,'edit')
   const updateinputbox = (id,value,num,index) =>{
   if( category.length == cates.length ){
 setEdit(index)
@@ -178,9 +177,7 @@ const returninput = (index)=>{
       setActiveIndexes([...activeIndexes, index]);
     }
   };
-  console.log(edit)
-
-console.log(cate,'cate')
+  
   return (
     <>
       {category&&category.map((value, index) => (

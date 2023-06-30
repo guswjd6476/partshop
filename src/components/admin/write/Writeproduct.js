@@ -81,7 +81,6 @@ function Writeproduct({cate,cates}) {
 productinfo.subcatenum,productinfo.pName,productinfo.pquantity,productinfo.pPrice,productinfo.inch, productinfo.material,productinfo.brand,productinfo.color, productinfo.dcrate,
 productinfo.moq,productinfo.prepare,productinfo.pDetail,productinfo.startday,productinfo.lastday)
       .then(response => {
-        console.log(response.data)
         if(productinfo.catenum <3) {
         axios.post('https://port-0-partshopback-lme62alhk7lvdw.sel4.cloudtype.app/api/imagethumb', formData, {
           headers: {

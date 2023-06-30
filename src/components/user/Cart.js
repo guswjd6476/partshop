@@ -6,7 +6,6 @@ import EmptyCart from "./EmptyCart";
 
 function Cart({userId,setBack}) {
   const [cartdata, setCartData] = useState('')
-  console.log(cartdata,'?')
   const[plainOptions, setplainOptions] = useState([])
   useEffect(()=>{
     getCart(userId)
@@ -18,7 +17,6 @@ function Cart({userId,setBack}) {
     })
     setBack(true)
   },[cartdata.length])
-  console.log(cartdata,'cd')
   return (
     <div className="displaybox cartcon main">
       {cartdata ? (

@@ -11,7 +11,6 @@ const Compareproduct = (props)=>{
         setList(response.data)
       })
     },[props.num])
-    console.log(props.pathnum3,'props.pathnum3')
     return(
         <div className="shopcompare">
             {list&&list.map((value)=>

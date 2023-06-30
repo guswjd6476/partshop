@@ -1,6 +1,6 @@
 
 function Maincontrolmodalbox({i,datas,setMi,edit }) {
-console.log(datas,'datas')
+
 
 const handleChange = (id, value) => {
     setMi(prevState => ({

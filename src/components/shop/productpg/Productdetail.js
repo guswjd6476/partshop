@@ -34,7 +34,6 @@ function Productdetail({cate,userId,setBack}) {
         setData(response.data)
       })
     },[pathnum3])
-    console.log(data,'data')
 
   return (
     <div className="shop main content_detail displaybox">
