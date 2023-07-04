@@ -2857,8 +2857,35 @@ border-bottom: 3px solid #4b6cb7;
         overflow: hidden;
         text-overflow: ellipsis;
     }
+    .grid3 .grid31{
+        width: calc(100% - 210px) !important;
+    }
+    .grid3 .grid32{
+        width: 80px !important;
+    }
+    .pricebox .product_d, .pricebox .product_d span{
+        font-size: 14px !important;
+    }
+    .grid34{
+        width: 70px !important;
+    }
+    .grid35{
+        width: 50px !important;
+    }
+    .grid35>button{
+        width: 50px !important;
+    }
   }
   @media screen and (max-width: 500px) {
+    .grid3 .grid31{
+        width: calc(100% - 190px) !important;
+    }
+    .grid3 .grid32{
+        width: 60px !important;
+    }
+    .grid32 .tx{
+        display: none;
+    }
     .shop_img_wrap{
         display: block;
     }
