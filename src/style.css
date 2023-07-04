@@ -1667,13 +1667,18 @@ width: calc(100% - 100px);
     height: 150px;
 }
 .shopcompareT{
-    font-size: 16px !important;
+    font-size: 14px !important;
     color: #a1a1a1;
     font-weight: normal !important;
     padding: 10px 0px;
 }
+.ant-affix{
+    background-color: #fff;
+}
 
-
+.qnacon img{
+    width: 100%;
+}
 /* 비교 모달 */
 .comparewrap{
     display: flex;
@@ -2504,6 +2509,34 @@ border-bottom: 3px solid #4b6cb7;
 .buylist_content{
     padding: 10px;
 }
+.partwrap>div, .partwrap>div p img{
+    width: 100%;
+}
+.acnhorwrap{
+    padding: 10px 0px;
+}
+.ant-anchor .ant-anchor-link{
+    width: 20%;
+    font-size: 16px ;
+    font-weight: bold;
+    text-align: center;
+}
+.sorting_list .ant-select-selector{
+    border-radius: 0px;
+}
+.sorting_list .ant-select {
+
+    border: 1px solid #4b6cb7;
+    margin-right: 5px;
+}
+.sorting_list .ant-select-arrow{
+    color: #4b6cb7;
+}
+.msort_grid{
+    border-radius: 0px;
+    border: 1px solid #4b6cb7;
+    height: 32px;
+}
 @media screen and (max-width: 1700px) {
     .productbox.grid1 {
         display: flex;
@@ -2633,6 +2666,8 @@ border-bottom: 3px solid #4b6cb7;
         margin-bottom: 10px;
     }
     .sort_navi>li{
+        width: 20%;
+
         flex : 1;
         border-left: 1px solid #4b6cb7;
         border-top: 1px solid #4b6cb7;
@@ -2644,6 +2679,9 @@ border-bottom: 3px solid #4b6cb7;
     }
  .sort_navi>li>a{
     padding: 5px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
     height: 40px;
     line-height: 30px;
     font-weight: unset;
@@ -2765,6 +2803,25 @@ border-bottom: 3px solid #4b6cb7;
     
         font-weight: 500;
         font-size: 20px;
+    }
+    .ant-anchor{
+        overflow-x: scroll;
+    }
+    .ant-anchor .ant-anchor-link{
+        font-size: 12px;
+        padding-inline:0;
+    }
+    .notice_title{
+        padding: 5px ;
+    }
+    .titlebtn a, .titlebtn button{
+        width: 50px;
+    }
+    .qnacon{
+        margin-bottom: 5px;
+    }
+    .nextdiv{
+        padding: 5px 0;
     }
   }
   /* 모바일 */
@@ -2898,8 +2955,21 @@ border-bottom: 3px solid #4b6cb7;
     .sort_navi>li>a{
         font-size: 14px;
     }
+    .shop_d_box button, .shop_d_box a{
+        font-size: 16px;
+        height: 30px !important;
+    }
+    .shopcompare .shopcomaprebox{
+        width: 25%;
+    }
+    .shopcompare .shopcomaprebox:nth-child(5){
+        display: none;
+    }
   }
   @media screen and (max-width: 500px) {
+    .sort_navi>li>a{
+        font-size: 12px;
+    }
     .grid3 .grid31{
         width: calc(100% - 190px) !important;
     }
@@ -2928,6 +2998,12 @@ border-bottom: 3px solid #4b6cb7;
     .maineventimg img{
         width: 100%;
         height: 100%;
+    }
+    .shopcompare .shopcomaprebox{
+        width: 33.3333333%;
+    }
+    .shopcompare .shopcomaprebox:nth-child(4){
+        display: none;
     }
    
   }
