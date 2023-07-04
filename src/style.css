@@ -601,6 +601,9 @@ height: 100%;
     margin-right: 10px;
     color: #a1a1a1;
     font-weight: 600;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   
 }
 .grid1 .brandt{
@@ -865,6 +868,10 @@ padding: 2px;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+}
+.product_wrap{
+    height: 100%;
+    position: relative;
 }
 .product_wrap.wide .productbox{
     width: 100% !important;
@@ -2875,13 +2882,19 @@ border-bottom: 3px solid #4b6cb7;
     .grid35>button{
         width: 50px !important;
     }
+    .grid1 .counterbtrn_wrap>button{
+        width: calc((100% - 90px)/2) !important;
+    }
+    .sort_navi>li>a{
+        font-size: 14px;
+    }
   }
   @media screen and (max-width: 500px) {
     .grid3 .grid31{
         width: calc(100% - 190px) !important;
     }
     .grid3 .grid32{
-        width: 60px !important;
+        width: 70px !important;
     }
     .grid32 .tx{
         display: none;
@@ -2895,6 +2908,12 @@ border-bottom: 3px solid #4b6cb7;
     .imgslider{
         width: 100%;
         flex-direction: row;
+    }
+    .grid35{
+        width: 30px !important;
+    }
+    .grid35>button{
+        width: 30px !important;
     }
     .maineventimg img{
         width: 100%;
