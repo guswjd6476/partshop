@@ -870,7 +870,7 @@ padding: 2px;
     transform: translate(-50%, -50%);
 }
 .product_wrap{
-    height: 100%;
+    height: calc(100% - 105px);
     position: relative;
 }
 .product_wrap.wide .productbox{
@@ -2610,11 +2610,16 @@ border-bottom: 3px solid #4b6cb7;
         padding-bottom: 30px !important;
         min-height: calc(100vh - 110px);
     }
-   
-    
+    .maintabs .ant-tabs-tab{
+        font-size: 14px;
+    }
+    .maintabs .ant-tabs{
+        padding: 0px;
+    }
     /* 전체틀 */
     .shop_div{
         display: block;
+        min-height: calc(100vh - 152px);
     }
     .shop_content{
         width: 100%;
@@ -2755,6 +2760,11 @@ border-bottom: 3px solid #4b6cb7;
     }
     .breacrumb{
         padding: 0px;
+    }
+    .pageTbox .pagetitle{
+    
+        font-weight: 500;
+        font-size: 20px;
     }
   }
   /* 모바일 */
