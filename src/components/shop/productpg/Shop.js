@@ -55,7 +55,6 @@ function Shop({cate,userId,setBack}) {
       :
       <Crumb2 num1={pathnum1} num2={pathnum2}/>
       }
-   
            <PC>
             <SortingWrap  onClick={onClick} setOnHide={setOnHide} onhide={onhide} pathnum1={pathnum1}  pathnum2={pathnum2} searchArray={searchArray} setSearchArray={setSearchArray}/>
             <Productbox  search={search}  setOnHide={setOnHide} onhide={onhide}  lastCheck={lastCheck} setLastCheck={setLastCheck}  userId={userId} plist={allplist} pathnum1={pathnum1}  pathnum2={pathnum2} searchArray={searchArray}/>

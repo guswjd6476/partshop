@@ -2,6 +2,7 @@ import { useEffect,useState } from "react";
 import { getCart } from "../../service/product";
 import Cartcheck from "./Cartcheck";
 import EmptyCart from "./EmptyCart";
+import Pagetitle from "../components_btn/Pagetitle";
 
 
 function Cart({userId,setBack}) {
@@ -18,7 +19,8 @@ function Cart({userId,setBack}) {
     setBack(true)
   },[cartdata.length])
   return (
-    <div className="displaybox cartcon main">
+    <div className="displaybox nonavicon cartcon main">
+      <Pagetitle value={'장바구니'}  svalue={'shopping basket'}/>
       {cartdata ? (
        <Cartcheck userId={userId}  cartdata={cartdata} setCartData={setCartData} plainOptions={plainOptions} />
       ) : (

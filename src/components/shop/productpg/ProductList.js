@@ -3,6 +3,7 @@ import { sortList,pricechange } from '../../../service/function';
 import { useEffect, useState } from 'react';
 import { Checkbox} from 'antd';
 import Productform from './Productform';
+import Waitpage from '../../../Waitpage';
 
 const ProductList  = (props)=>{
   const [counts, setCounts] = useState([]);
@@ -64,6 +65,7 @@ useEffect(()=>{
 
   return (
     <div className='product_wrap'>
+      {filteredArray[0] ? 
          <Checkbox.Group
     
     onChange={onChange}
@@ -75,6 +77,8 @@ useEffect(()=>{
           )
   })}
   </Checkbox.Group>
+  :<Waitpage/>
+  }
     </div>
   );
 

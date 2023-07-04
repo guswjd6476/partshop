@@ -1,5 +1,5 @@
 import { Input,Button } from "antd";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { getPass } from "../../service/user";
 import { useNavigate } from "react-router-dom";
 import Pagetitle from "../components_btn/Pagetitle";
@@ -7,12 +7,14 @@ function Myinfo({userId}) {
     const navigate = useNavigate();
     const [pass, setPass] =useState(null)
     const [deepinfo, setDeepInfo] = useState(false)
+ 
   const onChange = (e)=>{
     setPass(e.target.value)
   }
   const onClick=()=>{
     getPass(pass,userId).then(function (response) {
-        if(response.data){alert('확인!'); setDeepInfo(true); navigate('/Myinfo')}
+        if(response.data){alert('확인!'); setDeepInfo(true); 
+        navigate('/Myinfo')}
         else{
             alert('비밀번호를 확인해주세요')
         }
@@ -30,7 +32,7 @@ function Myinfo({userId}) {
             <div className="infobox_wrap">
                 <div className="infobox passbox">비밀번호</div>
                 <div className="infoinputbox passinput">
-                    <Input onChange={onChange}/>
+                    <Input type="password" onChange={onChange}/>
                 </div>
             </div>
         </div>

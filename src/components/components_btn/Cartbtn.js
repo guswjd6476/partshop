@@ -11,7 +11,7 @@ function AddCartbtn(props) {
     })
 }
   return (
-    <Button className='cartbtn btnsytle' onClick={onClick}><ShoppingCartOutlined /></Button>
+    <Button className='cartbtn btnstyle' onClick={onClick}><ShoppingCartOutlined /></Button>
   );
 }
 

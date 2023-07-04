@@ -30,7 +30,18 @@ import { fetchData } from "./instance";
   const lastjoin = async (uPassword,uPhone,userId) => {
     return fetchData('/api/join', { uPassword,uPhone,userId});
   };
+  const getOrderlist = async (userId) => {
+    return fetchData('/api/getOrderlist', { userId});
+  };
+  const getAfterbuylist = async (userId) => {
+    return fetchData('/api/getAfterbuylist', {userId});
+  };
+  const getThisAfterbuylist = async (num) => {
+    return fetchData('/api/getThisAfterbuylist', {num});
+  };
+  const addAfeterbuylist =  async (num,userId,title,rate,content) => {
+    return fetchData('/api/addAfeterbuylist', {num,userId,title,rate,content});
+  };
   
   
-  
-  export  {getPass,userlists,logins,useridchecks,mailing,lastjoin,getUser,getAddress,addAddress,selectAddress}
+  export  {getPass,userlists,logins,useridchecks,mailing,lastjoin,getUser,getAddress,addAddress,selectAddress,getOrderlist,getAfterbuylist,addAfeterbuylist,getThisAfterbuylist}

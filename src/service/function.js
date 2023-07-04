@@ -78,4 +78,45 @@ function pricechange(number) {
   parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ',');
   return parts.join('.');
 }
-  export {sortList,addNeeds,addNeedss,getcompare,getCate,addMainCate,getMainCate,dMainCate,addCates,dSubCate,pricechange}
+
+function datechange(inputString) {
+  const dateRegex = /\d{4}-\d{2}-\d{2}/;
+  const extractedDate = inputString.match(dateRegex)[0];
+  return extractedDate;
+}
+
+function buystates(state){
+  const buystate = state == 1 ? '상품준비중' : state == 2 ? '배송준비중' :state == 3 ? '배송중' : '수령완료' 
+  return buystate;
+}
+
+function sortedObj(num,list, func){
+  const dates = new Date(); 
+  const formattedDate = (date) => {
+    const sdate = `${date.getFullYear()}-${("0" + (date.getMonth() + 1)).slice(-2)}-${("0" + date.getDate()).slice(-2)} ${("0" + date.getHours()).slice(-2)}:${("0" + date.getMinutes()).slice(-2)}:${("0" + date.getSeconds()).slice(-2)}`;
+    return sdate;
+  };
+  
+  if(num===0){
+    dates.setFullYear(dates.getFullYear() - 1);
+    console.log(dates,'??')
+    console.log(formattedDate(dates),'??')
+    let sortedObjects = list.filter(obj=>obj.buytime >= formattedDate(dates));
+    func(sortedObjects);
+  }else if (num ===1){
+    dates.setDate(dates.getDate() - 7);
+    let sortedObjects = list.filter(obj=>obj.buytime >= formattedDate(dates));
+    func(sortedObjects);
+  }else if(num===2){
+    dates.setMonth(dates.getMonth() - 1);
+    let sortedObjects = list.filter(obj=>obj.buytime >= formattedDate(dates));
+    func(sortedObjects);
+  }else if (num===3){
+    dates.setMonth(dates.getMonth() - 3);
+    let sortedObjects = list.filter(obj=>obj.buytime >= formattedDate(dates));
+    func(sortedObjects);
+  }else{
+    func(list);
+  }
+}
+  export {sortList,addNeeds,addNeedss,getcompare,getCate,addMainCate,getMainCate,dMainCate,addCates,dSubCate,pricechange,datechange,buystates,sortedObj}

@@ -139,6 +139,7 @@
   }
 .addressbox{
     padding: 10px;
+    border: 1px solid #4b6cb7;;
     border-radius: 10px;
     box-shadow: inset 0px 1px 0px rgba(255,255,255,.8),0px 1px 3px ;
     padding-left: 10px;
@@ -305,6 +306,7 @@ height: 100%;
 }
 .footercon{
     width: 100%;
+    z-index: 10;
 }
 .footer_bg_line{
     width: 100%;
@@ -352,8 +354,9 @@ height: 100%;
 .footerline{
     width: 100%;
     position: absolute;
+    z-index: 1;
     top: 0;
-    left:190px;
+    left:175px;
     height: 60px;
     border-bottom: 1px solid #4b6cb7;
 }
@@ -735,12 +738,18 @@ color: #000;
 .productbox.grid3:last-child{
     border-bottom: 1px solid #4b6cb7;
 }
+
 .grid3 .product_pic{
     width: 70px;
     height: 70px;
 }
 .grid3 .grid31{
     width: calc(100% - 445px);
+}
+.grid31 .product_d, .grid31 .valueid {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 .grid3 .grid32{
     justify-content: right;
@@ -757,6 +766,7 @@ color: #000;
 .grid35{
     width: 100px;
 }
+.grid35 button{width: 100%;}
 .grid3 .dcvalue{
     position: relative;
     top: unset;
@@ -785,6 +795,9 @@ color: #000;
 .grid2Pname .pName{
     font-size: 18px;
     color: #0b255b;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
     font-weight: bold;
 }
 .pad10{
@@ -937,7 +950,7 @@ line-height: 18px;
     color: #fff;
     font-weight: bold;
     line-height: 55px;
-    font-size: 22px;
+    font-size: 20px;
 };
     
 
@@ -1146,7 +1159,7 @@ display: flex;
     margin-bottom: 30px ;
     width: 100%;
     transition: all 1s;
-    background-color: #f1f1f1;
+    background-color: #c6d5fc;
     padding: 20px 10px;
     position: relative;
 }
@@ -1193,13 +1206,13 @@ margin-bottom: 10px;
     border-radius: 1px;
     margin-right: 20px;
     height: 40px;
-    background-color: #676565;
+    background-color: #4b6cb7;
     color: #fff;
 
 }
 .sortbtnss{
     padding: 5px;
-    background-color: #676565;
+    background-color: #4b6cb7;
     color: #fff;
 }
 .sortbtns{
@@ -1207,7 +1220,7 @@ margin-bottom: 10px;
     border-radius: 1px;
     height: 210px !important;
     width: 60px;
-    background-color: #676565;
+    background-color: #4b6cb7;
     color: #fff;
     transition: all 1s;
 }
@@ -1285,6 +1298,13 @@ margin-bottom: 10px;
     width: 100%;
     height: 100%;
     border-radius: 2px;
+    border-top: 1px solid #4b6cb7;
+    border-left: 1px solid #4b6cb7;
+    border-bottom: 1px solid #4b6cb7;
+}
+.sorting_list_btn li:last-child button{
+    
+    border-right: 1px solid #4b6cb7;
 }
 .searchresult .sorting_list_btn{
     width: 100%;
@@ -1462,8 +1482,17 @@ margin-bottom: 10px;
     align-items: center;
     margin-top: 10px;
 }
+.grid1 .counterbtrn_wrap{
+    justify-content: space-between;
+}
+.grid1 .counterbtrn_wrap>button{
+    width: calc((100% - 130px)/2) !important;
+}
 .grid2 .counterbtrn_wrap{
 margin-top: 0px;
+}
+.grid2 .counterbtrn_wrap>button{
+    width: 40px;
 }
 .shop_main_detail .ant-tabs{
     margin-top: 10px;
@@ -1487,13 +1516,34 @@ display: flex;
     width: 30px;
     height: 30px;
     border-radius: 0px;
+    border: 1px solid #4b6cb7 !important;
 }
+
 .btnstyle{
     width: 100px;
     height: 30px;
-    border-radius: 1px;
+    padding: 0px;
+    text-align: center;
+    font-size: 14px;
+    line-height: 30px;
+    border-radius: 0px !important;
+    border: 1px solid #4b6cb7 !important;
 }
-
+.btnstyle.c{
+    background-color:#4b6cb7  ;
+    color: #fff;
+}
+.sbtnstyle{
+    width: 80px;
+    height: 30px;
+    border-radius: 0px !important;
+    border: 1px solid #4b6cb7 !important;
+   
+}
+.sbtnstyle.active{
+    background-color: #0b255b;
+    color: #fff;
+}
 .counter{
     color: #000;
     display:block;
@@ -1684,13 +1734,11 @@ width: calc(100% - 100px);
 .infoinputbox input{
     width: 60%
 }
-.myinfo{
-    padding: 20px;
-}
+
 .totalp_wrap{
     display: flex;
     align-items: center;
-    width: 100%;
+    width: calc(100% - 40px);
     justify-content: space-between;
     position: absolute;
     bottom: 0;
@@ -1928,6 +1976,9 @@ margin-right: 20px;
 padding-right: 20px;
 border-right: 1px solid #4b6cb7;
 }
+.mb10{
+    margin-bottom: 10px;
+}
 .notice_title.sub{
     padding: 10px;
     border-top: none;
@@ -2105,6 +2156,7 @@ flex-wrap: wrap;
     position: relative;
 }
 .modalbtn{
+    z-index: 10000;
     padding: 0px;
     height: 30px;
     width: 30px;
@@ -2316,7 +2368,9 @@ color: #000;
     text-align: center;
     padding: 10px 0;
 }
-
+.cartcon{
+    padding-bottom: 90px !important;
+}
 .inntertab:first-child>span{
     width: 100% ;
     display: block;
@@ -2335,13 +2389,120 @@ border-bottom: 3px solid #4b6cb7;
     width: 120px;
     font-weight: bold;
 }
+/* 주문목록 */
+.tableH {
+    padding: 10px 0;
+    font-size: 18px ;
+    font-weight: bold;
+    text-align: center;
+    border-bottom: 2px solid #4b6cb7;
+    border-top: 2px solid #4b6cb7;
+    margin-bottom: 10px;
+}
+.tableB{
+    margin-bottom: 10px;
+}
+.table1{
+    width: calc(100% - 550px);
+}
+.table2,.table3,.table4{
+    text-align: center;
+    width: 100px;
+}
+.table5{
+    width: 200px;
+}
+.table5.b{
+    padding: 5px;
+    display: flex ;
+    align-items: center;
+    justify-content: space-between;
+}
+.table1, .table2,.table3, .table4{
+   margin-right: 10px;
+}
+.tableimg{
+    width: 80px;
+    height: 80px;
+}
+.tableimg img{
+    width: 100%;
+    height: 100%;
+}
+.waitpgicon{
+    font-size: 60px;;
+}
+.nonavicon{
+    padding-top: 160px;
+    position: relative;
+    padding-bottom: 30px;
+}
+.ant-tabs-tabpane{
+    position: relative;
+    min-height: 20vh;
+    padding: 20px 0;
+}
+.pro_d_h{
+    width: 120px;
+    font-weight: bold;
+    padding: 0px 10px;
+}
+.pro_d_b{
+    width: calc(100% - 120px);
+    margin-bottom: 10px;
+    border-bottom: 1px solid #4b6cb7;
+    padding: 10px;
+}
+.pro_d_b span{
+    display: block;
+    font-weight: bold;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+.pro_d_b span.red{
+    color: red;
+}
+.modalquill{
+    border: 1px solid #000;
+}
+.modalquill .ql-toolbar{
+    display: none !important;
+}
+.reactquills_title{
+    border-radius: 0px;
+    border: 1px solid #000; 
+}
+.ratewrap{
+    padding: 10px 0;
+}
+
+/* 제품후기  */
+.buylistwrap{
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    border:1px solid #4b6cb7;
+}
+.buylist_id{
+    font-weight: bold;
+}
+.buylist_title{
+    padding: 10px ;
+    border-bottom: 1px solid #000;
+    font-weight: bold;
+}
+.buylist_conwrap{
+    border: 1px solid #000;
+}
+.buylist_content{
+    padding: 10px;
+}
 @media screen and (max-width: 1700px) {
     .productbox.grid1 {
         display: flex;
         flex-direction: column;
         width: calc(20% - 8px);
         margin-right: 10px;
-        border: 1px solid #0b255b;
         transition: all 0.5s ease-out;
         margin-bottom: 10px;
     }
@@ -2365,7 +2526,9 @@ border-bottom: 3px solid #4b6cb7;
      
 }
 @media screen and (max-width: 1480px) {
-    
+    .grid2Pname{
+        width: 170px;
+    }
     .navigation li{
         width: 100px;
         font-size: 18px;
@@ -2392,7 +2555,9 @@ border-bottom: 3px solid #4b6cb7;
 
   }
   @media screen and (max-width: 1200px) {
-   
+    .grid2Pname{
+        width: 150px;
+    }
     .grid2 .btnstyle{
         width: 60px;
     }  
@@ -2430,17 +2595,16 @@ border-bottom: 3px solid #4b6cb7;
     .cart_check_wrap:nth-child(2) {
         border-top: unset;
     }
+    .displaybox{
+        padding: 0px 10px !important;
+    }
     .main{
         padding-top: 52px !important;
         padding-bottom: 30px !important;
-        min-height: calc(100vh - 150px);
+        min-height: calc(100vh - 110px);
     }
-    .cartcon{
-        padding-bottom: 90px !important;
-    }
-    .displaybox{
-        padding: 0px 10px;
-    }
+   
+    
     /* 전체틀 */
     .shop_div{
         display: block;
@@ -2486,17 +2650,22 @@ border-bottom: 3px solid #4b6cb7;
         height: 40px;
     }
     .footer{
-        height: 150px;
+        height: 110px;
     }
     .footer_top{
         height: 40px;
         font-size: 14px;
-        padding: 5px;
+        padding: 0px !important;
         align-items: center;
     }
     .footer_main{
         height: 110px;
     }
+    .footerline{
+        height: 40px;
+        left: 175px;
+    }
+   
     .footer_top li{
         margin-right: 10px;
     }
@@ -2505,6 +2674,9 @@ border-bottom: 3px solid #4b6cb7;
     }
     .footer li{
         font-size: 14px;
+    }
+    .footer_d_wrap li{
+        font-size: 12px;
     }
     .sortWrap{
         margin-bottom: 10px;
@@ -2565,6 +2737,18 @@ border-bottom: 3px solid #4b6cb7;
         position: relative;
         right: 0
     }
+    .grid2Pname{
+        width: 120px;
+    }
+    .grid2 .tx{
+        margin-left: 5px;
+    }
+    .product_wrap .count_wrap, .product_wrap .neeedsbtn, .productwrap1 .count_wrap, .productwrap1 .neeedsbtn{
+        margin-right: 5px;
+    }
+    .breacrumb{
+        padding: 0px;
+    }
   }
   /* 모바일 */
 
@@ -2604,22 +2788,7 @@ border-bottom: 3px solid #4b6cb7;
     .iotcontains .maineventwrap:last-child{
         display: none !important;
     }
-    .footer li{
-        font-size: 12px;
-    }
-    .footer_logo{
-        width: 100px;
-        padding: 5px;
-        margin-right: 5px;
-    }
-    .footer_d{
-        width: 120px;
-        padding: 5px;
-        margin-right: 5px;
-    }
-    .footer_d_d{
-        width: 90px;
-    }
+   
     .eventpgCon{
         display: block;
     }
@@ -2649,6 +2818,44 @@ border-bottom: 3px solid #4b6cb7;
     .grid3 .gridbtnwrap,.grid3 .neeedsbtn,.grid3 .cartbtn{width: 80px;}
     .productwraps{
         width: 200px;
+    }
+    .footer_logo{
+      display: none;
+    }
+    .footer_bg_line{
+        height: 20px;
+    }
+    .footer, .footer_main{
+        height: 100px;
+    }
+    .footer_top{
+        height: 30px;
+    }
+    .footer_top li{
+        height: 30px;
+        font-size: 12px !important;
+    }
+    .footerline{
+        height: 30px;
+        left: 0px;
+    }
+    .footer_d{
+        margin-right: 10px;
+    }
+    .footer_d {
+        width: 50%;
+    }
+    .footer_d_wrap{
+        padding: 0px;
+    }
+    .footer_top li a{
+        color: #000;
+    }
+    .footer_d_wrap li{
+        font-size: 12px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
   }
   @media screen and (max-width: 500px) {

@@ -21,7 +21,7 @@ return(
     
     : ''}
       <Link className='product_pic'  to={pathValue}>
-        <img src={value.img1}/>
+        <img src={value&&value.img1}/>
       </Link>
       <div >
       <Link  to={pathValue}>

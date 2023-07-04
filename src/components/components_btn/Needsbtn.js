@@ -11,7 +11,7 @@ function Needsbtn(props) {
    }
 
     return(
-            <Button onClick={onClick} className='neeedsbtn  btnsytle'>♡</Button>
+            <Button onClick={onClick} className='neeedsbtn  btnstyle'>♡</Button>
         
     )
   

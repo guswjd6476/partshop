@@ -5,7 +5,7 @@ function Buyaddress({user,address,addresslist,setAddress,setNum}) {
 
     return (
        <div className='buywrap'>
-        {user ? 
+        {user&&address ? 
         <>
           <div className='smallT flex j'>
             <div>배송지정보</div>

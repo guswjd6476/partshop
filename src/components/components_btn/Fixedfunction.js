@@ -17,7 +17,7 @@ function Fixedcart({lastCheck,userId}) {
     }else{ alert('품목을 체크해주세요')}
     }
     return(
-    <Button onClick={onClick}>
+    <Button className="btnstyle" onClick={onClick}>
         <Badge size="default" count={lastCheck&&lastCheck.length}>
             <ShoppingCartOutlined />
         </Badge>
@@ -35,7 +35,7 @@ function Fixedneeds({lastCheck,userId}) {
     }else{ alert('품목을 체크해주세요')}
     }
  return(
-    <Button onClick={onClick}>
+    <Button className="btnstyle"  onClick={onClick}>
         <SmileOutlined />
     </Button>
     )
@@ -75,7 +75,7 @@ const Comparebtn = ({lastCheck,userId}) => {
     };
     return (
       <>
-        <Button onClick={showModal}>비교</Button>
+        <Button className="btnstyle"  onClick={showModal}>비교</Button>
         <Modal
          width={1100}
           title={

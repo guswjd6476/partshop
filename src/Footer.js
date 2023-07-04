@@ -1,5 +1,5 @@
 
-import { useLocation} from 'react-router-dom';
+import { Link} from 'react-router-dom';
 import logow from '../src/Image/logow.png'
 const Footer = () => {
   return (
@@ -14,16 +14,16 @@ const Footer = () => {
         <div className='flex c footercon'>
           <ul className='footer_top displaybox'>
               <li >
-                <a href='/Sub/Intro'>회사소개</a>
+                <Link to='/Sub/Intro'>회사소개</Link>
               </li>
               <li>
-                <a href='/Sub/place'>오시는길</a>
+                <Link to='/Sub/place'>오시는길</Link>
               </li>
               <li>
-                <a href='/Sub/agreement'>사이트이용약관</a>
+                <Link to='/Sub/agreement'>사이트이용약관</Link>
               </li>
               <li>
-                <a href='/Sub/privacy'>개인정보처리방침</a>
+                <Link to='/Sub/privacy'>개인정보처리방침</Link>
               </li>
             </ul>
         <div className='flex footer_d_wrap'>

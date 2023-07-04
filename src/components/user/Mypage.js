@@ -39,7 +39,7 @@ function Mypage({userId,setBack}) {
         :
         <Crumb1 num={pathnum1} /> }
             {
-              pagenum ===1 ? <Myorderlist/>:
+              pagenum ===1 ? <Myorderlist userId={userId}/>:
               pagenum ===2 ? <Myinfo userId={userId}/>:
               ''
             }

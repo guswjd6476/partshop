@@ -5,10 +5,9 @@ import axios from 'axios';
 import { useMemo,useRef } from 'react';
 function ReactQuills(props) {
   const quillRef = useRef();
+
   const imageHandler = () => {
-   
-  
-    // 1. 이미지를 저장할 input type=file DOM을 만든다.
+      // 1. 이미지를 저장할 input type=file DOM을 만든다.
     const input = document.createElement('input');
     // 속성 써주기
     input.setAttribute('type', 'file');
@@ -61,6 +60,7 @@ function ReactQuills(props) {
       }
     };
   }, []);
+
  
   const formats = [
     'header', 'font', 'size',
@@ -70,10 +70,17 @@ function ReactQuills(props) {
   ]
 
   function handleChange(content, delta, source, editor) {
+    props.none ? props.setValues(content) :
     props.setValue(content);
   }
   return (
+    <>
+    {props.none ?
+       <ReactQuill className='modalquill'  ref={quillRef} theme="snow" value={props.values} onChange={handleChange}  modules={modules} formats={formats} />
+    :
     <ReactQuill  ref={quillRef} theme="snow" value={props.value} onChange={handleChange} modules={modules} formats={formats} />
+  }
+    </>
   );
 }
 

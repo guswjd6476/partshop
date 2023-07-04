@@ -1,6 +1,10 @@
 import { Tabs,theme } from "antd";
 import StickyBox from 'react-sticky-box';
+import Productdelivery from "./Productdelivery";
+import Waitpage from "../../../Waitpage";
+import ProductBuyafter from "./ProductBuyafter";
 function Productdetailsub({content}) {
+  console.log(content,'contnetn')
     const items = [
         {
           key: '1',
@@ -14,22 +18,22 @@ function Productdetailsub({content}) {
         {
           key: '2',
           label: `관련자료`,
-          children: `Content of Tab Pane 2`,
+          children:<Waitpage/>,
         },
         {
             key: '3',
             label: `제품후기`,
-            children: `Content of Tab Pane 2`,
+            children:<ProductBuyafter data={content}/>,
           },
           {
             key: '4',
             label: `기술지원문의`,
-            children: `Content of Tab Pane 2`,
+            children: <Waitpage/>,
           },
           {
             key: '5',
             label: `교환/반품/배송정보`,
-            children: `Content of Tab Pane 2`,
+            children: <Productdelivery/>,
           },
       ];
       const {
@@ -37,7 +41,7 @@ function Productdetailsub({content}) {
       } = theme.useToken();
       const renderTabBar = (props, DefaultTabBar) => (
         <StickyBox
-        offsetTop={0}
+        offsetTop={120}
         offsetBottom={20}
           style={{
             zIndex: 1,

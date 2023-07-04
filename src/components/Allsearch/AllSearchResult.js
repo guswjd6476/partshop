@@ -134,7 +134,7 @@ const uniquefilter = (sub,index) => {
 }
 }
   return (
-    <div className='searchresult main displaybox'>      
+    <div className='searchresult nonavicon main displaybox'>      
     <div className='searchTopic'>'{num}' 검색결과</div>
     <div className='cateArrayHead'>검색된 카테고리</div>
     <div className='cateArray'>

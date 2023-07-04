@@ -1,4 +1,5 @@
 import { Tabs } from "antd";
+import Waitpage from "../../../Waitpage";
 
 function ProductTopTab({data}) {
 
@@ -11,7 +12,7 @@ function ProductTopTab({data}) {
         {
           key: '2',
           label: `참고자료`,
-          children: `Content of Tab Pane 2`,
+          children: '준비중입니다',
         },
       ];
   return (

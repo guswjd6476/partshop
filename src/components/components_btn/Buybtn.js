@@ -18,12 +18,17 @@ function Buybtn(props) {
     }));
     
     const stringifyCheckedList = encodeURIComponent(JSON.stringify(checkedLists));
-    
+    const onClick=()=>{
+      if(checkedList==''){
+        alert('체크해주세요')
+      }
+    }
+    console.log(checkedList,'checkedlist')
   return (
-    <Link to={stringifyCheckedList !== 'undefined' ? `/buy?checkedList=${stringifyCheckedList}&productid=${productnum}&count=${count}&userId=${userId}` : 
+    <Link to={ checkedList=='' ? '' : stringifyCheckedList !== 'undefined' ? `/buy?checkedList=${stringifyCheckedList}&productid=${productnum}&count=${count}&userId=${userId}` :
     `/buy?&productid=${productnum}&count=${count}&userId=${userId}` 
     }>
-      <Button className='btnsytle cartbuybtn' >주문하기</Button>
+      <Button className='btnstyle cartbuybtn' onClick={onClick} >주문하기</Button>
     </Link>
   );
 }
