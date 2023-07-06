@@ -69,11 +69,10 @@ const Cartcheck = (props) => {
                     <div className='cart_box_img'>
                       <img src={value.img1}/>
                     </div>
-                    <div>
-                      <div>{value.category}</div>
-                      <div>{value.subcategory}</div>
-                      <div>{value.pName}</div>
-                      <div>{pricechange(value.pPrice)}</div>
+                    <div className='cart_box_detail'>
+                      <div className='tbrand'>{value.brand}</div>
+                      <div className='tname'>{value.pName}</div>
+                      <div className='table4'>{pricechange(value.pPrice)}원</div>
                     </div>
                 </div>
                 <Countbtn ids={value.productnum} CountChange={CountChange}  count={value.count}/>

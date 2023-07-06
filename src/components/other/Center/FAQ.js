@@ -33,7 +33,7 @@ function FAQ({uGrade}) {
             <div className="shop_content_box">
              <Collapse accordion>
               {notice&&notice.map(value=>(
-                <Panel header={<div className="tabledivs left"><span className="category">{value.category} </span> <span>{value.title}</span></div>} key={value.id}>
+                <Panel header={<div className="tabledivs left"><p className="category">{value.category} </p> <p>{value.title}</p></div>} key={value.id}>
                 <p dangerouslySetInnerHTML={{__html:value.content}}></p>
               </Panel>
               ))}

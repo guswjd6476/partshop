@@ -1,4 +1,4 @@
-import { fetchData } from "./instance";
+import { fetchData,dData } from "./instance";
 
   const getPass = async (pass, userId) => {
     return fetchData('/api/getpass', { pass, userId });
@@ -33,6 +33,9 @@ import { fetchData } from "./instance";
   const getOrderlist = async (userId) => {
     return fetchData('/api/getOrderlist', { userId});
   };
+  const getAllOrderlist = async () => {
+    return fetchData('/api/getAllOrderlist');
+  };
   const getAfterbuylist = async (userId) => {
     return fetchData('/api/getAfterbuylist', {userId});
   };
@@ -42,6 +45,13 @@ import { fetchData } from "./instance";
   const addAfeterbuylist =  async (num,userId,title,rate,content) => {
     return fetchData('/api/addAfeterbuylist', {num,userId,title,rate,content});
   };
+  // 배송조회
+  const deliveryApi = async (carriers,num) => {
+    return dData(carriers, num);
+  };
+    // 운송장 등록
+    const addDeliver  =  async (state,dNum,carriers,id) => {
+      return fetchData('/api/addDeliver', {state,dNum,carriers,id});
+    };
   
-  
-  export  {getPass,userlists,logins,useridchecks,mailing,lastjoin,getUser,getAddress,addAddress,selectAddress,getOrderlist,getAfterbuylist,addAfeterbuylist,getThisAfterbuylist}
+  export  {getPass,userlists,logins,useridchecks,mailing,lastjoin,getUser,getAddress,addAddress,selectAddress,getOrderlist,getAfterbuylist,addAfeterbuylist,getThisAfterbuylist,deliveryApi,getAllOrderlist,addDeliver}

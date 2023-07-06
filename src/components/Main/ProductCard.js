@@ -21,10 +21,11 @@ const ProductCard = ({ i, style,edit,able,data,datas,setMi,mi }) => {
     <div className="cardbox nodiv product_wrap wide" style={mergedStyle}>
    {edit>=1 &&able? <Mainmodal edit={edit} mi={mi} setMi={setMi} datas={datas} src={src} setSrc={setSrc} i={i}/> : ''}
    {edit == 0 ?
-   <Link onClick={e=>{console.log(`/${data?.category}/${data?.subcategory}/${data?.id}`)}} to={`/${data?.category}/${data?.subcategory}/${data?.id}`} className="card">
-    <img src={data?.img1} />
-    <div className="cardp">{data?.pName}</div>
-   </Link>
+  //  <Link onClick={e=>{console.log(`/${data?.category}/${data?.subcategory}/${data?.id}`)}} to={`/${data?.category}/${data?.subcategory}/${data?.id}`} className="card">
+  //   <img src={data?.img1} />
+  //   <div className="cardp">{data?.pName}</div>
+  //  </Link>
+    <Productform pathValue={`/${data?.category}/${data?.subcategory}/${data?.id}`} main={true}  gridstyle={0}  value={data}/>
      
      :
      edit == 1 ?

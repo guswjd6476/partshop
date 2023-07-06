@@ -28,7 +28,7 @@ const Cartdelete = (props) => {
     }
    
   return (
-    <Button className='cartdelet' onClick={onClick}><DeleteOutlined /></Button>
+    <Button className='cartdelet ssbtnstyle' onClick={onClick}><DeleteOutlined /></Button>
   );
 };
 
@@ -45,7 +45,7 @@ const AllCartdelete = (props) => {
         })
     }
   return (
-    <Button  onClick={onClick}>삭제</Button>
+    <Button  className='ssbtnstyle' onClick={onClick}>삭제</Button>
   );
 };
 

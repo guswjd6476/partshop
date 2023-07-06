@@ -113,7 +113,7 @@ productinfo.moq,productinfo.prepare,productinfo.pDetail,productinfo.startday,pro
   }
 
   return (
-    <div className="Writeproduct main">
+    <div className="Writeproduct">
         <Productinfo setProductInfo={setProductInfo} productinfo={productinfo} cate={cate} cates={cates}/>
         <UploadThumb num={productinfo.catenum} fileList={fileList} setFileList={setFileList} />
         {productinfo.catenum === 3 ? 

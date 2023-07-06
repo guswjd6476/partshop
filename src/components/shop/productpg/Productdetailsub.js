@@ -21,7 +21,7 @@ function Productdetailsub({content}) {
           {
             key: 'part-1',
             href: '#part-1',
-            title: '상세제품설명 1',
+            title: '상세제품설명',
           },
           {
             key: 'part-2',
@@ -50,14 +50,14 @@ function Productdetailsub({content}) {
          <Tablet>
          <Anchor
       
-      targetOffset={52}
+      targetOffset={72}
       offsetTop={52}
         direction="horizontal"
         items={[
           {
             key: 'part-1',
             href: '#part-1',
-            title: '상세제품설명 1',
+            title: '상세제품설명',
           },
           {
             key: 'part-2',
@@ -88,28 +88,44 @@ function Productdetailsub({content}) {
     <div className="partwrap">
         <div
          id="part-1"
-          dangerouslySetInnerHTML={{__html: content&&content[0].content}}
           > 
+          <div className="producttitle">상세제품설명</div>
+          <div   dangerouslySetInnerHTML={{__html: content&&content[0].content}}></div>
           </div>,  
           <div
            id="part-2"
-          style={{position:'relative',minHeight:'150px'}}
+          style={{position:'relative'}}
           
           >
+            <div className="producttitle">관련자료</div>
+            <div
+              style={{position:'relative',minHeight:'150px'}}
+             >
             <Waitpage/>
+            </div>
           </div>
       <div id="part-3">
+      <div className="producttitle">제품후기</div>
+        <div
+          style={{position:'relative',minHeight:'150px'}}
+        >
       <ProductBuyafter data={content}/>
+      </div>
       </div>
       <div
            id="part-4"
-          style={{position:'relative',minHeight:'150px'}}
-          
+          style={{position:'relative'}}
           >
+            <div className="producttitle">기술지원문의</div>
+            <div
+              style={{position:'relative',minHeight:'150px'}}
+             >
             <Waitpage/>
+            </div>
           </div>
       
        <div id="part-5">
+       <div className="producttitle">교환/반품/배송정보</div>
        <Productdelivery/>
       </div>
     </div>

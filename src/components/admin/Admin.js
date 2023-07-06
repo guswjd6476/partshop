@@ -6,10 +6,16 @@ import Userlist from "./User/Userlist";
 import Categorycontrol from "./category/Categorycontrol";
 import Maincontrol from "./maincontrol/Maincontrol";
 import { useEffect } from "react";
+import Deliverwrite from "./write/Deliverwrite";
 function Admin({cate,cates,setCates,setCate, setBack}) {
   useEffect(()=>{setBack(true)},[])
 
   const items = [
+    {
+      key: '0',
+      label: `운송장입력`,
+      children:  <Deliverwrite cate={cate} cates={cates}/>,
+    },
     {
       key: '1',
       label: `글올리기`,
@@ -38,7 +44,7 @@ function Admin({cate,cates,setCates,setCate, setBack}) {
   ];
   return (
     <div className="Admin main displaybox">
-         <Tabs defaultActiveKey="1" items={items} />
+         <Tabs defaultActiveKey="0" items={items} />
     </div>
   );
 }

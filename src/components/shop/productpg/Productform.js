@@ -10,6 +10,8 @@ function Productform({main,counts,index,pathValue,userId,value,handleCountChange
 
 return(
   <>
+  {value&&value ? 
+  <>
   {gridstyle ==  0 ? 
     <div className='productbox grid1'>
     {!main? 
@@ -201,7 +203,8 @@ return(
 
   }
   </>
-  
+:""}
+  </>
   )
 }
 

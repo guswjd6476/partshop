@@ -17,4 +17,17 @@ const fetchData = async (url, params) => {
       return err;
     }
   };
-export { fetchData };
+  const dData = async (carriers, num) => {
+    try {
+      const response = await instance.get(`https://apis.tracker.delivery/carriers/${carriers}/tracks/${num}`, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      return response;
+    } catch (err) {
+      console.log(`오류: ${err}`);
+      return err;
+    }
+  };
+export { fetchData ,dData};

@@ -1,4 +1,5 @@
 import { fetchData } from "./instance";
+import { dlist,buystatelist } from "./options";
 // 최근등록순 등등의 내림차순 정렬 
 const sortList = (filteredArray, sortType) => {
     switch (sortType) {
@@ -86,7 +87,7 @@ function datechange(inputString) {
 }
 
 function buystates(state){
-  const buystate = state == 1 ? '상품준비중' : state == 2 ? '배송준비중' :state == 3 ? '배송중' : '수령완료' 
+  const buystate = state == 1 ? '입금확인중' : state == 2 ? '상품준비중' :state == 3 ? '출고완료' : '구매확정' 
   return buystate;
 }
 
@@ -119,4 +120,44 @@ function sortedObj(num,list, func){
     func(list);
   }
 }
-  export {sortList,addNeeds,addNeedss,getcompare,getCate,addMainCate,getMainCate,dMainCate,addCates,dSubCate,pricechange,datechange,buystates,sortedObj}
+// 날짜 포맷 함수
+function formatDate(dateString) {
+  const date = new Date(dateString);
+  const year = date.getFullYear();
+  const month = String(date.getMonth() + 1).padStart(2, '0');
+  const day = String(date.getDate()).padStart(2, '0');
+  const hours = String(date.getHours()).padStart(2, '0');
+  const minutes = String(date.getMinutes()).padStart(2, '0');
+  const seconds = String(date.getSeconds()).padStart(2, '0');
+
+  const formattedDate = `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
+  return formattedDate;
+}
+//  택배사 찾기 함수
+function findLabelByValue(value) {
+  const foundItem = dlist.find(item => item.value === value);
+  if (foundItem) {
+    return foundItem.label;
+  }
+  return null; // 라벨이 없는 경우 null 반환
+}
+//  주문상태 찾기 함수
+function findState(value) {
+  console.log(value,'value')
+  const foundItem = buystatelist.find(item => item.value === value);
+  if (foundItem) {
+    return foundItem.label;
+  }
+  return null; // 라벨이 없는 경우 null 반환
+}
+
+// 아이디 보호
+function maskId(userId) {
+  if (userId.length <= 8) {
+    return userId.substring(0, 2) + '*'.repeat(userId.length - 2);
+  } else {
+    return userId.substring(0, 4) + '*'.repeat(userId.length - 4);
+  }
+}
+
+  export {sortList,addNeeds,addNeedss,getcompare,getCate,addMainCate,getMainCate,dMainCate,addCates,dSubCate,pricechange,datechange,buystates,sortedObj,formatDate,findLabelByValue,maskId,findState }

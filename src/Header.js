@@ -38,7 +38,7 @@ const Header = ({isLoggedIn,admin,userInfo,setFilter,sb,setSb,cates,filter}) => 
     const key = `/${item.category}`;
     return {
       label: 
-      <Link className='menuli' to={`/${item.category}`}>
+      <Link key={item.id} className='menuli' to={`/${item.category}`}>
         <div className='menuicon'>
           <img src={item.catenum == 0 ? agv: item.catenum == 1 ? board:item.catenum == 2 ? sensor:item.catenum == 3 ? iot:item.catenum == 4 ? event:item.catenum == 5 ? project:purchase}/></div>
         <div>
@@ -138,7 +138,7 @@ selectedKeys={[...pathKeys, `/${pathKeys[0]}`]} mode="horizontal" items={newItem
         <div className='searchInner'>
           <div className='searchbar_title'>인기검색어</div>
           <div className='flex'>
-            {serachA.map(value=><div className='search_b'><SearchOutlined /> {value}</div>)}
+            {serachA.map(value=><div key={value} className='search_b'><SearchOutlined /> {value}</div>)}
           </div>
         </div>
       </div>

@@ -76,6 +76,7 @@ const [back, setBack] =useState(true)
               <Route path="/PROJECT/:id" element={<Eventpg setBack={setBack} userInfo={userInfo}/>} />
               <Route path="/address" element={<Buyaddressplus setShow={setShow}  userId={userInfo&&userInfo[0]} userInfo={userInfo}/>} />
               <Route path="/addaddress" element={<BuyaddAddress setShow={setShow}  userId={userInfo&&userInfo[0]} userInfo={userInfo}/>} />
+             
            </Routes>
            {show ?<Footer/> : ''}
         </BrowserRouter>

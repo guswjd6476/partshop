@@ -3,7 +3,8 @@ import Draggable from 'react-draggable';
 import { Button,Modal,Input,Rate } from "antd";
 import { addAfeterbuylist } from "../../service/user";
 import BuyafeterModalbox from "./BuyafeterModalbox";
-const BuyafterModal = ({data,userId}) => {
+import Deliverview from "./Deliverview";
+const BuyafterModal = ({div,data,userId}) => {
   const [content , setContent] = useState({
     title: '',
     rate : ''
@@ -28,7 +29,13 @@ const BuyafterModal = ({data,userId}) => {
       })
     };
     const handleOk = (e) => {
-      
+      if(!div&&!content.title){
+        alert('제목을 입력해주세요')
+    }else if (!div&&!contents){
+        alert('후기를 입력해주세요')
+    }else if (!div&&!content.rate){
+      alert('별점을 입력해주세요')
+    }else if(!div){
       addAfeterbuylist(data.productnum, userId,content.title, content.rate, contents).then(function(response){
         if(response.data){
           alert('추가되었습니다')
@@ -40,7 +47,9 @@ const BuyafterModal = ({data,userId}) => {
           })
         }
       })
-      
+    }else{
+      setOpen(false);
+    }
 
     };
     const handleCancel = (e) => {
@@ -80,9 +89,11 @@ const BuyafterModal = ({data,userId}) => {
     }
     return (
       <>
-        <Button className="btnstyle" onClick={showModal}>후기작성</Button>
+  
+        <Button className="lbtnstyle" onClick={showModal}>{div ? '배송조회':
+        '후기작성'}</Button>
         <Modal
-         width={1100}
+         width={700}
           title={
             <div
               style={{
@@ -100,7 +111,9 @@ const BuyafterModal = ({data,userId}) => {
               onFocus={() => {}}
               onBlur={() => {}}
             >
-             {data.pName} 후기작성
+              {div?'배송조회' : 
+             `${data.pName} 후기작성`
+            }
             </div>
           }
           open={open}
@@ -116,8 +129,11 @@ const BuyafterModal = ({data,userId}) => {
             </Draggable>
           )}
         >
-         
+          {div? 
+            <Deliverview data={data}/>
+            :
             <BuyafeterModalbox values={contents} handlesChange={handlesChange} setValues={setContents}/>
+          }
         </Modal>
       </>
     );
