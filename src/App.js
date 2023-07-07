@@ -3,13 +3,13 @@ import './style.css'
 import './reset.css'
 import React, { useState,useEffect } from "react";
 import { getCate, getMainCate} from "./service/function";
-
+import { getItemWithExpireTime } from "./service/function";
 
 function App() {
 const [init, setInit] = useState(false)
 const [cates, setCates] = useState([]);
-const [userInfo, setUserInfo] = useState(JSON.parse(localStorage.getItem('userInfo')))
-const [token, setToken] = useState(localStorage.getItem('token'));
+const [userInfo, setUserInfo] = useState(JSON.parse(getItemWithExpireTime('userInfo')))
+const [token, setToken] = useState(getItemWithExpireTime('token'));
 const [cate, setCate] = useState([])
   useEffect(()=>{
     getCate()

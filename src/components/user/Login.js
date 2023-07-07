@@ -4,6 +4,7 @@ import React, { useState,useEffect } from "react";
 import { useNavigate } from 'react-router-dom';
 import { logins } from '../../service/user';
 import logo from '../../Image/logo.png'
+import { setItemWithExpireTime,getItemWithExpireTime } from '../../service/function';
 
 const Login = ({setShow,setToken,setUserInfo}) => {
     const [email, setEmail] = useState();
@@ -21,11 +22,11 @@ const Login = ({setShow,setToken,setUserInfo}) => {
                 logins(values.userId,values.uPassword)
                 .then(function (response) {
                     if(response.data){
-                        localStorage.setItem("token", response.data[0].token);
+                        setItemWithExpireTime("token", response.data[0], 3600000)
                         setToken(response.data[0].token);
                         let item = [response.data[0].userId,response.data[0].uGrade]
-                        localStorage.setItem("userInfo", JSON.stringify(item));
-                        setUserInfo(JSON.parse(localStorage.getItem('userInfo')))
+                        setItemWithExpireTime("userInfo",JSON.stringify(item), 3600000)
+                        setUserInfo(JSON.parse(getItemWithExpireTime('userInfo')))
                     alert("로그인 되었습니다", "확인 버튼을 눌러 주세요", "success");
                     setShow(true)
                     navigate('/')

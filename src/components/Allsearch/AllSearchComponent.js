@@ -2,13 +2,14 @@ import {Link,useNavigate } from 'react-router-dom'
 import {  Button, Input } from 'antd';
 import { useEffect, useRef,useState } from 'react';
 import {SearchOutlined } from '@ant-design/icons';
+import { setItemWithExpireTime } from '../../service/function';
 const AllSearchComponent = ({userId,setFilter,setSb,sb,filter}) => {
   const navigate = useNavigate();
   const focusRef = useRef();
 
   const handleInputChange = (event) => {
     setFilter(event.target.value);
-    localStorage.setItem("filter", event.target.value);
+    setItemWithExpireTime("filter", event.target.value,3600000);
   };
   const handleOnKeyPress = e => {
     if (e.key === 'Enter') {

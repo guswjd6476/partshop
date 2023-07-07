@@ -5,6 +5,7 @@ import {Button, Input,Select} from 'antd'
 import { useNavigate,useLocation } from 'react-router-dom';
 import { Wnotice,Wfaq,Wqna,Wqnaanswer } from "../../../../service/product";
 import { noticeOption ,faqOption,qnaOption} from "../../../../service/options";
+import { getItemWithExpireTime } from "../../../../service/function";
 function Writenotice({setBack}) {
 
   const navigate = useNavigate();
@@ -12,7 +13,7 @@ function Writenotice({setBack}) {
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
   const pathnum2 = location.pathname.split('/')[2].split("&")[0]
-  const userArray = JSON.parse(localStorage.getItem('userInfo'))
+  const userArray = JSON.parse(getItemWithExpireTime('userInfo'))
   const num = searchParams.get('productid');
   const user= userArray[0]
   const userGrade= userArray[1]

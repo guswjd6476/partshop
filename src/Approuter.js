@@ -26,6 +26,7 @@ import MHeaer from './MHeaer';
 import Project from './components/project/Project';
 import Buyaddressplus from './components/shop/buy/Buyaddressplus';
 import BuyaddAddress from './components/shop/buy/BuyaddAddress';
+import Needs from './components/needs/Needs';
 
 const Approuter = ({setToken,cates,setCates,isLoggedIn,userInfo,setUserInfo,cate,setCate})=> {
   
@@ -76,6 +77,7 @@ const [back, setBack] =useState(true)
               <Route path="/PROJECT/:id" element={<Eventpg setBack={setBack} userInfo={userInfo}/>} />
               <Route path="/address" element={<Buyaddressplus setShow={setShow}  userId={userInfo&&userInfo[0]} userInfo={userInfo}/>} />
               <Route path="/addaddress" element={<BuyaddAddress setShow={setShow}  userId={userInfo&&userInfo[0]} userInfo={userInfo}/>} />
+              <Route path="/needs" element={<Needs setShow={setShow}  userId={userInfo&&userInfo[0]} userInfo={userInfo}/>} />
              
            </Routes>
            {show ?<Footer/> : ''}

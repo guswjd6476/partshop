@@ -6,7 +6,7 @@ import { addNeedss,getcompare } from "../../service/function";
 import Draggable from 'react-draggable';
 import Comparebox from "./Comparebox";
 import {Link} from "react-router-dom";
-
+import { getItemWithExpireTime } from "../../service/function";
 function Fixedcart({lastCheck,userId}) {
     const onClick=()=>{
     if(lastCheck[0]){
@@ -122,7 +122,8 @@ function Recentbox() {
   const [recentlist, setrecentlist] = useState()
 
   useEffect(()=>{
-    const storedRecent = localStorage.getItem('recent');
+    const storedRecent = getItemWithExpireTime('recent');
+    
     const recentArray = storedRecent ? JSON.parse(storedRecent) : [];
     const numberArray = recentArray.map(str => parseInt(str));
     if(numberArray){

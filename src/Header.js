@@ -161,7 +161,7 @@ selectedKeys={[...pathKeys, `/${pathKeys[0]}`]} mode="horizontal" items={newItem
         <UserOutlined />
       </Dropdown>
       
-        <Link  to={!isLoggedIn ? '/Login':'/Mypage'} className='function_head_box login'>
+        <Link  to={'/needs'} className='function_head_box login'>
         <HeartOutlined />
         </Link>
         <Link to={'/Cart'} className='function_head_box cart'>

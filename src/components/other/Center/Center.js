@@ -6,12 +6,14 @@ import QNA from "./QNA";
 import FAQ from "./FAQ";
 import Pagetitle from '../../components_btn/Pagetitle';
 import { useEffect } from 'react';
+import { getItemWithExpireTime } from '../../../service/function';
 function Center({setBack}) {
   
   const location = useLocation()
   const pathnum1 = location.pathname.split('/')[1]
   const pathnum2 = location.pathname.split('/')[2]
-  const userArray = JSON.parse(localStorage.getItem('userInfo'))
+  const userArray = JSON.parse(getItemWithExpireTime('userInfo'))
+  
   const user= userArray&&userArray[0]
   const userGrade= userArray&&userArray[1]
   useEffect(()=>{setBack(true)},[])

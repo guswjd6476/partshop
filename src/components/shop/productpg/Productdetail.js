@@ -14,6 +14,7 @@ import ProductTopTab from "./ProductTopTab";
 import { Crumb2 } from "../../components_btn/Breadcrums";
 import { pricechange } from "../../../service/function";
 import { productdetail } from "../../../service/product";
+import { getItemWithExpireTime,setItemWithExpireTime } from "../../../service/function";
 function Productdetail({cate,userId,setBack}) {
   const [data, setData] =useState('')
   const [buycount, setBuycount] = useState(1)
@@ -25,10 +26,11 @@ function Productdetail({cate,userId,setBack}) {
   
     useEffect(()=>{
       setBack(true)
-      let recent = JSON.parse(localStorage.getItem('recent'));
+      let recent = JSON.parse(getItemWithExpireTime('recent'));
       recent&&recent.push(pathnum3);
+    
       let result = [...new Set(recent)];
-      localStorage.setItem('recent', JSON.stringify(result));
+      setItemWithExpireTime('recent', JSON.stringify(result),3600000);
       productdetail(pathnum3)
       .then(function (response) {
         setData(response.data)
