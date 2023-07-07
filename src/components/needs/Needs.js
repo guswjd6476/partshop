@@ -14,7 +14,7 @@ function Needs({setBack,userId}) {
         setBack(true)
         if(!userId){
             alert('로그인해주세요')
-            navigate('Login')
+            navigate('/Login')
        }
         getNeeds(userId).then(function(response){
             setNeedslist(response.data)

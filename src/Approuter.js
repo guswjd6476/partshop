@@ -117,6 +117,7 @@ const [back, setBack] =useState(true)
               <Route path="/PROJECT/:id" element={<Project setBack={setBack} userInfo={userInfo}/>} />
               <Route path="/center/:qna/:noticecon" element={<Itemcon setBack={setBack} isLoggedIn={isLoggedIn} userInfo={userInfo}/>} />
               <Route path="/needs" element={<Needs setShow={setShow} setBack={setBack}  userId={userInfo&&userInfo[0]} userInfo={userInfo}/>} />
+              <Route path="/Cart" element={<Cart setBack={setBack} userId={userInfo&&userInfo[0]} />} />
            </Routes>
            {show ?<Footer/> : ''}
         </BrowserRouter>
