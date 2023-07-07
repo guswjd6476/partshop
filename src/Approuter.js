@@ -77,7 +77,7 @@ const [back, setBack] =useState(true)
               <Route path="/PROJECT/:id" element={<Eventpg setBack={setBack} userInfo={userInfo}/>} />
               <Route path="/address" element={<Buyaddressplus setShow={setShow}  userId={userInfo&&userInfo[0]} userInfo={userInfo}/>} />
               <Route path="/addaddress" element={<BuyaddAddress setShow={setShow}  userId={userInfo&&userInfo[0]} userInfo={userInfo}/>} />
-              <Route path="/needs" element={<Needs setShow={setShow}  userId={userInfo&&userInfo[0]} userInfo={userInfo}/>} />
+              <Route path="/needs" element={<Needs setShow={setShow} setBack={setBack}  userId={userInfo&&userInfo[0]} userInfo={userInfo}/>} />
              
            </Routes>
            {show ?<Footer/> : ''}
@@ -116,6 +116,7 @@ const [back, setBack] =useState(true)
               <Route path="/center/:id" element={<Center setBack={setBack}/>} />
               <Route path="/PROJECT/:id" element={<Project setBack={setBack} userInfo={userInfo}/>} />
               <Route path="/center/:qna/:noticecon" element={<Itemcon setBack={setBack} isLoggedIn={isLoggedIn} userInfo={userInfo}/>} />
+              <Route path="/needs" element={<Needs setShow={setShow} setBack={setBack}  userId={userInfo&&userInfo[0]} userInfo={userInfo}/>} />
            </Routes>
            {show ?<Footer/> : ''}
         </BrowserRouter>

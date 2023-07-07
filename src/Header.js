@@ -76,7 +76,7 @@ const Header = ({isLoggedIn,admin,userInfo,setFilter,sb,setSb,cates,filter}) => 
       key: '0',
     },
     {
-      label:  <div  className='function_head_box ' style={{marginLeft:'20px'}}>
+      label:  <div  className='function_head_box ' s>
       <Link to='/center'>
       고객센터
       </Link>
@@ -88,7 +88,7 @@ const Header = ({isLoggedIn,admin,userInfo,setFilter,sb,setSb,cates,filter}) => 
      <Link to='/Login'>
     로그인
     </Link>
-    </div> : <div onClick={showConfirm} style={{marginLeft:'20px'}}> 
+    </div> : <div onClick={showConfirm}> 
       <a>
       로그아웃
       </a>

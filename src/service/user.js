@@ -53,5 +53,12 @@ import { fetchData,dData } from "./instance";
     const addDeliver  =  async (state,dNum,carriers,id) => {
       return fetchData('/api/addDeliver', {state,dNum,carriers,id});
     };
-  
-  export  {getPass,userlists,logins,useridchecks,mailing,lastjoin,getUser,getAddress,addAddress,selectAddress,getOrderlist,getAfterbuylist,addAfeterbuylist,getThisAfterbuylist,deliveryApi,getAllOrderlist,addDeliver}
+    // 찜목록 가져오기
+    const getNeeds = async (userId) => {
+      return fetchData('/api/getNeeds', {userId });
+    };
+       // 찜목록 지우기
+       const deleteNeeds = async (num) => {
+        return fetchData('/api/deleteNeeds', {num });
+      };
+  export  {getPass,userlists,logins,useridchecks,mailing,lastjoin,getUser,getAddress,addAddress,selectAddress,getOrderlist,getAfterbuylist,addAfeterbuylist,getThisAfterbuylist,deliveryApi,getAllOrderlist,addDeliver,getNeeds,deleteNeeds}

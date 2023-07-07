@@ -476,11 +476,22 @@ height: 100%;
     color: #fff;
 }
 .function_head_box{
+    margin-left: 0px;
     display: flex;
     flex-direction: column;
     cursor: pointer;
 }
-
+.needsbox{
+flex-wrap: wrap;
+}
+.needs img{
+    width: 240px;
+    height: 180px;
+}
+.needs{
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
 .function_head svg{
     font-size: 26px;
 }
@@ -1287,13 +1298,35 @@ margin-bottom: 10px;
 .sorting_list, .sorting_list_grid, .sorting_list_btn{
     display: flex;
 }
-.searchresult{
+/* 주석 해제가 필요한지? */
+/* .searchresult{
     
     min-height: 60vh;
+} */
+.ant-card-body{
+    border-top:  1px solid #4b6cb7 !important;
 }
 .searchresult .sorting_list{
     margin-top: 20px;
     margin-bottom: 20px;
+}
+.ant-card-bordered {
+    border: 1px solid #cecece;
+}
+.cardwrap{
+    position: relative;
+}
+.cardbtn{
+    position: absolute;
+    padding: 0px;
+    right: 24px;
+    bottom: 24px;
+    border: none;
+}
+.needs img{
+    border-top: 1px solid #cecece;
+    border-right: 1px solid #cecece;
+    border-left: 1px solid #cecece;
 }
 .sorting_list{
     width: 100%;
@@ -2039,10 +2072,10 @@ border-right: 1px solid #4b6cb7;
     justify-content: space-between;
     color: #000;
 }
-.tabledivs>p:last-child{
+.qna .tabledivs>p:last-child{
     width: 50px;
 }
-.tabledivs p:first-child{
+.qna .tabledivs p:first-child{
     display: block;
     width: calc(100% - 50px);
     min-width: 280px;
@@ -2357,6 +2390,10 @@ color: #000;
     display: block;
     color: #000;
     padding: 5px 0;
+    border-bottom: 1px solid #bbbbbb;
+}
+.noticelist:last-child{
+    border: unset;
 }
 .carticon{
     font-size: 60px;
@@ -2636,6 +2673,71 @@ border-bottom: 3px solid #4b6cb7;
 .progresseswrap:last-child{
     border-bottom: 1px solid #4b6cb7;
 }
+.centerbox{
+    padding: 20px ;
+    background-color: #cacaca;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.centerbox_wrap p{
+    color: #000;
+    text-align: center;
+    font-weight: bold;
+}
+.centerbox_wrap{
+    padding: 10px;
+    margin-bottom: 10px;
+}
+.centerbox_wrap_b{
+    width: 80%;
+    display: flex;
+    justify-content: center;
+}
+.ant-dropdown-menu-item{
+    padding: 0 !important;
+    text-align: left;
+}
+.ant-dropdown-menu-item a{
+    text-align: left;
+    width: 100%;
+    display: block;
+    color: #0b255b;
+}
+.centerbox_bottom{
+    position: relative;
+    width: 360px;
+    height: 140px;
+    padding: 10px;
+}
+
+.centerbox_bottom:first-child{
+    background-color: #7F7FD5;
+    margin-right: 20px;
+}
+.centerbox_bottom:last-child{
+    background-color: #86A8E7;
+}
+.centerbox_bottom p {
+    font-weight: bold;
+    color: #fff;
+}
+.centerbox_bottom h6{
+    font-size: 14px;
+    color: #636363;
+}
+.centerbox_phone{
+    font-size: 20px;
+    font-weight: bold;
+    color: #000;
+}
+.phoneIcon{
+    text-align: right;
+    font-size: 60px;
+    color: #fff;
+}
 @media screen and (max-width: 1700px) {
     .productbox.grid1 {
         display: flex;
@@ -2719,6 +2821,9 @@ border-bottom: 3px solid #4b6cb7;
   }
 /* 태블릿 */
   @media screen and (max-width: 980px) {
+    .shop_sort{
+        display: none;
+    }
     .triangle{
         display: none;
     }
@@ -2978,7 +3083,8 @@ border-bottom: 3px solid #4b6cb7;
         font-size: 14px;
     }
     .breacrumb{
-        padding: 5px 0;
+        padding-top: 15px;
+        padding-bottom: 5px;
     }
     .pageTbox .pagetitle{
         margin-bottom: 10px;
@@ -2991,6 +3097,10 @@ border-bottom: 3px solid #4b6cb7;
     .ant-anchor .ant-anchor-link{
         font-size: 12px;
         padding-inline:0;
+    }
+    .maintabs{
+        padding-top: 20px;
+        padding-bottom: 20px;
     }
     .notice_title{
         padding: 5px ;
@@ -3123,6 +3233,82 @@ border-bottom: 3px solid #4b6cb7;
   /* 모바일 */
 
   @media screen and (max-width: 720px) {
+    .titlebtn a, .titlebtn button{
+        font-size: 12px;
+        width: 40px;
+    }
+
+    .nextdiv{
+        font-size: 14px;
+    }
+    .nextdiv_t{
+        width: 60px;
+        margin-right: 10px;
+        padding-right: 10px;
+    }
+    .nextdiv_c{
+        display: block;
+        width: calc(100% - 60px);
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    .qnaanswer{
+        font-size: 14px;
+    }
+    .qna  .ant-table-tbody>tr td:last-child{
+        width: calc(95% - 60px);
+    }
+    .qna  .ant-table-tbody>tr td:last-child .tabledivs{
+        width: 95%;
+    }
+    .ant-collapse-header{
+        padding: 5px !important;
+    }
+    .shop_d_t_t{
+        font-size: 16px !important;
+    }
+    .ant-table-tbody>tr>td:nth-child(2){
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    .tabledivs p:last-child{
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    .noticea{
+        display: block;
+        width: 95%;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    .ant-breadcrumb-link{
+        font-size: 14px;
+    }
+    .productbox.grid2:nth-child(2n) {
+        margin-left: 0px;
+    }
+    .notice_title.sub{
+        font-size: 14px;
+    }
+    .mr{
+        margin-right: 10px;
+        padding-right: 10px;
+    }
+    .titletext .titles{
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    .notice_title .category{
+        margin-right: 10px;
+    }
+    .qnacon p {
+        font-size: 14px;
+    }
     .tableT{
         font-size: 14px;
     }

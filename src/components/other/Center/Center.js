@@ -7,6 +7,8 @@ import FAQ from "./FAQ";
 import Pagetitle from '../../components_btn/Pagetitle';
 import { useEffect } from 'react';
 import { getItemWithExpireTime } from '../../../service/function';
+import Mainnotice from '../../Main/Mainnotice';
+import Centerbox from './Centerbox';
 function Center({setBack}) {
   
   const location = useLocation()
@@ -38,6 +40,8 @@ function Center({setBack}) {
           :
           <div>
             <Pagetitle value='고객센터' svalue={'서비스 이용관련 문의사항을 해결해드립니다'}/>
+            <Centerbox/>
+            <Mainnotice/>
           </div>
         }
           </div>

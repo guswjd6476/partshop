@@ -2,10 +2,9 @@ import  Approuter  from "./Approuter";
 import './style.css'
 import './reset.css'
 import React, { useState,useEffect } from "react";
-import { getCate, getMainCate} from "./service/function";
-import { getItemWithExpireTime } from "./service/function";
-
+import { getCate, getMainCate,getItemWithExpireTime} from "./service/function";
 function App() {
+  
 const [init, setInit] = useState(false)
 const [cates, setCates] = useState([]);
 const [userInfo, setUserInfo] = useState(JSON.parse(getItemWithExpireTime('userInfo')))
@@ -21,7 +20,16 @@ const [cate, setCate] = useState([])
         setCates(response.data);
       });
       setInit(true)
-
+      // const handleBeforeUnload = () => {
+      //   window.localStorage.removeItem('token');
+      //   window.localStorage.removeItem('userInfo');
+      // };
+    
+      // window.addEventListener('beforeunload', handleBeforeUnload);
+    
+      // return () => {
+      //   window.removeEventListener('beforeunload', handleBeforeUnload);
+      // }
   },[])
   
  
