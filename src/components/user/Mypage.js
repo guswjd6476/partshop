@@ -3,6 +3,7 @@ import {  useLocation} from 'react-router-dom';
 import { Crumb1,Crumb2 } from '../components_btn/Breadcrums'
 import Myorderlist from "./Myorderlist";
 import Myinfo from "./Myinfo";
+import Myqna from "./Myqna";
 function Mypage({userId,setBack}) {
   useEffect(()=>{setBack(true)},[])
   const location = useLocation()
@@ -30,6 +31,12 @@ function Mypage({userId,setBack}) {
               ><a>정보변경</a>
               <div className={pagenum == 2 ? 
     'active triangle' : 'none'}></div></li>
+              <li  onClick={e=>setPageNum(3)}
+                      className={pagenum == 3 ? 'active snavili' : 'snavili'} 
+                      ><a>문의사항</a>
+                      <div className={pagenum == 3 ? 
+                     'active triangle' : 'none'}></div>
+              </li>
             </ul>
           </div>
           </div>
@@ -41,6 +48,7 @@ function Mypage({userId,setBack}) {
             {
               pagenum ===1 ? <Myorderlist userId={userId}/>:
               pagenum ===2 ? <Myinfo userId={userId}/>:
+              pagenum ===3 ? <Myqna userId={userId}/> :
               ''
             }
           </div>

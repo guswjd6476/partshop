@@ -76,7 +76,7 @@ const Header = ({isLoggedIn,admin,userInfo,setFilter,sb,setSb,cates,filter}) => 
       key: '0',
     },
     {
-      label:  <div  className='function_head_box ' s>
+      label:  <div  className='function_head_box '>
       <Link to='/center'>
       고객센터
       </Link>
@@ -130,7 +130,7 @@ selectedKeys={[...pathKeys, `/${pathKeys[0]}`]} mode="horizontal" items={newItem
     <div className='function_head_box login'>
       
       <Popover
-      className='searchpop'
+      overlayClassName='searchpop'
       content={
       <div className='search_bar'>
         <div className='searchbar_title'>검색어를 입력해주세요</div>

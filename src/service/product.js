@@ -88,14 +88,11 @@ const getAllItem = async (path) => {
 const getItemcon = async (num,path) => {
   return fetchData('/api/getItemcon', {num,path});
 };
-// 특정 게시물 공지사항 불러오기
-// const idQna = (num)=>{
-//   return axios.get('/api/idQna', {
-//     params: {
-//     num
-//     },
-//   });
-// }
+// 아이디에 맞는 게시물 불러오기 
+const getwriteQna = async (writer) => {
+  return fetchData('/api/getwriteQna', {writer});
+};
+
 const idQna = async (num) => {
   return fetchData('/api/idQna', {num});
 };
@@ -195,5 +192,5 @@ const getsubevent = async (id) => {
 
 
 
-  export { addCart ,getCart,deleteCart,productdetail,getproduct,addsCart,recommendlist,getSort,getAllItem,Wnotice,getItemcon,idQna,Wqna,Wfaq,Wqnaanswer,getPrevNext,updateItem,Allgetproduct,updatemain,getmain,getiot,Allproductdetail,updatenames,uploadproduct,getevent,getsubevent};
+  export { addCart ,getCart,deleteCart,productdetail,getproduct,addsCart,recommendlist,getSort,getAllItem,Wnotice,getItemcon,idQna,Wqna,Wfaq,Wqnaanswer,getPrevNext,updateItem,Allgetproduct,updatemain,getmain,getiot,Allproductdetail,updatenames,uploadproduct,getevent,getsubevent,getwriteQna};
 

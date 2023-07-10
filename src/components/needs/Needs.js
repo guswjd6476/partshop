@@ -7,6 +7,13 @@ import { deleteNeeds, getNeeds } from "../../service/user";
 import { pricechange } from "../../service/function";
 const { Meta } = Card;
 function Needs({setBack,userId}) {
+    const popOverInnerStyle = {
+        width: '38px',
+        height: '30px',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+      }
     const navigate = useNavigate();
     const [needsList, setNeedslist]= useState(null)
     useEffect(()=>{
@@ -53,6 +60,7 @@ function Needs({setBack,userId}) {
         </Link>
         
         <Popconfirm
+            style={popOverInnerStyle}
             title="삭제하시겠습니까?"
             onConfirm={()=>dNeeds(value.id)}
             onCancel={cancel}
