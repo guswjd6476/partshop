@@ -6,6 +6,7 @@ import BuyafeterModalbox from "./BuyafeterModalbox";
 import Deliverview from "./Deliverview";
 import ProductInquirybox from "../shop/productpg/ProductInquirybox";
 const BuyafterModal = ({answer,div,divss,div1,data,userId,inquiry,setInquiry}) => {
+  console.log(data,'////')
   const [content , setContent] = useState({
     title: '',
     rate : ''
@@ -76,7 +77,7 @@ const BuyafterModal = ({answer,div,divss,div1,data,userId,inquiry,setInquiry}) =
       
     }else if (answer){
       const newInquiry = [...inquiry]
-      addinquiry(data.id, userId,contentss,content.category,2).then(function(response){
+      addinquiry(data.productnum, userId,contentss,data.category,2,data.id).then(function(response){
         if(response.data){
           newInquiry.push({
             id : inquiry.length+1,
@@ -137,13 +138,14 @@ const BuyafterModal = ({answer,div,divss,div1,data,userId,inquiry,setInquiry}) =
     }
     return (
       <>
-        {div1==false ?
+        {div||divss ?
         <Button className="lbtnstyle" onClick={showModal}>{div ? '배송조회':
         '후기작성'}</Button>
         :div1 ?
         <Button className="btnstyle ab" onClick={showModal}>문의하기</Button>
-        :
+        :inquiry?
         <Button className="ssbtnstyle ab" onClick={showModal}>답변</Button>
+        :''
         }
         <Modal
          width={700}

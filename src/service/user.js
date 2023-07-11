@@ -62,8 +62,8 @@ import { fetchData,dData } from "./instance";
         return fetchData('/api/deleteNeeds', {num });
       };
    //문의사항
-   const addinquiry = async (num,userId,content,category,type) => {
-    return fetchData('/api/addinquiry', {num,userId,content,category,type});
+   const addinquiry = async (num,userId,content,category,type,answerid) => {
+    return fetchData('/api/addinquiry', {num,userId,content,category,type,answerid});
   };
   const getinquiry = async (num) => {
 

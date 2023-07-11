@@ -2758,6 +2758,9 @@ border-bottom: 3px solid #4b6cb7;
     width: 30px;
     height: 20px;
 }
+.padup{
+    padding-left: 20px !important;
+}
 .inquirys{
     margin-bottom: 10px;
     width: 100px;
@@ -2768,6 +2771,9 @@ border-bottom: 3px solid #4b6cb7;
 }
 .inquirys .ant-select-arrow{
     color: #4b6cb7;
+}
+.backbg{
+    background-color:  #d6d5d5
 }
 @media screen and (max-width: 1700px) {
     .productbox.grid1 {

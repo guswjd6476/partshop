@@ -9,7 +9,7 @@ import {  PC, Tablet } from "../../../MediaQuery"
 import { getinquiry } from "../../../service/user";
 
 function Productdetailsub({content,userId,userInfo}) {
-  const [inquiry, setInquiry] =useState()
+  const [inquiry, setInquiry] =useState([])
   useEffect(()=>{
     getinquiry(content[0].id).then(function(response){setInquiry(response.data)})
 },[])
@@ -129,7 +129,7 @@ function Productdetailsub({content,userId,userInfo}) {
             <div
               style={{position:'relative',minHeight:'150px'}}
              >
-            <ProductInquiry grade={userInfo&&userInfo[1]} inquiry={inquiry}  userId={userId} data={content[0]}/>
+            <ProductInquiry grade={userInfo&&userInfo[1]} inquiry={inquiry} setInquiry={setInquiry}   userId={userId} data={content[0]}/>
             <BuyafterModal inquiry={inquiry} setInquiry={setInquiry} userId={userId} div1={true} data={content[0]}/>
             </div>
           </div>

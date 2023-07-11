@@ -16,7 +16,6 @@ import { pricechange } from "../../../service/function";
 import { productdetail } from "../../../service/product";
 import { getItemWithExpireTime,setItemWithExpireTime } from "../../../service/function";
 function Productdetail({cate,userId,setBack,userInfo}) {
-  console.log(userInfo,'userinfo')
   const [data, setData] =useState('')
   const [buycount, setBuycount] = useState(1)
     const location = useLocation();

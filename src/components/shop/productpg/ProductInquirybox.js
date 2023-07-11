@@ -5,7 +5,7 @@ function ProductInquirybox({div1,values,setValues,setCategory}) {
 
   return (
     <>
-    {div1? 
+    {div1&&div1? 
   <Select placeholder='옵션선택' onChange={value=>setCategory(value)} className="inquirys" options={[
     {
       value: 'product',
