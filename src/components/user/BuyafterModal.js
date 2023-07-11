@@ -1,15 +1,18 @@
 import { useState,useRef, useEffect } from "react";
 import Draggable from 'react-draggable';
-import { Button,Modal,Input,Rate } from "antd";
-import { addAfeterbuylist } from "../../service/user";
+import { Button,Modal } from "antd";
+import { addAfeterbuylist,addinquiry } from "../../service/user";
 import BuyafeterModalbox from "./BuyafeterModalbox";
 import Deliverview from "./Deliverview";
-const BuyafterModal = ({div,data,userId}) => {
+import ProductInquirybox from "../shop/productpg/ProductInquirybox";
+const BuyafterModal = ({answer,div,divss,div1,data,userId,inquiry,setInquiry}) => {
   const [content , setContent] = useState({
     title: '',
     rate : ''
   })
+  const [category,setCategory] = useState('')
   const [contents , setContents] = useState('')
+  const [contentss , setContentss] = useState('')
     const [open, setOpen] = useState(false);
     const [disabled, setDisabled] = useState(true);
     const [bounds, setBounds] = useState({
@@ -29,24 +32,69 @@ const BuyafterModal = ({div,data,userId}) => {
       })
     };
     const handleOk = (e) => {
-      if(!div&&!content.title){
+      if(divss&&!content.title){
         alert('제목을 입력해주세요')
-    }else if (!div&&!contents){
+    }else if (divss&&!contents){
         alert('후기를 입력해주세요')
-    }else if (!div&&!content.rate){
+    }else if (divss&&!content.rate){
       alert('별점을 입력해주세요')
-    }else if(!div){
+    }else if(divss){
       addAfeterbuylist(data.productnum, userId,content.title, content.rate, contents).then(function(response){
         if(response.data){
           alert('추가되었습니다')
           setOpen(false);
-          setContents('')
+          setContentss('')
           setContent({
             title: '',
             rate : ''
           })
         }
       })
+    }else if(div1&&!contentss){
+      alert('문의사항을 입력해주세요')
+      
+    }else if (div1){
+      const newInquiry = [...inquiry]
+      addinquiry(data.id, userId,contentss,category,1).then(function(response){
+        if(response.data){
+          newInquiry.push({
+            id : inquiry.length+1,
+            productnum : data.id,
+            userId : userId,
+            content : contentss,
+            category: category,
+            type : 1
+          });
+          setInquiry(newInquiry)
+          alert('추가되었습니다')
+          setOpen(false);
+          setContentss('')
+        }
+      }) 
+    }else if(answer&&!contentss){
+      alert('답변을 입력해주세요')
+      
+    }else if (answer){
+      const newInquiry = [...inquiry]
+      addinquiry(data.id, userId,contentss,content.category,2).then(function(response){
+        if(response.data){
+          newInquiry.push({
+            id : inquiry.length+1,
+            productnum : data.id,
+            userId : userId,
+            content : contentss,
+            category: content.category,
+            type : 2
+          });
+          setInquiry(newInquiry)
+          alert('추가되었습니다')
+          setOpen(false);
+          setContentss('')
+        }
+      }) 
+    }
+    else if(div){
+      setOpen(false);
     }else{
       setOpen(false);
     }
@@ -89,9 +137,14 @@ const BuyafterModal = ({div,data,userId}) => {
     }
     return (
       <>
-  
+        {div1==false ?
         <Button className="lbtnstyle" onClick={showModal}>{div ? '배송조회':
         '후기작성'}</Button>
+        :div1 ?
+        <Button className="btnstyle ab" onClick={showModal}>문의하기</Button>
+        :
+        <Button className="ssbtnstyle ab" onClick={showModal}>답변</Button>
+        }
         <Modal
          width={700}
           title={
@@ -111,8 +164,8 @@ const BuyafterModal = ({div,data,userId}) => {
               onFocus={() => {}}
               onBlur={() => {}}
             >
-              {div?'배송조회' : 
-             `${data.pName} 후기작성`
+              {div?'배송조회' : div1?'문의하기' : answer ? '답변달기': 
+             `${data&&data.pName} 후기작성`
             }
             </div>
           }
@@ -131,6 +184,12 @@ const BuyafterModal = ({div,data,userId}) => {
         >
           {div? 
             <Deliverview data={data}/>
+            :
+            div1?
+            <ProductInquirybox setCategory={setCategory} div1={true} values={contentss} setValues={setContentss}/>
+            :
+            answer?
+            <ProductInquirybox  values={contentss} setValues={setContentss}/>
             :
             <BuyafeterModalbox values={contents} handlesChange={handlesChange} setValues={setContents}/>
           }

@@ -7,8 +7,7 @@ import { maskId } from "../../../service/function";
 
 function ProductBuyafter({data}) {
     const [buylist, setBuyList] =useState(null)
-    console.log(buylist,'buylist??')
-    console.log(data.id,'data??')
+  
     useEffect(()=>{
         getThisAfterbuylist(data[0].id).then(function(response){setBuyList(response.data)})
     },[])

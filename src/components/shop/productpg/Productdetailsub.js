@@ -1,11 +1,18 @@
-import { Anchor} from "antd";
-import StickyBox from 'react-sticky-box';
+import { Anchor,Button} from "antd";
+import { useState, useEffect } from "react";
 import Productdelivery from "./Productdelivery";
 import Waitpage from "../../../Waitpage";
 import ProductBuyafter from "./ProductBuyafter";
+import ProductInquiry from "./ProductInquiry";
+import BuyafterModal from "../../user/BuyafterModal";
 import {  PC, Tablet } from "../../../MediaQuery"
-function Productdetailsub({content}) {
+import { getinquiry } from "../../../service/user";
 
+function Productdetailsub({content,userId,userInfo}) {
+  const [inquiry, setInquiry] =useState()
+  useEffect(()=>{
+    getinquiry(content[0].id).then(function(response){setInquiry(response.data)})
+},[])
   return (
     <>
     <div
@@ -36,7 +43,7 @@ function Productdetailsub({content}) {
           {
             key: 'part-4',
             href: '#part-4',
-            title: '기술지원문의',
+            title: '제품 및 기술문의',
           },
           {
             key: 'part-5',
@@ -116,11 +123,14 @@ function Productdetailsub({content}) {
            id="part-4"
           style={{position:'relative'}}
           >
-            <div className="producttitle">기술지원문의</div>
+            <div className="flex j producttitle"> 
+            <div className="">제품 및 기술문의</div>
+            </div>
             <div
               style={{position:'relative',minHeight:'150px'}}
              >
-            <Waitpage/>
+            <ProductInquiry grade={userInfo&&userInfo[1]} inquiry={inquiry}  userId={userId} data={content[0]}/>
+            <BuyafterModal inquiry={inquiry} setInquiry={setInquiry} userId={userId} div1={true} data={content[0]}/>
             </div>
           </div>
       

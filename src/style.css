@@ -2741,6 +2741,34 @@ border-bottom: 3px solid #4b6cb7;
     font-size: 60px;
     color: #fff;
 }
+.btnstyle.ab{
+    position: absolute;
+    top: -50px;
+    right: 0;
+}
+.inquiry .buylist_conwrap{
+    position: relative;
+    padding-left: 30px !important;
+}
+.ssbtnstyle.ab{
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    font-size: 12px;
+    width: 30px;
+    height: 20px;
+}
+.inquirys{
+    margin-bottom: 10px;
+    width: 100px;
+}
+.inquirys .ant-select-selector{
+    border-radius: 0px;
+    border: 1px solid #4b6cb7;
+}
+.inquirys .ant-select-arrow{
+    color: #4b6cb7;
+}
 @media screen and (max-width: 1700px) {
     .productbox.grid1 {
         display: flex;
@@ -2824,6 +2852,9 @@ border-bottom: 3px solid #4b6cb7;
   }
 /* 태블릿 */
   @media screen and (max-width: 980px) {
+    .shop_d_t p{
+        font-size: 14px;
+    }
     .shop_sort{
         display: none;
     }

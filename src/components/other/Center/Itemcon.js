@@ -27,17 +27,18 @@ function Itemcon({userInfo,setBack,isLoggedIn}) {
     },[num])
 
   return (
-    <div className="main displaybox">
-       {pathnum2 ?
-      <Crumb2 num1={pathnum1} num2={pathnum2}/>
-     :
-     <Crumb1 num={pathnum1} /> }
+    <div className="main shop displaybox">
+     
     {notice ?
      <div className='shop_div'>
        <div className='shop_sort'>
          <Leftnavi num1={pathnum1} num2={pathnum2}/>
        </div>
        <div className='shop_content'>
+       {pathnum2 ?
+      <Crumb2 num1={pathnum1} num2={pathnum2}/>
+     :
+     <Crumb1 num={pathnum1} /> }
         <div className="notice_title">
           <div className="titletext">
             <span className="category">{notice[0].category}</span>

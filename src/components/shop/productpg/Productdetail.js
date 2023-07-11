@@ -15,7 +15,8 @@ import { Crumb2 } from "../../components_btn/Breadcrums";
 import { pricechange } from "../../../service/function";
 import { productdetail } from "../../../service/product";
 import { getItemWithExpireTime,setItemWithExpireTime } from "../../../service/function";
-function Productdetail({cate,userId,setBack}) {
+function Productdetail({cate,userId,setBack,userInfo}) {
+  console.log(userInfo,'userinfo')
   const [data, setData] =useState('')
   const [buycount, setBuycount] = useState(1)
     const location = useLocation();
@@ -99,7 +100,7 @@ function Productdetail({cate,userId,setBack}) {
               <Compareproduct num={data[0].id} pathnum3={pathnum3} cate={pathnum1}/>
           </div>
         </div>
-        <Productdetailsub content={data}/>
+        <Productdetailsub userInfo={userInfo} userId={userId} content={data}/>
       </div>
   </div>
     :''

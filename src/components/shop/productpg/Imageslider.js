@@ -22,7 +22,7 @@ function ImageSlider({ data,pathnum3 }) {
             {Object.keys(item)
             .filter((key) => key.startsWith("img"))
             .map((key) => (
-              <div className={!item[key]?'none':''}>
+              <div key={key} className={!item[key]?'none':''}>
                 <img src={item[key]} onClick={handleImgClick} key={key} />
               </div>
             ))}

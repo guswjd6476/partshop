@@ -61,4 +61,12 @@ import { fetchData,dData } from "./instance";
        const deleteNeeds = async (num) => {
         return fetchData('/api/deleteNeeds', {num });
       };
-  export  {getPass,userlists,logins,useridchecks,mailing,lastjoin,getUser,getAddress,addAddress,selectAddress,getOrderlist,getAfterbuylist,addAfeterbuylist,getThisAfterbuylist,deliveryApi,getAllOrderlist,addDeliver,getNeeds,deleteNeeds}
+   //문의사항
+   const addinquiry = async (num,userId,content,category,type) => {
+    return fetchData('/api/addinquiry', {num,userId,content,category,type});
+  };
+  const getinquiry = async (num) => {
+
+    return fetchData('/api/getinquiry', {num});
+  };
+  export  {getPass,userlists,logins,useridchecks,mailing,lastjoin,getUser,getAddress,addAddress,selectAddress,getOrderlist,getAfterbuylist,addAfeterbuylist,getThisAfterbuylist,deliveryApi,getAllOrderlist,addDeliver,getNeeds,deleteNeeds,addinquiry,getinquiry}

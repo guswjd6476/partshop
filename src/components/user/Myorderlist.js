@@ -63,7 +63,7 @@ useEffect(()=>{
                   {productfilter(value.productnum)[0] ?
                   <Button className="lbtnstyle">작성완료</Button>
                   :
-                  <div><BuyafterModal div={false} userId={userId} data={value} /></div>
+                  <div><BuyafterModal divss={true} userId={userId} data={value} /></div>
                   }
                   </div>
                  

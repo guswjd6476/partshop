@@ -23,7 +23,6 @@ function Buybtn(props) {
         alert('체크해주세요')
       }
     }
-    console.log(checkedList,'checkedlist')
   return (
     <Link to={ checkedList=='' ? '' : stringifyCheckedList !== 'undefined' ? `/buy?checkedList=${stringifyCheckedList}&productid=${productnum}&count=${count}&userId=${userId}` :
     `/buy?&productid=${productnum}&count=${count}&userId=${userId}` 
